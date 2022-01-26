@@ -3,8 +3,8 @@
     if (!$_SESSION['loggedin']) {
         Header("Location: login");
     }
-    if ($_SESSION["role"] != "admin") {
-        Header("Location: dashboard");
+    if ($_SESSION["rank"] != "Leiding") {
+        Header("Location: users");
     }
     $respone = false;
     if ($_SERVER['REQUEST_METHOD'] == "POST") {
