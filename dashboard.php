@@ -94,7 +94,11 @@
                     <li class="nav-link">
                         <a href="#">
                             <i class='bx bx-bell icon'></i>
+                            <!-- <span class="text nav-text" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Leiding</span> -->
                             <span class="text nav-text">Leiding</span>
+                            <!-- <ul class="dropdown">   -->
+
                         </a>
                     </li>
 
@@ -146,6 +150,7 @@
         </div>
 
     </nav>
+
 
     <script src="./assets/js/script.js"></script>
 
