@@ -26,6 +26,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="description" content="">
         <meta name="author" content="">
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 
         <link rel="shortcut icon" href="https://www.politie.nl/politie2018/assets/images/icons/favicon.ico" type="image/x-icon" />
         <link rel="icon" type="image/png" sizes="16x16" href="https://www.politie.nl/politie2018/assets/images/icons/favicon-16.png">
         <link rel="icon" type="image/png" sizes="32x32" href="https://www.politie.nl/politie2018/assets/images/icons/favicon-32.png">
@@ -39,61 +43,117 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
         <!-- Custom styles for this template -->
-        <link href="assets/css/main.css" rel="stylesheet">
+        <link href="assets/css/main.css" rel="stylesheet">   
+    <!----======== CSS ======== -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    
+    <!----===== Boxicons CSS ===== -->
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+    
     </head>
     <body>
-    <nav class="navbar navbar-expand-lg fixed-top navbar-custom bg-custom">
-        <a class="nav-label" href="#">
-            <img src="assets/images/icon.png" width="22" height="22" alt="">
-            <span class="title">
-                               Welkom <?php echo $_SESSION["rank"] . " " . $firstname . " " . substr($lastname, 0, 1); ?>.
-                            </span>
-        </a>
-        <a class="nav-button" href="logout">
-            <button class="btn btn-outline-light btn-logout my-2 my-sm-0" type="button">LOG UIT</button>
-        </a>
+    <nav class="sidebar close">
+        <header>
+            <div class="image-text">
+                <span class="image">
+                    <img src="./assets/images/pv_logo.png" alt="">
+                </span>
 
-        <div class="navbar-dark">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-        </div>
+                <div class="text logo-text">
+                    <span class="name">Rein S.</span>
+                    <span class="profession">Leidinggevende</span>
+                </div>
+            </div>
 
+            <i class='bx bx-chevron-right toggle'></i>
+        </header>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="nav navbar-nav ml-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="dashboard">DASHBOARD</a>
+        <div class="menu-bar">
+            <div class="menu">
+
+                <li class="search-box">
+                    <i class='bx bx-search icon'></i>
+                    <input type="text" placeholder="Search...">
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        OPZOEKEN
+
+                <ul class="menu-links">
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class='bx bx-home-alt icon' ></i>
+                            <span class="text nav-text">Dashboard</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class='bx bx-bar-chart-alt-2 icon' ></i>
+                            <span class="text nav-text">Opzoeken</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class='bx bx-bell icon'></i>
+                            <span class="text nav-text">Leiding</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class='bx bx-pie-chart-alt icon' ></i>
+                            <span class="text nav-text">Analytics</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class='bx bx-heart icon' ></i>
+                            <span class="text nav-text">Likes</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class='bx bx-wallet icon' ></i>
+                            <span class="text nav-text">Wallets</span>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+
+            <div class="bottom-content">
+                <li class="">
+                    <a href="#">
+                        <i class='bx bx-log-out icon' ></i>
+                        <span class="text nav-text">Log uit</span>
                     </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="profiles">PERSONEN</a>
-                        <a class="dropdown-item" href="reports">RAPPORTEN</a>
-                        <a class="dropdown-item" href="ambulanciers">Ambulanciers</a>
-                        <!-- <a class="dropdown-item" href="#">VOERTUIGEN</a> -->
+                </li>
+
+                <li class="mode">
+                    <div class="sun-moon">
+                        <i class='bx bx-moon icon moon'></i>
+                        <i class='bx bx-sun icon sun'></i>
+                    </div>
+                    <span class="mode-text text">Dark mode</span>
+
+                    <div class="toggle-switch">
+                        <span class="switch"></span>
                     </div>
                 </li>
-               
-                               <?php if ($_SESSION["rank"] == "Leiding") { ?>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            LEIDING
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="users">AMBULANCIERS</a>
-                        </div>
-                    </li>
-                <?php } ?>
-                <li class="nav-item">
-                    <a class="nav-link-report" href="createreport">NIEUW RAPPORT</a>
-                </li>
-            </ul>
+                
+            </div>
         </div>
+
     </nav>
 
+    <section class="home">
+        <div class="text">Dashboard Sidebar</div>
+    </section>
+
+    <script src="./assets/js/script.js"></script>
+
+  <!-- Navbar xx -->
         <main role="main" class="container">
             <div class="content-introduction">
                 <h3>Welkom bij de Ambulance Databank</h3>
@@ -103,7 +163,6 @@
                 </p>
             </div>
             <div class="dashboard-container">
-                <!-- Left Container -->
                 <div class="left-panel-container">
                     <h5 class="panel-container-title">Laatste rapportages</h5>
                     <?php if(!empty($recentreports_array)) { ?>
@@ -121,7 +180,6 @@
                             <p>Geen personen opgezocht..</p>
                     <?php } ?>
                 </div>  
-                <!-- Right Container -->
                 <div class="right-panel-container">
                     <h5 class="panel-container-title">Laatst opgezocht</h5>
                     <div class="panel-list">
@@ -142,10 +200,8 @@
                     </div>
                 </div> 
             </div>
-        </main><!-- /.container -->
+        </main>
 
-        <!-- Optional JavaScript -->
-        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
