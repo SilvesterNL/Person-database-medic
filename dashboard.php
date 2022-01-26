@@ -71,7 +71,8 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="profiles">PERSONEN</a>
-                        <a class="dropdown-item" href="reports">REPORTS</a>
+                        <a class="dropdown-item" href="reports">RAPPORTEN</a>
+                        <a class="dropdown-item" href="ambulanciers">Ambulanciers</a>
                         <!-- <a class="dropdown-item" href="#">VOERTUIGEN</a> -->
                     </div>
                 </li>

@@ -3,30 +3,15 @@
     if (!$_SESSION['loggedin']) {
         Header("Location: login");
     }
-    $response = false;
-    if ($_SERVER['REQUEST_METHOD'] == "POST") {
-        if ($_POST['type'] == "show") {
-            $query = $con->query("SELECT * FROM warrants WHERE id = ".$con->real_escape_string($_POST['warrantid']));
-            $selectedwarrant = $query->fetch_assoc();
-            $profile = $con->query("SELECT * FROM profiles WHERE citizenid = '".$con->real_escape_string($selectedwarrant["citizenid"])."'");
-            $profiledata = $profile->fetch_assoc();
-        } elseif ($_POST['type'] == "delete") {
-            $sql = "DELETE FROM warrants WHERE id = ".$con->real_escape_string($_POST['warrantid']);
-            if ($con->query($sql)) {
-                $response = true;
-            } else {
-                echo "Error deleting record: " . mysqli_error($con);
-                exit();
-            }
-        }
+    $profiles = $con->query("SELECT * FROM profiles ORDER BY lastsearch DESC LIMIT 6");
+    $recentsearch_array = [];
+    while ($data = $profiles->fetch_assoc()) { 
+        $recentsearch_array[] = $data;
     }
-    $result = $con->query("SELECT * FROM warrants ORDER BY created DESC");
-    $warrant_array = [];
-    while ($data = $result->fetch_assoc()) { 
-        $profile = $con->query("SELECT * FROM profiles WHERE citizenid = '".$con->real_escape_string($data["citizenid"])."'");
-        $profiledata = $profile->fetch_assoc();
-        $data["fullname"] = $profiledata["fullname"];
-        $warrant_array[] = $data;
+    $reports = $con->query("SELECT * FROM reports ORDER BY created DESC LIMIT 6");
+    $recentreports_array = [];
+    while ($data = $reports->fetch_assoc()) { 
+        $recentreports_array[] = $data;
     }
     $name = explode(" ", $_SESSION["name"]);
     $firstname = $name[0];
@@ -55,8 +40,6 @@
 
         <!-- Custom styles for this template -->
         <link href="assets/css/main.css" rel="stylesheet">
-        <link href="assets/css/profiles.css" rel="stylesheet">
-        <link href="assets/css/laws.css" rel="stylesheet">
     </head>
     <body>
     <nav class="navbar navbar-expand-lg fixed-top navbar-custom bg-custom">
@@ -113,53 +96,51 @@
 
         <main role="main" class="container">
             <div class="content-introduction">
-                <h3>Arrestatiebevelen</h3>
-                <p class="lead">Hier vind je alle arrestatiebevelen die zijn ingedeeld.<br/>Je kunt ook nieuwe arrestatiebevelen maken, deze mag je alleen aanmaken als je toestemming heb gekregen van de korpsleiding en/of HOVJ</p>
+                <h3>Welkom bij de Ambulance Databank</h3>
+                <p class="lead">Zoek personen en andere informatie op die je kunt gebruiken tijdens je dienst. <br />Ook kun je hier alle rapportages lezen, aanmaken, bijwerken en verwijderen. <br /><strong>Zorg ervoor dat alle documentatie goed wordt opgenomen en alle bewijzen erin worden meegenomen.</strong>
+                <br />
+                <br />
+                </p>
             </div>
-            <div class="warrants-container">
-                <div class="warrants-list">
-                    <h5 class="panel-container-title">Gezochte personen</h5>
-                    <?php if ($_SERVER['REQUEST_METHOD'] == "POST" && $_POST["type"] == "delete" && $response) { ?>
-                        <p style='color: #13ba2c;'>Bevel verwijderd!</p>
-                    <?php } ?>
-                    <?php if (empty($warrant_array)) { ?>
-                        <p>Geen arrestatiebevelen..</p>
-                    <?php } else { ?>
-                        <?php foreach($warrant_array as $warrant) {?>
-                            <form method="post">
+            <div class="dashboard-container">
+                <!-- Left Container -->
+                <div class="left-panel-container">
+                    <h5 class="panel-container-title">Alle ambulanciers</h5>
+                    <?php if(!empty($recentreports_array)) { ?>
+                        <?php foreach($recentreports_array as $report) {?>
+                            <form method="post" action="reports">
                                 <input type="hidden" name="type" value="show">
-                                <input type="hidden" name="warrantid" value="<?php echo $warrant["id"]; ?>">
-                                <button type="submit" class="btn warrant-item">
-                                    <h5 class="warrant-title"><?php echo $warrant["title"]; ?> - <?php echo $warrant["fullname"]; ?></h5>
-                                    <p class="warrant-author">door: <?php echo $warrant["author"]; ?></p>
-                                    <?php 
-                                        $datetime = new DateTime($warrant["created"]);
-                                        echo '<p class="warrant-author">Aangemaakt: '.$datetime->format('d/m/y H:i').'</p>';
-                                    ?>
+                                <input type="hidden" name="reportid" value="<?php echo $report['id']; ?>">
+                                <button type="submit" class="btn btn-panel panel-item" style="text-align:left!important;">
+                                    <h5 class="panel-title">#<?php echo $report['id']; ?> <?php echo $report['title']; ?></h5>
+                                    <p class="panel-author">door: <?php echo $report['author']; ?></p>
                                 </button>
                             </form>
-                        <?php } ?>
+                        <?php }?>
+                    <?php } else { ?>
+                            <p>Geen personen opgezocht..</p>
                     <?php } ?>
-                </div>
-                <div class="warrant-report">
-                    <?php if ($_SERVER['REQUEST_METHOD'] == "POST" && $_POST["type"] == "show") { ?>
-                        <div class="report-show">
-                            <h4 class="report-title"><?php echo $selectedwarrant["title"]; ?></h4>
-                            <p>Betfreft: <?php echo $profiledata["fullname"]; ?> (<?php echo $profiledata["citizenid"]; ?>)</p>
-                            <hr>
-                            <strong>Omschrijving:</strong>
-                            <p class="report-description"><?php echo $selectedwarrant["description"]; ?></p>
-                            <p class="report-author"><i>Geschreven door: <?php echo $selectedwarrant["author"]; ?></i></p>
-                        </div>
-                        <form method="post">
-                            <input type="hidden" name="type" value="delete">
-                            <input type="hidden" name="warrantid" value="<?php echo $warrant["id"]; ?>">
-                            <div class="form-group">
-                                <button type="submit" style="margin-top: 1vh; float: right;" name="create" class="btn btn-danger">VERWIJDER</button>
-                            </div>
-                        </form> 
+                </div>  
+                <!-- Right Container -->
+                <div class="right-panel-container">
+                    <h5 class="panel-container-title">Laatst opgezocht</h5>
+                    <div class="panel-list">
+                    <?php if(!empty($recentsearch_array)) { ?>
+                        <?php foreach($recentsearch_array as $person) {?>
+                            <form method="post" action="profiles">
+                                <input type="hidden" name="type" value="show">
+                                <input type="hidden" name="personid" value="<?php echo $person['id']; ?>">
+                                <button type="submit" class="btn btn-panel panel-item" style="text-align:left!important;">
+                                    <h5 class="panel-title"><?php echo $person['fullname']; ?></h5>
+                                    <p class="panel-author">BSN: <?php echo $person['citizenid']; ?></p>
+                                </button>
+                            </form>
+                        <?php }?>
+                    <?php } else { ?>
+                            <p>Geen personen opgezocht..</p>
                     <?php } ?>
-                </div>
+                    </div>
+                </div> 
             </div>
         </main><!-- /.container -->
 
