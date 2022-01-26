@@ -13,13 +13,13 @@
 
 .btn-login {
     width: 100%;
-    background: #004682!important;
+    background: #2a3136!important;
     border: 0 solid transparent!important;
     transition: background 500ms;
 }
 
 .btn-login:hover {
     width: 100%;
-    background: #0066bd!important;
+    background: #161a1d!important;
     border: 0 solid transparent!important;
 }

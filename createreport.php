@@ -318,33 +318,8 @@
                     </form>
                 <?php } ?>
                 </div>
-                <?php if ($_SERVER['REQUEST_METHOD'] == "POST" && $_POST['type'] == "edit" && !empty($selectedreport)) { ?>
-                    <div class="createreport-right">
-                        <h5>Geselecteerde Straffen</h5>
-                        <p class="total-punishment">Totaal: €<?php echo $totalprice; ?> - <?php echo $totalmonths; ?> maanden</p>
-                        <div class="added-laws">
-                        <?php if (!empty($lawsedit_array)) { ?>
-                            <?php foreach($lawsedit_array as $issalaw) { ?>
-                                <div class="report-law-item" data-toggle="tooltip" data-html="true" title="<?php echo $issalaw["description"]; ?>">
-                                    <h5 class="lawlist-title"><?php echo $issalaw["name"]; ?></h5>
-                                    <p class="lawlist-fine">Boete: €<span class="fine-amount"><?php echo $issalaw["fine"]; ?></span></p>
-                                    <p class="lawlist-months">Cel: <span class="months-amount"><?php echo $issalaw["months"]; ?></span> maanden</p>
-                                </div>
-                            <?php } ?>
-                        <?php } ?>
-                        </div>
-                    </div>
-                <?php } else { ?>
-                    <div class="createreport-right">
-                        <h5>Geselecteerde Straffen</h5>
-                        <p class="total-punishment">Totaal: €0 - 0 maanden</p>
-                        <div class="added-laws">
-                        </div>
-                    </div>
-                <?php } ?>
-            </div>
+               
             <?php if ($_SERVER['REQUEST_METHOD'] != "POST" || $_SERVER['REQUEST_METHOD'] == "POST" && $_POST['type'] != "edit") { ?>
-                <button type="button" class="btn btn-primary btn-police" id="togglelaws" style="margin-bottom:2vh!important;">TOGGLE STRAFFEN</button>
                 <div class="laws">
                     <div class="lawlist-search">
                         <div class="input-group input-group-sm mb-3">
@@ -381,11 +356,10 @@
             let date = curday('-');
             let templates = [
                 `<p dir="ltr" style="line-height: 1.38; text-align: center; margin-top: 0pt; margin-bottom: 0pt;"><img src="./assets/images/pv_logo.png" style="width: 205px; padding-top: 50px;" class="fr-fic fr-dii"></p>
-                <p dir="ltr" style="line-height: 1.38; text-align: left; margin-top: 0pt; margin-bottom: 0pt;"><span style="font-size: 14px;"><strong>EENHEID QUACKCITY</strong></span></p>
-                <p dir="ltr" style="line-height: 1.38; text-align: left; margin-top: 0pt; margin-bottom: 0pt;"><strong><span style="font-size: 14px; ">DISTRICT LS-ZUID</span></strong></p>
-                <p dir="ltr" style="line-height: 1.38; text-align: left; margin-top: 0pt; margin-bottom: 0pt;"><strong><span style="font-size: 14px; ">BASISTEAM MISSION ROW</span></strong></p>
+                <p dir="ltr" style="line-height: 1.38; text-align: left; margin-top: 0pt; margin-bottom: 0pt;"><span style="font-size: 14px;"><strong>AMBULANCE</strong></span></p>
+                <p dir="ltr" style="line-height: 1.38; text-align: left; margin-top: 0pt; margin-bottom: 0pt;"><strong><span style="font-size: 14px; ">DISTRICT FORTIS</span></strong></p>
+                <p dir="ltr" style="line-height: 1.38; text-align: left; margin-top: 0pt; margin-bottom: 0pt;"><strong><span style="font-size: 14px; ">BASISTEAM PILLBOX HILL</span></strong></p>
                 <p dir="ltr" style="line-height: 1.38; text-align: left; margin-top: 0pt; margin-bottom: 0pt;"><strong><br></strong></p>
-                <p dir="ltr" style="line-height: 1.38; text-align: left; margin-top: 0pt; margin-bottom: 0pt;"><span style="font-size: 14px; ">Proces-verbaalnummer: (pv nummer)</span></p>
                 <p dir="ltr" style="line-height: 1.38; text-align: left; margin-top: 0pt; margin-bottom: 0pt;">
                     <br>
                 </p>
