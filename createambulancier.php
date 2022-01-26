@@ -5,25 +5,25 @@
     }
     $respone = false;
     if ($_SERVER['REQUEST_METHOD'] == "POST") {
-        if ($_POST['type'] == "create") {
+        if ($_POST['type'] == "createambu") {
             $note = nl2br($_POST["note"]);
-            $insert = $con->query("INSERT INTO profiles (citizenid,fullname,avatar,fingerprint,dnacode,note,lastsearch) VALUES('".$con->real_escape_string($_POST['citizenid'])."','".$con->real_escape_string($_POST['fullname'])."','".$con->real_escape_string($_POST['avatar'])."','".$con->real_escape_string($_POST['fingerprint'])."','".$con->real_escape_string($_POST['dnacode'])."','".$con->real_escape_string($note)."',".time().")");
+            $insert = $con->query("INSERT INTO ambulanciers (citizenid,fullname,avatar,fingerprint,dnacode,note,lastsearch) VALUES('".$con->real_escape_string($_POST['citizenid'])."','".$con->real_escape_string($_POST['fullname'])."','".$con->real_escape_string($_POST['avatar'])."','".$con->real_escape_string($_POST['fingerprint'])."','".$con->real_escape_string($_POST['dnacode'])."','".$con->real_escape_string($note)."',".time().")");
             if ($insert) {
                 $last_id = $con->insert_id;
                 $_SESSION["personid"] = $last_id;
                 $respone = true;
-                header('Location: profiles');
+                header('Location: ambulanciers');
             }
-        } elseif ($_POST['type'] == "edit") {
-            $query = $con->query("SELECT * FROM profiles WHERE id = ".$con->real_escape_string($_POST['profileid']));
+        } elseif ($_POST['type'] == "editambu") {
+            $query = $con->query("SELECT * FROM ambulanciers WHERE id = ".$con->real_escape_string($_POST['profileid']));
             $selectedprofile = $query->fetch_assoc();
-        } elseif ($_POST['type'] == "realedit") {
+        } elseif ($_POST['type'] == "realeditambu") {
             $note = nl2br($_POST["note"]);
-            $update = $con->query("UPDATE profiles SET citizenid = '".$con->real_escape_string($_POST['citizenid'])."', fullname = '".$con->real_escape_string($_POST['fullname'])."', avatar = '".$con->real_escape_string($_POST['avatar'])."', fingerprint = '".$con->real_escape_string($_POST['fingerprint'])."', dnacode = '".$con->real_escape_string($_POST['dnacode'])."', note = '".$con->real_escape_string($note)."' WHERE id = ".$_POST['profileid']);
+            $update = $con->query("UPDATE ambulanciers SET citizenid = '".$con->real_escape_string($_POST['citizenid'])."', fullname = '".$con->real_escape_string($_POST['fullname'])."', avatar = '".$con->real_escape_string($_POST['avatar'])."', fingerprint = '".$con->real_escape_string($_POST['fingerprint'])."', dnacode = '".$con->real_escape_string($_POST['dnacode'])."', note = '".$con->real_escape_string($note)."' WHERE id = ".$_POST['profileid']);
             if ($update) {
                 $_SESSION["personid"] = $_POST['profileid'];
                 $respone = true;
-                header('Location: profiles');
+                header('Location: ambulanciers');
             } else {
                 $response = false;
             }
@@ -115,16 +115,16 @@
 
         <main role="main" class="container">
             <div class="content-introduction">
-                <h3>Profiel Maken</h3>
-                <p class="lead">Hier maak je een profiel aan als een nieuwe crimineel in wordt gebracht.<br />Zorg ervoor dat alle gegevens kloppen en dat er een juiste foto is geplaatst!</p>
+                <h3>Nieuwe ambulancier maken</h3>
+                <p class="lead">Hier kan je als leiding een nieuwe ambulance broeder in het systeem zetten<br />Zorg ervoor dat alle gegevens kloppen en dat er een juiste foto is geplaatst!</p>
             </div>
             <div class="createprofile-container">
-            <?php if ($_SERVER['REQUEST_METHOD'] == "POST" && $_POST['type'] == "edit" && !empty($selectedprofile)) { ?>
+            <?php if ($_SERVER['REQUEST_METHOD'] == "POST" && $_POST['type'] == "editambu" && !empty($selectedprofile)) { ?>
                 <form method="post">
-                    <input type="hidden" name="type" value="realedit">
+                    <input type="hidden" name="type" value="realeditambu">
                     <input type="hidden" name="profileid" value="<?php echo $selectedprofile["id"]; ?>">
                     <div class="input-group mb-3">
-                        <input type="text" name="citizenid" class="form-control login-user" value="<?php echo $selectedprofile["citizenid"]; ?>" placeholder="bsn" required>
+                        <input type="text" name="citizenid" class="form-control login-user" value="<?php echo $selectedprofile["citizenid"]; ?>" placeholder="CitizenID" required>
                     </div>
                     <div class="input-group mb-2">
                         <input type="text" name="fullname" class="form-control login-pass" value="<?php echo $selectedprofile["fullname"]; ?>" placeholder="volledige naam" required>
@@ -133,24 +133,24 @@
                         <input type="text" name="avatar" class="form-control login-user" value="<?php echo $selectedprofile["avatar"]; ?>" placeholder="profiel foto (imgur URL vb. https://i.imgur.com/zKDjdhe.png)" required>
                     </div>
                     <div class="input-group mb-3">
-                        <input type="text" name="fingerprint" class="form-control login-user" value="<?php echo $selectedprofile["fingerprint"]; ?>" placeholder="vinger patroon">
+                        <input type="text" name="fingerprint" class="form-control login-user" value="<?php echo $selectedprofile["fingerprint"]; ?>" placeholder="Status">
                     </div>
                     <div class="input-group mb-3">
-                        <input type="text" name="dnacode" class="form-control login-user" value="<?php echo $selectedprofile["dnacode"]; ?>" placeholder="dna code">
+                        <input type="text" name="dnacode" class="form-control login-user" value="<?php echo $selectedprofile["dnacode"]; ?>" placeholder="Dienst Nummer">
                     </div>
                     <?php $notes = str_replace( "<br />", '', $selectedprofile["note"]); ?>
                     <div class="input-group mb-2">
                         <textarea name="note" class="form-control" value="<?php echo $notes; ?>" placeholder="notitie" required><?php echo $notes; ?></textarea>
                     </div>
                     <div class="form-group">
-                        <button type="submit" name="create" class="btn btn-primary btn-police">Pas Aan</button>
+                        <button type="submit" name="createambu" class="btn btn-primary btn-police">Pas Aan</button>
                     </div>
                 </form>
             <?php } else { ?>
                 <form method="post">
-                    <input type="hidden" name="type" value="create">
+                    <input type="hidden" name="type" value="createambu">
                     <div class="input-group mb-3">
-                        <input type="text" name="citizenid" class="form-control login-user" value="" placeholder="bsn" required>
+                        <input type="text" name="citizenid" class="form-control login-user" value="" placeholder="CitizenID" required>
                     </div>
                     <div class="input-group mb-2">
                         <input type="text" name="fullname" class="form-control login-pass" value="" placeholder="volledige naam" required>
@@ -159,16 +159,16 @@
                         <input type="text" name="avatar" class="form-control login-user" value="" placeholder="profiel foto (imgur URL vb. https://i.imgur.com/zKDjdhe.png)">
                     </div>
                     <div class="input-group mb-3">
-                        <input type="text" name="fingerprint" class="form-control login-user" value="" placeholder="vinger patroon">
+                        <input type="text" name="fingerprint" class="form-control login-user" value="" placeholder="Status">
                     </div>
                     <div class="input-group mb-3">
-                        <input type="text" name="dnacode" class="form-control login-user" value="" placeholder="dna code">
+                        <input type="text" name="dnacode" class="form-control login-user" value="" placeholder="Dienst Nummer">
                     </div>
                     <div class="input-group mb-2">
                         <textarea name="note" class="form-control" value="" placeholder="notitie"></textarea>
                     </div>
                     <div class="form-group">
-                        <button type="submit" name="create" class="btn btn-primary btn-police">Voeg toe</button>
+                        <button type="submit" name="createambu" class="btn btn-primary btn-police">Voeg toe</button>
                     </div>
                 </form>
             <?php } ?>

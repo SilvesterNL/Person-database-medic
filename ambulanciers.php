@@ -3,15 +3,30 @@
     if (!$_SESSION['loggedin']) {
         Header("Location: login");
     }
-    $profiles = $con->query("SELECT * FROM profiles ORDER BY lastsearch DESC LIMIT 6");
-    $recentsearch_array = [];
-    while ($data = $profiles->fetch_assoc()) { 
-        $recentsearch_array[] = $data;
-    }
-    $reports = $con->query("SELECT * FROM reports ORDER BY created DESC LIMIT 6");
-    $recentreports_array = [];
-    while ($data = $reports->fetch_assoc()) { 
-        $recentreports_array[] = $data;
+    $respone = false;
+    if ($_SERVER['REQUEST_METHOD'] == "POST") {
+        if ($_POST['type'] == "search") {
+            $result = $con->query("SELECT * FROM ambulanciers WHERE concat(' ', fullname, ' ') LIKE '%".$con->real_escape_string($_POST['search'])."%' OR citizenid = '".$con->real_escape_string($_POST['search'])."' OR dnacode = '".$con->real_escape_string($_POST['search'])."' OR fingerprint = '".$con->real_escape_string($_POST['search'])."'");
+            $search_array = [];
+            while ($data = $result->fetch_assoc()) { 
+                $search_array[] = $data;
+            }
+        }elseif ($_POST['type'] == "show" || isset($_SESSION["personid"]) && $_SESSION["personid"] != NULL) {
+            if (isset($_SESSION["personid"]) && $_SESSION["personid"] != NULL) {
+                $personId = $_SESSION["personid"];
+            } else {
+                $personId = $_POST['personid'];
+            }
+            $query = $con->query("SELECT * FROM ambulanciers WHERE id = ".$con->real_escape_string($personId));
+            $selectedprofile = $query->fetch_assoc();
+            $result = $con->query("SELECT * FROM reports WHERE profileid = ".$con->real_escape_string($personId)." ORDER BY created DESC");
+            $update = $con->query("UPDATE ambulanciers SET lastsearch = ".time()." WHERE id = ".$personId);
+            $reports_array = [];
+            while ($data = $result->fetch_assoc()) { 
+                $reports_array[] = $data;
+            }
+            $_SESSION["personid"] = NULL;
+        }
     }
     $name = explode(" ", $_SESSION["name"]);
     $firstname = $name[0];
@@ -40,6 +55,7 @@
 
         <!-- Custom styles for this template -->
         <link href="assets/css/main.css" rel="stylesheet">
+        <link href="assets/css/profiles.css" rel="stylesheet">
     </head>
     <body>
     <nav class="navbar navbar-expand-lg fixed-top navbar-custom bg-custom">
@@ -84,63 +100,102 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="users">AMBULANCIERS</a>
+                            <a class="dropdown-item" href="createambulancier">NIEUWE AMBULANCIER</a>
                         </div>
+                        
                     </li>
-                <?php } ?>
-                <li class="nav-item">
+                    <?php } ?>
+                    <li class="nav-item">
                     <a class="nav-link-report" href="createreport">NIEUW RAPPORT</a>
                 </li>
+
             </ul>
         </div>
     </nav>
 
         <main role="main" class="container">
             <div class="content-introduction">
-                <h3>Welkom bij de Ambulance Databank</h3>
-                <p class="lead">Zoek personen en andere informatie op die je kunt gebruiken tijdens je dienst. <br />Ook kun je hier alle rapportages lezen, aanmaken, bijwerken en verwijderen. <br /><strong>Zorg ervoor dat alle documentatie goed wordt opgenomen en alle bewijzen erin worden meegenomen.</strong>
-                <br />
-                <br />
-                </p>
+                <h3>Ambulanciers</h3>
+                <p class="lead">Hier kan je het hele team van de ambulance in zien. <br /></p>
             </div>
-            <div class="dashboard-container">
-                <!-- Left Container -->
-                <div class="left-panel-container">
-                    <h5 class="panel-container-title">Alle ambulanciers</h5>
-                    <?php if(!empty($recentreports_array)) { ?>
-                        <?php foreach($recentreports_array as $report) {?>
-                            <form method="post" action="reports">
-                                <input type="hidden" name="type" value="show">
-                                <input type="hidden" name="reportid" value="<?php echo $report['id']; ?>">
-                                <button type="submit" class="btn btn-panel panel-item" style="text-align:left!important;">
-                                    <h5 class="panel-title">#<?php echo $report['id']; ?> <?php echo $report['title']; ?></h5>
-                                    <p class="panel-author">door: <?php echo $report['author']; ?></p>
-                                </button>
-                            </form>
-                        <?php }?>
-                    <?php } else { ?>
-                            <p>Geen personen opgezocht..</p>
-                    <?php } ?>
-                </div>  
-                <!-- Right Container -->
-                <div class="right-panel-container">
-                    <h5 class="panel-container-title">Laatst opgezocht</h5>
-                    <div class="panel-list">
-                    <?php if(!empty($recentsearch_array)) { ?>
-                        <?php foreach($recentsearch_array as $person) {?>
-                            <form method="post" action="profiles">
-                                <input type="hidden" name="type" value="show">
-                                <input type="hidden" name="personid" value="<?php echo $person['id']; ?>">
-                                <button type="submit" class="btn btn-panel panel-item" style="text-align:left!important;">
-                                    <h5 class="panel-title"><?php echo $person['fullname']; ?></h5>
-                                    <p class="panel-author">BSN: <?php echo $person['citizenid']; ?></p>
-                                </button>
-                            </form>
-                        <?php }?>
-                    <?php } else { ?>
-                            <p>Geen personen opgezocht..</p>
-                    <?php } ?>
+            <div class="profile-container">
+                <div class="profile-search">
+                    <form method="post" class="form-inline ml-auto">
+                        <input type="hidden" name="type" value="search">
+                        <div class="md-form my-0">
+                            <input class="form-control" name="search" type="text" placeholder="Zoek een persoon.." aria-label="Search">
+                        </div>
+                        <button type="submit" name="issabutn" class="btn btn-pol btn-md my-0 ml-sm-2">ZOEK</button>
+                    </form>
+                </div>
+                <?php if ($_SERVER['REQUEST_METHOD'] == "POST" && $_POST['type'] == "search") { ?>
+                    <div class="search-panel">
+                        <h5 class="panel-container-title">Gevonden personen..</h5>
+                        <div class="panel-list">
+                            <?php if (empty($search_array)) { ?>
+                                <p>Geen persoon persoon gevonden.. Maak een profiel aan.</p>
+                            <?php } else { ?>
+                                <?php foreach($search_array as $person) {?>
+                                    <form method="post">
+                                        <input type="hidden" name="type" value="show">
+                                        <input type="hidden" name="personid" value="<?php echo $person['id']; ?>">
+                                        <button type="submit" class="btn btn-panel panel-item">
+                                            <h5 class="panel-title"><?php echo $person['fullname']; ?></h5>
+                                            <p class="panel-author">BSN: <?php echo $person['citizenid']; ?></p>
+                                        </button>
+                                    </form>
+                                <?php }?>
+                            <?php } ?>
+                        </div>
                     </div>
-                </div> 
+                <?php } ?>
+                <?php if ($_SERVER['REQUEST_METHOD'] == "POST" && $_POST['type'] == "show" && !empty($selectedprofile)) { ?>
+                    <div class="profile-panel">
+                        <div class="profile-avatar">
+                            <img src="<?php echo $selectedprofile["avatar"]; ?>" alt="profile-pic" width="150" height="150" />
+                        </div>
+                        <div class="profile-information">
+                            <p><strong>Naam:</strong><br /><?php echo $selectedprofile["fullname"]; ?></p>
+                            <p><strong>BSN:</strong><br /><?php echo $selectedprofile["citizenid"]; ?></p>
+                            <p><strong>Vinger Patroon:</strong><br /><?php echo $selectedprofile["fingerprint"]; ?></p>
+                            <p><strong>DNA Code:</strong><br /><?php echo $selectedprofile["dnacode"]; ?></p>
+                            <p><strong>Notitie:</strong><br /><?php echo $selectedprofile["note"]; ?></p>
+                        </div>
+                    </div>
+                    <div class="profile-reports-panel">
+                        <div class="profile-lastincidents">
+                            <form method="post" action="createreport" style="float:right; margin-left: 1vw;">
+                                <input type="hidden" name="type" value="createnew">
+                                <input type="hidden" name="profileid" value="<?php echo $selectedprofile['id']; ?>">
+                                <button type="submit" name="issabutn" style="margin-left:0!important;" class="btn btn-success btn-md my-0 ml-sm-2">NIEUW RAPPORT</button>
+                            </form>
+                            <form method="post" action="createwarrant" style="float:right;">
+                                <input type="hidden" name="type" value="create">
+                                <input type="hidden" name="profileid" value="<?php echo $selectedprofile['id']; ?>">
+                                <button type="submit" name="issabutn" style="margin-left:0!important;" class="btn btn-danger btn-md my-0 ml-sm-2">NIEUW BEVEL</button>
+                            </form>
+                            <br />
+                            <h5 class="panel-container-title">Laatste rapportages</h5>
+                            <div class="panel-list">
+                                <?php if (empty($reports_array)) { ?>
+                                    <p>Geen reportages gevonden bij deze persoon..</p>
+                                <?php } else { ?>
+                                    <?php foreach($reports_array as $report) {?>
+                                        <form method="post" action="reports">
+                                            <input type="hidden" name="type" value="show">
+                                            <input type="hidden" name="reportid" value="<?php echo $report['id']; ?>">
+                                            <button type="submit" class="btn btn-panel panel-item">
+                                                <h5 class="panel-title">#<?php echo $report['id']; ?> <?php echo $report['title']; ?></h5>
+                                                <p class="panel-author">door: <?php echo $report['author']; ?></p>
+                                            </button>
+                                        </form>
+                                    <?php }?>
+                                <?php } ?>
+                            </div>
+                        </div>
+                    </div>
+                <?php } ?>
+                <!---->
             </div>
         </main><!-- /.container -->
 

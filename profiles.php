@@ -100,9 +100,11 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="users">AMBULANCIERS</a>
+                            <a class="dropdown-item" href="createambulancier">NIEUWE AMBULANCIER</a>
                         </div>
+                        
                     </li>
-                <?php } ?>
+                    <?php } ?>
                 <li class="nav-item">
                     <a class="nav-link-report" href="createreport">NIEUW RAPPORT</a>
                 </li>
