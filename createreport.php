@@ -371,7 +371,8 @@
                 <p style="line-height: 1.2;">BEVINDINGEN</p>
                 <p >Locatie van gebeurtenis:
                     <br>Staat van persoon bij aantreffen:
-                    <br>Welke handelingen zijn gedaan door <strong>${name}</strong> met de functie <strong>${rank}</strong>:</p>
+                    <br>Welke handelingen zijn gedaan door <strong>${name}</strong> met de functie <strong>${rank}</strong>:
+                    <br>Zijn er nog handelingen gebeurd door een andere ambulancier:</p>
                 <p>
                     <br>
                     <br>
@@ -384,39 +385,16 @@
 
                 `
                 ,
-                `<p dir="ltr" style="line-height: 1.38; text-align: center; margin-top: 0pt; margin-bottom: 0pt;"><img src="./assets/images/pv_logo.png" style="width: 205px; padding-top: 50px;" class="fr-fic fr-dii"></p>
-                <p dir="ltr" style="line-height: 1.38; text-align: left; margin-top: 0pt; margin-bottom: 0pt;"><span style="font-size: 14px; "><strong>EENHEID QUACKCITY</strong></span></p>
-                <p dir="ltr" style="line-height: 1.38; text-align: left; margin-top: 0pt; margin-bottom: 0pt;"><strong><span style="font-size: 14px; ">DISTRICT LS-ZUID</span></strong></p>
-                <p dir="ltr" style="line-height: 1.38; text-align: left; margin-top: 0pt; margin-bottom: 0pt;"><strong><span style="font-size: 14px; ">BASISTEAM MISSION ROW</span></strong></p>
-                <p dir="ltr" style="line-height: 1.38; text-align: left; margin-top: 0pt; margin-bottom: 0pt;">
-                    <br>
-                </p>
-                <p dir="ltr" style="line-height: 1.38; text-align: left; margin-top: 0pt; margin-bottom: 0pt;"><span style="font-size: 14px; ">Proces-verbaalnummer: (pv nummer)</span></p>
-                <p dir="ltr" style="line-height: 1.38; text-align: left; margin-top: 0pt; margin-bottom: 0pt;">
-                    <br>
-                </p>
-                <p dir="ltr" style="line-height: 1.38; text-align: center; margin-top: 0pt; margin-bottom: 0pt;"><span style=" vertical-align: baseline;"><strong>I N B E S L A G N A M E</strong></span></p>
-                <p dir="ltr" style="line-height: 1.38; text-align: center; margin-top: 0pt; margin-bottom: 0pt;"><span style=" background-color: transparent; font-weight: 400; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;"><strong>voertuig</strong></span></p>
-                <p>
-                    <br>
-                </p>
-                <p>
-                    <br>
-                </p>
-                <p >Ik, verbalisant, ${name}, ${rank} van Politie Eenheid QuackCity, verklaar het volgende. Op ${date}, omstreeks <span style="color: rgb(235, 107, 86);">TIJD</span> uur, heb ik een of meerdere goederen van de heer/mevrouw <span style="color: rgb(235, 107, 86);">NAAM</span> in beslag genomen. </p>
+                `<br style="box-sizing: border-box; color: rgb(65, 65, 65); font-family: ;">Reanimatie:
+                <br style="box-sizing: border-box; color: rgb(65, 65, 65); font-family: ;">Mogelijkheid tot reanimeren:&nbsp<i>Ja / nee</i>;
+                <br style="box-sizing: border-box; color: rgb(65, 65, 65); font-family: ;">Bewust zijn:&nbsp<i>Was het slachtoffer bij bewust zijn?</i>
+                <br style="box-sizing: border-box; color: rgb(65, 65, 65); font-family: ;">Ademhaling:&nbsp<i>Was er een ademhaling, ja zo: Was deze effectief</i>
+                <br style="box-sizing: border-box; color: rgb(65, 65, 65); font-family: ;">Borstcompressies:&nbsp<i>Hoeveel sets van borstcompressies waren er gegeven?</i>
+                <br style="box-sizing: border-box; color: rgb(65, 65, 65); font-family: ;">AED:&nbsp<i>Was er een AED gebruikt, zo ja; Hoeveel schoks in totaal toegediend?</i>
+                <br style="box-sizing: border-box; color: rgb(65, 65, 65); font-family: ;">Medicatie:&nbsp<i>Was er medicatie toegediend, zo ja; welke en wat was het hartritme?</i>
+                <br style="box-sizing: border-box; color: rgb(65, 65, 65); font-family: ;">Hulp:&nbsp<i>Was er MMT, of meer ambulance? Heeft de politie ook assistentie gegeven?</i>
                 <p >
-                    <br>
-                </p>
-                <p style=" line-height: 1.2;">BEVINDINGEN</p>
-                <p >
-                    <br style="box-sizing: border-box; color: rgb(65, 65, 65); font-family: ;">Voertuigsoort:&nbsp;Personenauto/Motorfiets/Bromfiets
-                    <br style="box-sizing: border-box; color: rgb(65, 65, 65); font-family: ;">Merk/Type:&nbsp;
-                    <br style="box-sizing: border-box; color: rgb(65, 65, 65); font-family: ;">Kleur:&nbsp;
-                    <br style="box-sizing: border-box; color: rgb(65, 65, 65); font-family: ;">Kenteken:&nbsp;
-                    <br style="box-sizing: border-box; color: rgb(65, 65, 65); font-family: ;">Reden:&nbsp;
-                    <br style="box-sizing: border-box; color: rgb(65, 65, 65); font-family: ;">Ophaal-datum:&nbsp;</p>
-                <p >
-                    <br>
+                <br>
                 </p>`
                 /* `<p dir="ltr" style="line-height: 1.38; text-align: center; margin-top: 0pt; margin-bottom: 0pt;"><img src="./assets/images/pv_logo.png" style="width: 205px;" class="fr-fic fr-dii"></p>
                  <p dir="ltr" style="line-height: 1.38; text-align: left; margin-top: 0pt; margin-bottom: 0pt;"><span><strong>EENHEID LOS SANTOS</strong></span></p>
@@ -614,11 +592,8 @@
                 undo: true,
                 refreshAfterCallback: true,
                 options: {
-                    '0': 'Mini Proces Verbaal',
-                    '1': 'Voertuig Inbeslagname',
-                    '2': 'Proces Verbaal Aangifte',
-                    '3': 'Proces Verbaal Aanhouding',
-                    '4': 'Proces Verbaal Bewijsmateriaal'
+                    '0': 'Standaard Rapportage',
+                    '1': 'Reanimatie (Sta eerst onderaan het document)',
                 },
                 callback: function (cmd, val) {
                     this.html.insert(templates[val]);

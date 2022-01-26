@@ -12,7 +12,7 @@
             Header("Location:dashboard");
         }
         if ($_POST['type'] == "create") {
-            $insert = $con->query("INSERT INTO users (username,password,name,role,rank,last_login) VALUES('".$con->real_escape_string($_POST['username'])."','".password_hash($con->real_escape_string($_POST['password']),PASSWORD_BCRYPT)."','".$con->real_escape_string($_POST['fullname'])."','user','".$con->real_escape_string($_POST['rank'])."','".date('Y-m-d')."')");
+            $insert = $con->query("INSERT INTO users (username,password,name,role,dienstnummer,rank,last_login) VALUES('".$con->real_escape_string($_POST['username'])."','".password_hash($con->real_escape_string($_POST['password']),PASSWORD_BCRYPT)."','".$con->real_escape_string($_POST['fullname'])."','user','".$con->real_escape_string($_POST['dienstnummer'])."','".$con->real_escape_string($_POST['rank'])."','".date('Y-m-d')."')");
             if ($insert) {
                 $respone = true;
             }
@@ -223,6 +223,10 @@
                         <div class="input-group mb-3">
                             <input type="text" name="fullname" class="form-control login-user" value="" placeholder="Voornaam + Achternaam" required>
                         </div>
+                        <div class="input-group mb-4">
+                            <input type="text" name="dienstnummer" class="form-control login-nummer" value="" placeholder="Dienst Nummer" required>
+                        </div>
+
                         <select class="form-control" style="margin-bottom:2vh;" name="rank" required>
                             <option value="Stagiair">Stagiair</option>
                             <option value="Helpende">Helpende</option>
