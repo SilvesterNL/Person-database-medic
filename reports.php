@@ -51,7 +51,7 @@
         <link rel="icon" type="image/png" sizes="32x32" href="https://www.politie.nl/politie2018/assets/images/icons/favicon-32.png">
         <link rel="icon" type="image/png" sizes="64x64" href="https://www.politie.nl/politie2018/assets/images/icons/favicon-64.png">
 
-        <title>Ambulance Databank</title>
+        <title>Politie Databank</title>
 
         <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/starter-template/">
 
@@ -93,24 +93,24 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="profiles">PERSONEN</a>
-                        <a class="dropdown-item" href="reports">RAPPORTEN</a>
-                        <a class="dropdown-item" href="ambulanciers">Ambulanciers</a>
+                        <a class="dropdown-item" href="reports">REPORTS</a>
                         <!-- <a class="dropdown-item" href="#">VOERTUIGEN</a> -->
                     </div>
                 </li>
-               
-                               <?php if ($_SESSION["rank"] == "Leiding") { ?>
+                <li class="nav-item">
+                    <a class="nav-link" href="warrants">ARRESTATIEBEVELEN</a>
+                </li>
+                <?php if ($_SESSION["role"] == "admin") { ?>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            LEIDING
+                            ADMIN
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="users">AMBULANCIERS</a>
-                            <a class="dropdown-item" href="createambulancier">NIEUWE AMBULANCIER</a>
+                            <a class="dropdown-item" href="laws">STRAFFEN</a>
+                            <a class="dropdown-item" href="users">GEBRUIKERS</a>
                         </div>
-                        
                     </li>
-                    <?php } ?>
+                <?php } ?>
                 <li class="nav-item">
                     <a class="nav-link-report" href="createreport">NIEUW RAPPORT</a>
                 </li>
@@ -153,7 +153,7 @@
                                 <?php foreach($search_array as $report) {?>
                                     <form method="post">
                                         <input type="hidden" name="type" value="show">
-                                        <input type="hidden" name="reportid" value="">
+                                        <input type="hidden" name="reportid" value="<?php echo $report['id']; ?>">
                                         <button type="submit" class="btn btn-panel panel-item">
                                             <h5 class="panel-title">#<?php echo $report['id']; ?> <?php echo $report['title']; ?></h5>
                                             <p class="panel-author">door: <?php echo $report['author']; ?></p>

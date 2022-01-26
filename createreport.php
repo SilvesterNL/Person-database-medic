@@ -37,6 +37,7 @@
                 }
             }
 
+            $con->query("INSERT INTO bills (citizenid,type,amount) VALUES ('".$con->real_escape_string($_POST["citizenid"])."','police','".$con->real_escape_string($totalprice)."')");
 
             if ($insert) {
                 $last_id = $con->insert_id;
@@ -45,7 +46,7 @@
                 header('Location: reports');
             }
         } elseif ($_POST["type"] == "edit") {
-
+            $query = $con->query("SELECT * FROM reports WHERE id = ".$con->real_escape_string($_POST['reportid']));
             $selectedreport = $query->fetch_assoc();
             $laws = json_decode($selectedreport["laws"], true);
             $lawsedit_array = [];
@@ -234,7 +235,6 @@
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="profiles">PERSONEN</a>
                         <a class="dropdown-item" href="reports">RAPPORTEN</a>
-                        <a class="dropdown-item" href="ambulanciers">Ambulanciers</a>
                         <!-- <a class="dropdown-item" href="#">VOERTUIGEN</a> -->
                     </div>
                 </li>
@@ -246,11 +246,9 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="users">AMBULANCIERS</a>
-                            <a class="dropdown-item" href="createambulancier">NIEUWE AMBULANCIER</a>
                         </div>
-                        
                     </li>
-                    <?php } ?>
+                <?php } ?>
                 <li class="nav-item">
                     <a class="nav-link-report" href="createreport">NIEUW RAPPORT</a>
                 </li>
