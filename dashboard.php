@@ -135,7 +135,7 @@
                         <i class='bx bx-moon icon moon'></i>
                         <i class='bx bx-sun icon sun'></i>
                     </div>
-                    <span class="mode-text text">Dark mode</span>
+                    <span class="mode-text text">Donker</span>
 
                     <div class="toggle-switch">
                         <span class="switch"></span>
@@ -146,10 +146,6 @@
         </div>
 
     </nav>
-
-    <section class="home">
-        <div class="text">Dashboard Sidebar</div>
-    </section>
 
     <script src="./assets/js/script.js"></script>
 
