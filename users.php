@@ -16,6 +16,19 @@
             if ($insert) {
                 $respone = true;
             }
+        } elseif ($_POST['type'] == "addspecial") {
+            $insert = $con->query("INSERT INTO special (username,speciali) VALUES('".$con->real_escape_string($_POST['user'])."','".$con->real_escape_string($_POST['speciali'])."')");
+            if ($insert) {
+                $respone = true;
+        }
+    } elseif ($_POST['type'] == "removespecial") {
+        $sql = "DELETE FROM special WHERE username = ".$con->real_escape_string($_POST['specialusername']);
+        if ($con->query($sql)) {
+            $respone = true;
+        } else {
+            echo "Error deleting record: " . mysqli_error($conn);
+            exit();
+        }
         } elseif ($_POST['type'] == "delete") {
             $sql = "DELETE FROM users WHERE id = ".$con->real_escape_string($_POST['deleteuser']);
             if ($con->query($sql)) {
@@ -214,16 +227,74 @@
                             <input type="text" name="fullname" class="form-control login-user" value="" placeholder="Voornaam + Achternaam" required>
                         </div>
                         <select class="form-control" style="margin-bottom:2vh;" name="rank" required>
-                            <option value="Aspirant">Aspirant</option>
-                            <option value="Surveillant">Surveillant</option>
-                            <option value="Agent">Agent</option>
-                            <option value="Hoofdagent">Hoofdagent</option>
-                            <option value="Brigadier">Brigadier</option>
-                            <option value="Inspecteur">Inspecteur</option>
-                            <option value="Hoofdinspecteur">Hoofdinspecteur</option>
+                            <option value="Stagiair">Stagiair</option>
+                            <option value="Helpende">Helpende</option>
+                            <option value="Chauffeur">Chauffeur</option>
+                            <option value="Broeder">Ambulance broeder</option>
+                            <option value="VK">VK</option>
+                            <option value="Specialist">Specialist</option>
+                            <option value="Hoofdspecialist">Hoofdspecialist</option>
+                            <option value="Geneeskundige">Geneeskundige</option>
+                            <option value="Hoofdgeneeskundige">Hoofdgeneeskundige</option>
+                            <option value="Academie">Academie</option>
+                            <option value="Leiding">Leider</option>
                         </select>
                         <div class="form-group">
                             <button type="submit" name="create" class="btn btn-primary btn-police">Voeg toe</button>
+                        </div>
+                    </form>
+                </div> 
+                <div class="right-panel-container">
+                    <h5 class="panel-container-title">Voeg specialisatie toe</h5>
+                    <?php if ($_SERVER['REQUEST_METHOD'] == "POST" && $_POST['type'] == "addspecial" && $respone) {?>
+                        <?php echo "<p style='color: #13ba2c;'>Specialisatie Aangepast</p>"; ?>
+                    <?php } ?>
+                    <form method="post">
+                        <input type="hidden" name="type" value="addspecial">
+                        <div class="form-group">
+                            <label for="userselect">Gebruiker</label>
+                            <select class="form-control" name="user">
+                            <?php foreach($user_array as $user){?>
+                                <option value="<?php echo $user["name"] ?>"><?php echo $user["name"]; ?></option>
+                            <?php }?>
+                            </select>
+                            <label for="userselect">Specialisatie</label>
+                            <select class="form-control" style="margin-bottom:2vh;" name="speciali" required>
+                            <option value="GGD-arts">GGD-arts</option>
+                            <option value="Rapid-Responder">Rapid Responder</option>
+                            <option value="Mobiel-Medisch-Team">Het Mobiel Medisch Team</option>
+                            <option value="Officier-van-dienst-geneeskunde">Officier van Dienst - Geneeskunde</option>
+                        </select>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" name="addspecial" class="btn btn-primary btn-police">Voeg Specialisatie toe</button>
+                        </div>
+                    </form>
+                </div> 
+                <div class="right-panel-container">
+                    <h5 class="panel-container-title">Verwijder specialisatie van persoon</h5>
+                    <?php if ($_SERVER['REQUEST_METHOD'] == "POST" && $_POST['type'] == "specialusername" && $respone) {?>
+                        <?php echo "<p style='color: #13ba2c;'>Specialisatie Aangepast</p>"; ?>
+                    <?php } ?>
+                    <form method="post">
+                        <input type="hidden" name="type" value="specialusername">
+                        <div class="form-group">
+                            <label for="userselect">Gebruiker</label>
+                            <select class="form-control" name="specialusername">
+                            <?php foreach($user_array as $user){?>
+                                <option value="<?php echo $user["name"] ?>"><?php echo $user["name"]; ?></option>
+                            <?php }?>
+                            </select>
+                            <label for="userselect">Specialisatie</label>
+                            <select class="form-control" style="margin-bottom:2vh;" name="speciali" required>
+                            <option value="GGD-arts">GGD-arts</option>
+                            <option value="Rapid-Responder">Rapid Responder</option>
+                            <option value="Mobiel-Medisch-Team">Het Mobiel Medisch Team</option>
+                            <option value="Officier-van-dienst-geneeskunde">Officier van Dienst - Geneeskunde</option>
+                        </select>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" name="specialusername" class="btn btn-primary btn-police">Verwijder Specialisatie van persoon</button>
                         </div>
                     </form>
                 </div> 
