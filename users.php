@@ -73,7 +73,7 @@
         <link rel="icon" type="image/png" sizes="32x32" href="https://www.politie.nl/politie2018/assets/images/icons/favicon-32.png">
         <link rel="icon" type="image/png" sizes="64x64" href="https://www.politie.nl/politie2018/assets/images/icons/favicon-64.png">
 
-        <title>Politie Databank</title>
+        <title>Ambulance Databank</title>
 
         <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/starter-template/">
 
@@ -117,17 +117,14 @@
                         <!-- <a class="dropdown-item" href="#">VOERTUIGEN</a> -->
                     </div>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="warrants">ARRESTATIEBEVELEN</a>
-                </li>
-                <?php if ($_SESSION["role"] == "admin") { ?>
+               
+                <?php if ($_SESSION["rank"] == "Leiding") { ?>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            ADMIN
+                            LEIDING
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="laws">STRAFFEN</a>
-                            <a class="dropdown-item" href="users">GEBRUIKERS</a>
+                            <a class="dropdown-item" href="users">AMBULANCIERS</a>
                         </div>
                     </li>
                 <?php } ?>
@@ -140,8 +137,8 @@
 
         <main role="main" class="container">
             <div class="content-introduction">
-                <h3>Gebruikers Instellingen</h3>
-                <p class="lead">Hier kun je gebruikers aanmaken, bewerken, verwijderen en specialisaties aanpassen. <br /><strong>Wanneer gebruikers verwijderd worden kan het niet meer ongedaan worden gemaakt!</strong></p>
+                <h3>Ambulanciers Instellingen</h3>
+                <p class="lead">Hier kun je ambulanciers aanmaken, bewerken, verwijderen en specialisaties aanpassen. <br /><strong>Wanneer gebruikers verwijderd worden kan het niet meer ongedaan worden gemaakt!</strong></p>
             </div>
             <div class="users-container">
                 <?php if ($_SERVER['REQUEST_METHOD'] == "POST" && $_POST['type'] == "edit") { ?>
@@ -237,7 +234,7 @@
                             <option value="Geneeskundige">Geneeskundige</option>
                             <option value="Hoofdgeneeskundige">Hoofdgeneeskundige</option>
                             <option value="Academie">Academie</option>
-                            <option value="Leiding">Leider</option>
+                            <option value="Leiding">Leiding</option>
                         </select>
                         <div class="form-group">
                             <button type="submit" name="create" class="btn btn-primary btn-police">Voeg toe</button>

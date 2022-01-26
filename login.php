@@ -49,7 +49,7 @@
         <link rel="icon" type="image/png" sizes="32x32" href="https://www.politie.nl/politie2018/assets/images/icons/favicon-32.png">
         <link rel="icon" type="image/png" sizes="64x64" href="https://www.politie.nl/politie2018/assets/images/icons/favicon-64.png">
 
-        <title>Politie Databank</title>
+        <title>Ambulance Databank</title>
 
         <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/starter-template/">
 

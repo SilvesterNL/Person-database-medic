@@ -90,7 +90,7 @@
 		<!-- Text editor CSS -->
 		<link href="https://cdn.jsdelivr.net/npm/froala-editor@latest/css/froala_editor.pkgd.min.css" rel="stylesheet" type="text/css" />
 
-        <title>Politie Databank</title>
+        <title>Ambulance Databank</title>
 
         <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/starter-template/">
 
@@ -149,7 +149,7 @@
                         ADMIN
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="laws">STRAFFEN</a>
+                            
                             <a class="dropdown-item" href="users">GEBRUIKERS</a>
                         </div>
                     </li>

@@ -31,7 +31,7 @@
         <link rel="icon" type="image/png" sizes="32x32" href="https://www.politie.nl/politie2018/assets/images/icons/favicon-32.png">
         <link rel="icon" type="image/png" sizes="64x64" href="https://www.politie.nl/politie2018/assets/images/icons/favicon-64.png">
 
-        <title>Politie Databank</title>
+        <title>Ambulance Databank</title>
 
         <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/starter-template/">
 
@@ -75,17 +75,14 @@
                         <!-- <a class="dropdown-item" href="#">VOERTUIGEN</a> -->
                     </div>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="warrants">ARRESTATIEBEVELEN</a>
-                </li>
-                <?php if ($_SESSION["role"] == "admin") { ?>
+               
+                               <?php if ($_SESSION["rank"] == "Leiding") { ?>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            ADMIN
+                            LEIDING
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="laws">STRAFFEN</a>
-                            <a class="dropdown-item" href="users">GEBRUIKERS</a>
+                            <a class="dropdown-item" href="users">AMBULANCIERS</a>
                         </div>
                     </li>
                 <?php } ?>
@@ -98,7 +95,7 @@
 
         <main role="main" class="container">
             <div class="content-introduction">
-                <h3>Welkom bij de Politie Databank</h3>
+                <h3>Welkom bij de Ambulance Databank</h3>
                 <p class="lead">Zoek personen en andere informatie op die je kunt gebruiken tijdens je dienst. <br />Ook kun je hier alle rapportages lezen, aanmaken, bijwerken en verwijderen. <br /><strong>Zorg ervoor dat alle documentatie goed wordt opgenomen en alle bewijzen erin worden meegenomen.</strong>
                 <br />
                 <br />
