@@ -21,8 +21,8 @@
             if ($insert) {
                 $respone = true;
         }
-    } elseif ($_POST['type'] == "removespecial") {
-        $sql = "DELETE FROM special WHERE username = ".$con->real_escape_string($_POST['specialusername']);
+        } elseif ($_POST['type'] == "removespecial") {
+            $sql = "DELETE FROM special WHERE username = ".$con->real_escape_string($_POST['specialusername']);
         if ($con->query($sql)) {
             $respone = true;
         } else {
@@ -141,7 +141,7 @@
         <main role="main" class="container">
             <div class="content-introduction">
                 <h3>Gebruikers Instellingen</h3>
-                <p class="lead">Hier kun je gebruikers aanmaken, bewerken en verwijderen. <br /><strong>Wanneer gebruikers verwijderd worden kan het niet meer ongedaan worden gemaakt!</strong></p>
+                <p class="lead">Hier kun je gebruikers aanmaken, bewerken, verwijderen en specialisaties aanpassen. <br /><strong>Wanneer gebruikers verwijderd worden kan het niet meer ongedaan worden gemaakt!</strong></p>
             </div>
             <div class="users-container">
                 <?php if ($_SERVER['REQUEST_METHOD'] == "POST" && $_POST['type'] == "edit") { ?>
@@ -255,7 +255,7 @@
                             <label for="userselect">Gebruiker</label>
                             <select class="form-control" name="user">
                             <?php foreach($user_array as $user){?>
-                                <option value="<?php echo $user["name"] ?>"><?php echo $user["name"]; ?></option>
+                                <option value="<?php echo $user["id"] ?>"><?php echo $user["name"]; ?></option>
                             <?php }?>
                             </select>
                             <label for="userselect">Specialisatie</label>
@@ -272,29 +272,25 @@
                     </form>
                 </div> 
                 <div class="right-panel-container">
-                    <h5 class="panel-container-title">Verwijder specialisatie van persoon</h5>
-                    <?php if ($_SERVER['REQUEST_METHOD'] == "POST" && $_POST['type'] == "specialusername" && $respone) {?>
-                        <?php echo "<p style='color: #13ba2c;'>Specialisatie Aangepast</p>"; ?>
+                    <h5 class="panel-container-title">Verwijder Specialisaties</h5>
+                    <h8 class="panel-container-title">Let op! Hiermee verwijder je alle specialisaties</h8>
+
+                    <?php if ($_SERVER['REQUEST_METHOD'] == "POST" && $_POST['type'] == "removespecial" && $respone) {?>
+                        <?php echo "<p style='color: #13ba2c;'>Specialisatie Verwijderd</p>"; ?>
                     <?php } ?>
                     <form method="post">
-                        <input type="hidden" name="type" value="specialusername">
+                        <input type="hidden" name="type" value="removespecial">
                         <div class="form-group">
+                            <br>
                             <label for="userselect">Gebruiker</label>
                             <select class="form-control" name="specialusername">
                             <?php foreach($user_array as $user){?>
-                                <option value="<?php echo $user["name"] ?>"><?php echo $user["name"]; ?></option>
+                                <option value="<?php echo $user["id"] ?>"><?php echo $user['name']; ?></option>
                             <?php }?>
                             </select>
-                            <label for="userselect">Specialisatie</label>
-                            <select class="form-control" style="margin-bottom:2vh;" name="speciali" required>
-                            <option value="GGD-arts">GGD-arts</option>
-                            <option value="Rapid-Responder">Rapid Responder</option>
-                            <option value="Mobiel-Medisch-Team">Het Mobiel Medisch Team</option>
-                            <option value="Officier-van-dienst-geneeskunde">Officier van Dienst - Geneeskunde</option>
-                        </select>
                         </div>
                         <div class="form-group">
-                            <button type="submit" name="specialusername" class="btn btn-primary btn-police">Verwijder Specialisatie van persoon</button>
+                            <button type="submit" name="removespecial" class="btn btn-primary btn-police">Verwijder</button>
                         </div>
                     </form>
                 </div> 
