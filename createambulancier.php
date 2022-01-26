@@ -3,7 +3,14 @@
     if (!$_SESSION['loggedin']) {
         Header("Location: login");
     }
+    if ($_SESSION["rank"] != "Leiding") {
+        Header("Location: createambulancier");
+    }
     $respone = false;
+    if ($_SERVER['REQUEST_METHOD'] == "POST") {
+        if (trim($_POST['type']) == NULL) {
+            Header("Location:dashboard");
+        }}
     if ($_SERVER['REQUEST_METHOD'] == "POST") {
         if ($_POST['type'] == "createambu") {
             $note = nl2br($_POST["note"]);
