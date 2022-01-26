@@ -1,7 +1,7 @@
 $(".panel-item").hover(function() {
-    $(this).css("background", "#0066bd");
+    $(this).css("background", "#333332");
 }, function() {
-    $(this).css("background", "#004682");
+    $(this).css("background", "#333332");
 });
 
 $(".law-item").click(function() {

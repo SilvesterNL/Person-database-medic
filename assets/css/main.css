@@ -163,6 +163,7 @@ textarea {
 
 .panel-item:hover {
     cursor: pointer;
+    color: #2a3136;
 }
 
 .panel-list a {
@@ -258,6 +259,8 @@ textarea {
     width:100%;
     border: 1px solid #2a3136;
 }
+
+
 
 .report-law-item:hover {
     cursor: pointer;
