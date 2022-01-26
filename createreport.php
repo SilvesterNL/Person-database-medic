@@ -363,26 +363,24 @@
                 <p dir="ltr" style="line-height: 1.38; text-align: left; margin-top: 0pt; margin-bottom: 0pt;">
                     <br>
                 </p>
-                <p dir="ltr" style="line-height: 1.38; text-align: center; margin-top: 0pt; margin-bottom: 0pt;"><span style="vertical-align: baseline;"><strong>M I N I - P R O C E S - V E R B A A L</strong></span></p>
-                <p dir="ltr" style="line-height: 1.38; text-align: center; margin-top: 0pt; margin-bottom: 0pt;"><span style="background-color: transparent; font-weight: 400; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;"><strong>beschikking</strong></span></p>
+                <p dir="ltr" style="line-height: 1.38; text-align: center; margin-top: 0pt; margin-bottom: 0pt;"><span style="vertical-align: baseline;"><strong>RAPPORTAGE</strong></span></p>
+                <p dir="ltr" style="line-height: 1.38; text-align: center; margin-top: 0pt; margin-bottom: 0pt;"><span style="background-color: transparent; font-weight: 400; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;"><strong></strong></span></p>
                 <p >
-                    <br>Ik, verbalisant, ${name}, ${rank} van Politie Eenheid QUACKCITY, verklaar het volgende.</p>
-                <p >Op ${date}, omstreeks <span style="color: rgb(235, 107, 86);">TIJD</span> uur, bevond ik mij in uniform gekleed en met algemene politietaak belast op de openbare weg,&nbsp;</p>
+                    <br>Ik, van team Ambulance <strong>${name}</strong> met de functie <strong>${rank}</strong>, maak het volgende rapport.</p>
+                <p >Op <strong>${date}</strong>, omstreeks <span style="color: rgb(235, 107, 86);">TIJD</span> uur, bevond ik mij in dienst van de ambulance. En heb het volgende geconstateerd&nbsp;</p>
                 <p style="line-height: 1.2;">BEVINDINGEN</p>
-                <p >Locatie:
-                    <br>Gepleegde overtreding:
-                    <br>Feitcode:
-                    <br>Boetebedrag:
-                    <br>Verklaring:&nbsp;</p>
+                <p >Locatie van gebeurtenis:
+                    <br>Staat van persoon bij aantreffen:
+                    <br>Welke handelingen zijn gedaan door <strong>${name}</strong> met de functie <strong>${rank}</strong>:</p>
                 <p>
                     <br>
                     <br>
                 </p>
-                <p><em><span style="font-size: 10px;">Indien Snelheidsovertreding</span></em>
-                    <br>Gemeten snelheid:
-                    <br>Toegestane snelheid:
-                    <br>Correctie: - 10%
-                    <br>Uiteindelijke snelheid:&nbsp;</p>
+                <p><em><span>Rit:</span></em>
+                    <br>Prioriteit (A1, A2, A3):
+                    <br>DIA:
+                    <br>Arr zorg:
+                    <br>Rit naar ziekenhuis&nbsp:</p>
 
                 `
                 ,
