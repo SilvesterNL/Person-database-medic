@@ -153,7 +153,7 @@
                                 <?php foreach($search_array as $report) {?>
                                     <form method="post">
                                         <input type="hidden" name="type" value="show">
-                                        <input type="hidden" name="reportid" value="<?php echo $report['id']; ?>">
+                                        <input type="hidden" name="reportid" value="">
                                         <button type="submit" class="btn btn-panel panel-item">
                                             <h5 class="panel-title">#<?php echo $report['id']; ?> <?php echo $report['title']; ?></h5>
                                             <p class="panel-author">door: <?php echo $report['author']; ?></p>

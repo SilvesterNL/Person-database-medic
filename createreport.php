@@ -37,7 +37,6 @@
                 }
             }
 
-            $con->query("INSERT INTO bills (citizenid,type,amount) VALUES ('".$con->real_escape_string($_POST["citizenid"])."','police','".$con->real_escape_string($totalprice)."')");
 
             if ($insert) {
                 $last_id = $con->insert_id;
@@ -46,7 +45,7 @@
                 header('Location: reports');
             }
         } elseif ($_POST["type"] == "edit") {
-            $query = $con->query("SELECT * FROM reports WHERE id = ".$con->real_escape_string($_POST['reportid']));
+
             $selectedreport = $query->fetch_assoc();
             $laws = json_decode($selectedreport["laws"], true);
             $lawsedit_array = [];

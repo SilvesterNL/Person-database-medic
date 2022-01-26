@@ -152,13 +152,13 @@
                 <?php if ($_SERVER['REQUEST_METHOD'] == "POST" && $_POST['type'] == "show" && !empty($selectedprofile)) { ?>
                     <div class="profile-panel">
                         <div class="profile-avatar">
-                            <img src="<?php echo $selectedprofile["avatar"]; ?>" alt="profile-pic" width="150" height="150" />
+                            <img src="<?php echo $selectedprofile["avatar"]; ?>" alt="Hier hoort stiekem een profielfoto maar leiding is te lui geweest waarschijnlijk" width="150" height="150" />
                         </div>
                         <div class="profile-information">
                             <p><strong>Naam:</strong><br /><?php echo $selectedprofile["fullname"]; ?></p>
                             <p><strong>BSN:</strong><br /><?php echo $selectedprofile["citizenid"]; ?></p>
-                            <p><strong>Vinger Patroon:</strong><br /><?php echo $selectedprofile["fingerprint"]; ?></p>
-                            <p><strong>DNA Code:</strong><br /><?php echo $selectedprofile["dnacode"]; ?></p>
+                            <p><strong>Status:</strong><br /><?php echo $selectedprofile["fingerprint"]; ?></p>
+                            <p><strong>Dienst Nummer:</strong><br /><?php echo $selectedprofile["dnacode"]; ?></p>
                             <p><strong>Notitie:</strong><br /><?php echo $selectedprofile["note"]; ?></p>
                         </div>
                     </div>
