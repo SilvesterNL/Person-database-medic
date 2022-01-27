@@ -78,19 +78,19 @@
 
                 <ul class="menu-links">
                     <li class="nav-link">
-                        <a href="#">
+                        <a href="dashboard">
                             <i class='bx bx-home-alt icon' ></i>
                             <span class="text nav-text">Dashboard</span>
                         </a>
                     </li>
 
                     <li class="nav-link">
-                        <a href="#">
+                        <a href="Dropdown">
                             <i class='bx bx-bar-chart-alt-2 icon' ></i>
                             <span class="text nav-text">Opzoeken</span>
                         </a>
                     </li>
-
+                    <?php if ($_SESSION["rank"] == "Leiding") { ?>
                     <li class="nav-link">
                         <a href="#">
                             <i class='bx bx-bell icon'></i>
@@ -101,6 +101,7 @@
 
                         </a>
                     </li>
+                    <?php } ?>
 
                     <li class="nav-link">
                         <a href="#">
