@@ -227,6 +227,11 @@ textarea {
     border: 0 solid transparent!important;
 }
 
+
+.btn {
+    border-radius: 40px;
+}
+
 .btn-panel {
     width: 100%;
 }

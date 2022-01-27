@@ -176,12 +176,11 @@
                             <form method="post" action="createreport" style="float:right; margin-left: 1vw;">
                                 <input type="hidden" name="type" value="createnew">
                                 <input type="hidden" name="profileid" value="<?php echo $selectedprofile['id']; ?>">
-                                <button type="submit" name="issabutn" style="margin-left:0!important;" class="btn btn-success btn-md my-0 ml-sm-2">NIEUW RAPPORT</button>
+                                <button type="submit" name="issabutn" style="" class="btn btn-success btn-md my-0 ml-sm-2">NIEUW RAPPORT</button>
                             </form>
                             <form method="post" action="createwarrant" style="float:right;">
                                 <input type="hidden" name="type" value="create">
                                 <input type="hidden" name="profileid" value="<?php echo $selectedprofile['id']; ?>">
-                                <button type="submit" name="issabutn" style="margin-left:0!important;" class="btn btn-danger btn-md my-0 ml-sm-2">NIEUW BEVEL</button>
                             </form>
                             <br />
                             <h5 class="panel-container-title">Laatste rapportages</h5>
