@@ -14,6 +14,7 @@
         $recentreports_array[] = $data;
     }
     $name = explode(" ", $_SESSION["name"]);
+    $profilepic = explode(" ", $_SESSION["profilepic"]);
     $firstname = $name[0];
     $last_word_start = strrpos($_SESSION["name"], ' ') + 1;
     $lastname = substr($_SESSION["name"], $last_word_start);
@@ -160,13 +161,13 @@
       <li>
     <div class="profile-details">
       <div class="profile-content">
-        <img src="image/profile.jpg" alt="profileImg">
+        <img src="<?php echo $_SESSION["profilepic"]; ?>" alt="Foto">
       </div>
       <div class="name-job">
-        <div class="profile_name">Prem Shahi</div>
-        <div class="job">Web Desginer</div>
+        <div class="profile_name"><?php echo $_SESSION["name"]; ?></div>
+        <div class="job"><?php echo $_SESSION["rank"]; ?></div>
       </div>
-      <i class='bx bx-log-out' ></i>
+      <a href="logout"><i href="logout" class='bx bx-log-out' ></i></a>
     </div>
   </li>
 </ul>

@@ -12,7 +12,7 @@
             Header("Location:dashboard");
         }
         if ($_POST['type'] == "create") {
-            $insert = $con->query("INSERT INTO users (username,password,name,role,dienstnummer,rank,last_login) VALUES('".$con->real_escape_string($_POST['username'])."','".password_hash($con->real_escape_string($_POST['password']),PASSWORD_BCRYPT)."','".$con->real_escape_string($_POST['fullname'])."','user','".$con->real_escape_string($_POST['dienstnummer'])."','".$con->real_escape_string($_POST['rank'])."','".date('Y-m-d')."')");
+            $insert = $con->query("INSERT INTO users (username,password,name,role,dienstnummer,profilepic,rank,last_login) VALUES('".$con->real_escape_string($_POST['username'])."','".password_hash($con->real_escape_string($_POST['password']),PASSWORD_BCRYPT)."','".$con->real_escape_string($_POST['fullname'])."','user','".$con->real_escape_string($_POST['dienstnummer'])."','".$con->real_escape_string($_POST['profilepic'])."','".$con->real_escape_string($_POST['rank'])."','".date('Y-m-d')."')");
             if ($insert) {
                 $respone = true;
             }
@@ -228,6 +228,9 @@
                         </div>
                         <div class="input-group mb-4">
                             <input type="text" name="dienstnummer" class="form-control login-nummer" value="" placeholder="Dienst Nummer" required>
+                        </div>
+                        <div class="input-group mb-3">
+                            <input type="text" name="profilepic" class="form-control login-nummer" value="" placeholder="Profielfoto (Bijvoorbeeld: Imgur.com/938472.jpg)" required>
                         </div>
 
                         <select class="form-control" style="margin-bottom:2vh;" name="rank" required>
