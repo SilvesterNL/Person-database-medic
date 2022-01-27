@@ -11,6 +11,10 @@
     padding: 2vh 2vw;
 }
 
+.form-control {
+    border-radius: 40px;
+}
+
 .btn-login {
     width: 100%;
     background: #2a3136!important;

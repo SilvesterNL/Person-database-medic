@@ -13,8 +13,6 @@
         }}
         $name = explode(" ", $_SESSION["name"]);
         $firstname = $name[0];
-        $last_word_start = strrpos($_SESSION["name"], ' ') + 1;
-        $lastname = substr($_SESSION["name"], $last_word_start);
 ?>
 
 <!doctype html>
@@ -45,7 +43,7 @@
         <a class="nav-label" href="#">
             <img src="assets/images/icon.png" width="22" height="22" alt="">
             <span class="title">
-                               Welkom <?php echo $_SESSION["rank"] . " " . $firstname . " " . substr($lastname, 0, 1); ?>.
+                               Welkom <?php echo $_SESSION["name"]; ?>.
                             </span>
         </a>
         <a class="nav-button" href="logout">
@@ -96,7 +94,15 @@
     </nav>
 
 
-
+    <main role="main" class="container">
+            <div class="content-introduction">
+                <h3>Welkom <?php echo $_SESSION["name"]; ?> bij de overzicht pagina.</h3>
+                <p class="lead">Hier kan ja alle informatie zien die je tijdens je dienst maar ook buiten je dienst nodig hebt als ambulancier <br />Zoals sollicitatie's zien en grafieken over aanwezigheid.<br /><strong style="font-size="20";">LET OP NOG NIET ALLE FUNCTIES WERKEN HIER WORD AAN GEWERKT. VOOR VRAGEN DM @Silvester#8287</strong>
+                <br />
+                <br />
+                </p>
+            </div>
+            <div class="dashboard-container">
 
         
 
