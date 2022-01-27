@@ -124,7 +124,7 @@
                     <input type="hidden" name="type" value="realedit">
                     <input type="hidden" name="profileid" value="<?php echo $selectedprofile["id"]; ?>">
                     <div class="input-group mb-3">
-                        <input type="text" name="citizenid" class="form-control login-user" value="<?php echo $selectedprofile["citizenid"]; ?>" placeholder="bsn" required>
+                        <input type="text" name="citizenid" class="form-control login-user" value="<?php echo $selectedprofile["citizenid"]; ?>" placeholder="bsn">
                     </div>
                     <div class="input-group mb-2">
                         <input type="text" name="fullname" class="form-control login-pass" value="<?php echo $selectedprofile["fullname"]; ?>" placeholder="volledige naam" required>
@@ -150,13 +150,13 @@
                 <form method="post">
                     <input type="hidden" name="type" value="create">
                     <div class="input-group mb-3">
-                        <input type="text" name="citizenid" class="form-control login-user" value="" placeholder="bsn" required>
+                        <input type="text" name="citizenid" class="form-control login-user" value="" placeholder="bsn">
                     </div>
                     <div class="input-group mb-2">
                         <input type="text" name="fullname" class="form-control login-pass" value="" placeholder="volledige naam" required>
                     </div>
                     <div class="input-group mb-3">
-                        <input type="text" name="avatar" class="form-control login-user" value="" placeholder="profiel foto (imgur URL vb. https://i.imgur.com/zKDjdhe.png)">
+                        <input type="file" name="avatar" class="form-control login-user" value="" placeholder="profiel foto (imgur URL vb. https://i.imgur.com/zKDjdhe.png)">
                     </div>
                     <div class="input-group mb-3">
                         <input type="text" name="fingerprint" class="form-control login-user" value="" placeholder="vinger patroon">

@@ -85,14 +85,14 @@
                     </li>
 
                     <li class="nav-link">
-                        <a href="Dropdown">
+                        <a href="Dropdown worden luuk">
                             <i class='bx bx-bar-chart-alt-2 icon' ></i>
                             <span class="text nav-text">Opzoeken</span>
                         </a>
                     </li>
                     <?php if ($_SESSION["rank"] == "Leiding") { ?>
                     <li class="nav-link">
-                        <a href="#">
+                        <a href="Dropdown worden luuk">
                             <i class='bx bx-bell icon'></i>
                             <!-- <span class="text nav-text" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Leiding</span> -->
