@@ -164,8 +164,8 @@
   <!-- Navbar xx -->
         <main role="main" class="container">
             <div class="content-introduction">
-                <h3 class="htext">Welkom bij de Ambulance Databank</h3>
-                <p class="kaas1">Zoek personen en andere informatie op die je kunt gebruiken tijdens je dienst. <br />Ook kun je hier alle rapportages lezen, aanmaken, bijwerken en verwijderen. <br /><strong>Zorg ervoor dat alle documentatie goed wordt opgenomen en alle bewijzen erin worden meegenomen.</strong>
+                <h3 class="h3text">Welkom bij de Ambulance Databank</h3>
+                <p class="p1text">Zoek personen en andere informatie op die je kunt gebruiken tijdens je dienst. <br />Ook kun je hier alle rapportages lezen, aanmaken, bijwerken en verwijderen. <br /><strong>Zorg ervoor dat alle documentatie goed wordt opgenomen en alle bewijzen erin worden meegenomen.</strong>
                 <br />
                 <br />
                 </p>
@@ -185,7 +185,7 @@
                             </form>
                         <?php }?>
                     <?php } else { ?>
-                            <p>Geen personen opgezocht..</p>
+                            <p class="nopersp2text">Geen personen opgezocht..</p>
                     <?php } ?>
                 </div>  
                 <div class="right-panel-container">
