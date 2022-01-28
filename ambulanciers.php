@@ -157,7 +157,7 @@
                         <div class="profile-information">
                             <p><strong>Naam:</strong><br /><?php echo $selectedprofile["fullname"]; ?></p>
                             <p><strong>BSN:</strong><br /><?php echo $selectedprofile["citizenid"]; ?></p>
-                            <p><strong>Status:</strong><br /><?php echo $selectedprofile["fingerprint"]; ?></p>
+                            <p><strong>Status (Word aan gewerkt. Doet het voor nu nog niet):</strong><br /><?php echo $selectedprofile["fingerprint"]; ?></p>
                             <p><strong>Dienst Nummer:</strong><br /><?php echo $selectedprofile["dnacode"]; ?></p>
                             <p><strong>Notitie:</strong><br /><?php echo $selectedprofile["note"]; ?></p>
                         </div>

@@ -430,61 +430,14 @@
                  </p> */
                 ,
                 `<p dir="ltr" style="line-height: 1.38; text-align: center; margin-top: 0pt; margin-bottom: 0pt;"><img src="./assets/images/pv_logo.png" style="width: 205px; padding-top: 50px;" class="fr-fic fr-dii"></p>
-                <p dir="ltr" style="line-height: 1.38; text-align: left; margin-top: 0pt; margin-bottom: 0pt;"><span style="font-size: 14px; "><strong>EENHEID QUACKCITY</strong></span></p>
-                <p dir="ltr" style="line-height: 1.38; text-align: left; margin-top: 0pt; margin-bottom: 0pt;"><strong><span style="font-size: 14px; ">DISTRICT LS-ZUID</span></strong></p>
-                <p dir="ltr" style="line-height: 1.38; text-align: left; margin-top: 0pt; margin-bottom: 0pt;"><strong><span style="font-size: 14px; ">BASISTEAM MISSION ROW</span></strong></p>
+                <p dir="ltr" style="line-height: 1.38; text-align: left; margin-top: 0pt; margin-bottom: 0pt;"><span style="font-size: 14px;"><strong>AMBULANCE</strong></span></p>
+                <p dir="ltr" style="line-height: 1.38; text-align: left; margin-top: 0pt; margin-bottom: 0pt;"><strong><span style="font-size: 14px; ">DISTRICT FORTIS</span></strong></p>
+                <p dir="ltr" style="line-height: 1.38; text-align: left; margin-top: 0pt; margin-bottom: 0pt;"><strong><span style="font-size: 14px; ">BASISTEAM PILLBOX HILL</span></strong></p>
                 <p dir="ltr" style="line-height: 1.38; text-align: left; margin-top: 0pt; margin-bottom: 0pt;"><strong><br></strong></p>
-                <p dir="ltr" style="line-height: 1.38; text-align: left; margin-top: 0pt; margin-bottom: 0pt;"><span style="font-size: 14px; ">Proces-verbaalnummer: (pv nummer)</span></p>
                 <p dir="ltr" style="line-height: 1.38; text-align: left; margin-top: 0pt; margin-bottom: 0pt;">
                     <br>
-                </p>
-                <p dir="ltr" style="line-height: 1.38; text-align: center; margin-top: 0pt; margin-bottom: 0pt;"><span style=" vertical-align: baseline;"><strong>P R O C E S - V E R B A A L</strong></span></p>
-                <p dir="ltr" style="line-height: 1.38; text-align: center; margin-top: 0pt; margin-bottom: 0pt;"><span style="background-color: transparent; font-weight: 400; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;"><strong>aangifte</strong></span></p>
-                <p >Feit:
-                    <br>Plaatsdelict:
-                    <br>Pleegdatum/tijd:&nbsp;</p>
-                <p >
-                    <br>
-                </p>
-                <p >Ik, verbalisant, ${name}, ${rank} van Politie Eenheid QuackCity, verklaar het volgende.</p>
-                <p >Op ${date}, <span style="color: rgb(235, 107, 86);">TIJD</span> uur, verscheen voor mij, in het politiebureau, Mission Row, Sinner Street, QuackCity, een persoon, de aangever die mij opgaf te zijn:&nbsp;</p>
-                <p >Achternaam:&nbsp;
-                    <br style="box-sizing: border-box; color: rgb(65, 65, 65);">Voornamen:&nbsp;
-                    <br style="box-sizing: border-box; color: rgb(65, 65, 65);">Geboren:&nbsp;
-                    <br style="box-sizing: border-box; color: rgb(65, 65, 65);">Geboorteplaats:&nbsp;
-                    <br style="box-sizing: border-box; color: rgb(65, 65, 65);">Geslacht:&nbsp;
-                    <br style="box-sizing: border-box; color: rgb(65, 65, 65);">Nationaliteit:&nbsp;
-                    <br style="box-sizing: border-box; color: rgb(65, 65, 65);">Adres:&nbsp;</p>
-
-                <p >Hij/Zij deed aangifte en verklaarde het volgende over het in de aanhef vermelde incident, dat plaatsvond op de locatie genoemd bij plaats delict, op de genoemde pleegdatum/tijd.</p>
-                <p style=" line-height: 1.2;">
-                    <br>
-                </p>
-                <p style=" line-height: 1.2;">BEVINDINGEN:</p>
-                <p >
-                    <br>
-                </p>
-                <p >Aan niemand werd het recht of de toestemming geven tot het plegen van dit feit.</p>
-                <p >De verbalisant,</p>
-                <p >${name}</p>
-                <p >
-                    <br>
-                </p>
-                <p >Ik, <span style="color: rgb(235, 107, 86);">NAAM AANGEVER</span>, verklaar dat ik dit proces-verbaal heb gelezen. Ik verklaar dat ik de waarheid heb verteld. Ik verklaar dat mijn verhaal goed is weergegeven in het proces-verbaal. Ik weet dat het doen van een valse aangifte strafbaar is.</p>
-                <p >De aangever,</p>
-                <p style=" line-height: 1.2; color: rgb(235, 107, 86);">NAAM AANGEVER</p>
-                <p style=" line-height: 1.2; color: rgb(235, 107, 86);">
-                    <br>
-                </p>
-                <p style=" line-height: 1.2; color: rgb(235, 107, 86);">
-                    <br>
-                </p>
-                <p style=" line-height: 1.2;"><strong>Eventuele opmerkingen verbalisant</strong></p>
-                <p style=" line-height: 1.2;">
-                    <br>
-                </p>
-                <p >Waarvan door mij is opgemaakt dit proces-verbaal, dat ik sloot en ondertekende te QuackCity op ${date}/<span style='color: rgb(235, 107, 86); font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: left; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;'>TIJD</span>&nbsp;</p>
-                <p >${name}</p>`
+                </p><p>Deze persoon heeft na het vragen van ${name} met dienstnummer <?php echo $_SESSION["dienstnummer"]; ?> een pleister ontvangen. Er waren verder geen gecompliceerde acties verreist. 
+</p> <br /> <p>Gegevens van slachtoffer:</p> <br />`
                 ,
                 `<p dir="ltr" style="line-height: 1.38; text-align: center; margin-top: 0pt; margin-bottom: 0pt;"><img src="./assets/images/pv_logo.png" style="width: 205px; padding-top: 50px;" class="fr-fic fr-dii"></p>
                 <p dir="ltr" style="line-height: 1.38; text-align: left; margin-top: 0pt; margin-bottom: 0pt;"><span style="font-size: 14px; "><strong>EENHEID QUACKCITY</strong></span></p>
@@ -594,6 +547,7 @@
                 options: {
                     '0': 'Standaard Rapportage',
                     '1': 'Reanimatie (Sta eerst onderaan het document)',
+                    '2': 'Pleister (Geen bijzondere verichting)',
                 },
                 callback: function (cmd, val) {
                     this.html.insert(templates[val]);
