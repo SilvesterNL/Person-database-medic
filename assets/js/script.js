@@ -4,6 +4,7 @@ const body = document.querySelector('body'),
       searchBtn = body.querySelector(".search-box"),
       modeSwitch = body.querySelector(".toggle-switch"),
       modeText = body.querySelector(".mode-text");
+      kaas1 = body.querySelector(".ham1");
 
       sidebar.classList.toggle("close");
 toggle.addEventListener("click" , () =>{

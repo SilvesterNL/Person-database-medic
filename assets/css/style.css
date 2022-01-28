@@ -31,6 +31,7 @@ body.dark{
     --primary-color-light: #3a3b3c;
     --toggle-color: #fff;
     --text-color: #ccc;
+    background-color: #0d0d0d;
 }
 
  .sidebar{
@@ -282,7 +283,7 @@ body.dark .switch::before{
 .home .text{
     font-size: 30px;
     font-weight: 500;
-    color: var(--text-color);
+    color: var(--primary-color-light);
     padding: 12px 60px;
 }
 
@@ -292,7 +293,5 @@ body.dark .switch::before{
     width: calc(100% - 78px);
 }
 body.dark .home .text{
-    color: var(--text-color);
+    color: var(--primary-color-light);
 }
-
-/* Kaki man gekke dropdowntje */

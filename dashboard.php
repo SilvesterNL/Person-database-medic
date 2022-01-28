@@ -53,6 +53,7 @@
     
     </head>
     <body>
+        <p class="kaas1">dik</p>
     <nav class="sidebar close">
         <header>
             <div class="image-text">
@@ -157,9 +158,6 @@
 
 
     </nav>
-
-
-    <script src="./assets/js/script.js"></script>
 
   <!-- Navbar xx -->
         <main role="main" class="container">
