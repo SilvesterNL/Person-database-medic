@@ -12,6 +12,17 @@ body {
     animation-duration: 0.4s;
 }
 
+
+.avatarprofilesel {
+    border-radius: 20px;
+    float: right;
+}
+
+.avatarprofileselin {
+    border-radius: 20px;
+
+}
+
 ::-webkit-scrollbar
 {
 	width: 3px;
@@ -128,6 +139,15 @@ textarea {
     text-color: white!important;
 }
 
+.kaas1 .lead {
+    color: white;
+    
+}
+
+.mb-6 {
+    font-size: 20px;
+}
+
 .dashboard-container {
     width: 80%;
     margin: auto;
@@ -192,7 +212,12 @@ textarea {
 
 .panel-item .panel-title {
     color: #ffffff!important;
-    font-size: 16px;
+    font-size: 20px;
+}
+
+.panel-title {
+    margin-top: 60px;
+    float: left;
 }
 
 .panel-item .panel-person {

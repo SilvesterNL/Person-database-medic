@@ -86,6 +86,9 @@
         <link rel="icon" type="image/png" sizes="16x16" href="https://www.politie.nl/politie2018/assets/images/icons/favicon-16.png">
         <link rel="icon" type="image/png" sizes="32x32" href="https://www.politie.nl/politie2018/assets/images/icons/favicon-32.png">
         <link rel="icon" type="image/png" sizes="64x64" href="https://www.politie.nl/politie2018/assets/images/icons/favicon-64.png">
+        <link rel="stylesheet" href="assets/css/style.css">
+        <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+        
 
 		<!-- Text editor CSS -->
 		<link href="https://cdn.jsdelivr.net/npm/froala-editor@latest/css/froala_editor.pkgd.min.css" rel="stylesheet" type="text/css" />
@@ -165,7 +168,7 @@
         <main role="main" class="container">
             <div class="content-introduction">
                 <h3>Report Maken</h3>
-                <p class="lead">Hier kun je een nieuw reportage aanmaken.<br />Je kunt een BSN koppelen aan een reportage (Hiervoor MOET er een profiel bestaan) of je kan het leeg laten en later toevoegen.<br />Je kunt ook straffen toevoegen (wanneer nodig) onderaan de pagina.</br>Om een straf weg te halen kun je klikken op dezelfde straf bij "Geselecteerde Straffen"</p>
+                <p class="lead">Hier kun je een nieuw reportage aanmaken.<br />Je kunt een Volledige Naam koppelen aan een reportage (Hiervoor MOET er een profiel bestaan) of je kan het leeg laten en later toevoegen.<br />Je kunt ook straffen toevoegen (wanneer nodig) onderaan de pagina.</br>Om een straf weg te halen kun je klikken op dezelfde straf bij "Geselecteerde Straffen"</p>
             </div>
             <div class="createreport-container">
                 <div class="createreport-left">
@@ -179,11 +182,11 @@
                         </div>
                         <?php if (!empty($profiledata)) { ?>
                             <div class="input-group mb-3">
-                                <input type="text" name="citizenid" class="form-control login-user" value="<?php echo $profiledata["citizenid"]; ?>" placeholder="koppel bsn (mag leeg)">
+                                <input type="text" name="citizenid" class="form-control login-user" value="<?php echo $profiledata["citizenid"]; ?>" placeholder="koppel Volledige Naam (mag leeg)">
                             </div>
                         <?php } else {?>
                             <div class="input-group mb-3">
-                                <input type="text" name="citizenid" class="form-control login-user" value="" placeholder="koppel bsn (mag leeg)">
+                                <input type="text" name="citizenid" class="form-control login-user" value="" placeholder="koppel Volledige Naam (mag leeg)">
                             </div>
                         <?php } ?>
                         <?php $report = str_replace( "<br />", '', $selectedreport["report"]); ?>
@@ -207,11 +210,11 @@
                         </div>
                         <?php if ($_SERVER['REQUEST_METHOD'] == "POST" && $_POST['type'] == "createnew") { ?>
                             <div class="input-group mb-3">
-                                <input type="text" name="citizenid" class="form-control login-user" value="<?php echo $selectedprofile["citizenid"]; ?>" placeholder="koppel bsn (mag leeg)">
+                                <input type="text" name="citizenid" class="form-control login-user" value="<?php echo $selectedprofile["citizenid"]; ?>" placeholder="koppel Volledige Naam (mag leeg)">
                             </div>
                         <?php } else {?>
                             <div class="input-group mb-3">
-                                <input type="text" name="citizenid" class="form-control login-user" value="" placeholder="koppel bsn (mag leeg)">
+                                <input type="text" name="citizenid" class="form-control login-user" value="" placeholder="koppel Volledige Naam (mag leeg)">
                             </div>
                         <?php } ?>
                         <div class="">

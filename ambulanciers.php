@@ -45,6 +45,9 @@
         <link rel="icon" type="image/png" sizes="16x16" href="https://www.politie.nl/politie2018/assets/images/icons/favicon-16.png">
         <link rel="icon" type="image/png" sizes="32x32" href="https://www.politie.nl/politie2018/assets/images/icons/favicon-32.png">
         <link rel="icon" type="image/png" sizes="64x64" href="https://www.politie.nl/politie2018/assets/images/icons/favicon-64.png">
+        <link rel="stylesheet" href="assets/css/style.css">
+        <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+        
 
         <title>Ambulance Databank</title>
 
@@ -58,60 +61,7 @@
         <link href="assets/css/profiles.css" rel="stylesheet">
     </head>
     <body>
-    <nav class="navbar navbar-expand-lg fixed-top navbar-custom bg-custom">
-        <a class="nav-label" href="#">
-            <img src="assets/images/icon.png" width="22" height="22" alt="">
-            <span class="title">
-                               Welkom <?php echo $_SESSION["rank"] . " " . $firstname . " " . substr($lastname, 0, 1); ?>.
-                            </span>
-        </a>
-        <a class="nav-button" href="logout">
-            <button class="btn btn-outline-light btn-logout my-2 my-sm-0" type="button">LOG UIT</button>
-        </a>
-
-        <div class="navbar-dark">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-        </div>
-
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="nav navbar-nav ml-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="dashboard">DASHBOARD</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        OPZOEKEN
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="profiles">PERSONEN</a>
-                        <a class="dropdown-item" href="reports">RAPPORTEN</a>
-                        <a class="dropdown-item" href="ambulanciers">Ambulanciers</a>
-                        <!-- <a class="dropdown-item" href="#">VOERTUIGEN</a> -->
-                    </div>
-                </li>
-               
-                               <?php if ($_SESSION["rank"] == "Leiding") { ?>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            LEIDING
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="users">AMBULANCIERS</a>
-                            <a class="dropdown-item" href="createambulancier">NIEUWE AMBULANCIER</a>
-                        </div>
-                        
-                    </li>
-                    <?php } ?>
-                    <li class="nav-item">
-                    <a class="nav-link-report" href="createreport">NIEUW RAPPORT</a>
-                </li>
-
-            </ul>
-        </div>
-    </nav>
+    <!-- Hier moet NAVBAR komen -->
 
         <main role="main" class="container">
             <div class="content-introduction">
@@ -141,7 +91,7 @@
                                         <input type="hidden" name="personid" value="<?php echo $person['id']; ?>">
                                         <button type="submit" class="btn btn-panel panel-item">
                                             <h5 class="panel-title"><?php echo $person['fullname']; ?></h5>
-                                            <p class="panel-author">BSN: <?php echo $person['citizenid']; ?></p>
+                                            <p class="panel-author">Volledige Naam: <?php echo $person['citizenid']; ?></p>
                                         </button>
                                     </form>
                                 <?php }?>
@@ -156,7 +106,7 @@
                         </div>
                         <div class="profile-information">
                             <p><strong>Naam:</strong><br /><?php echo $selectedprofile["fullname"]; ?></p>
-                            <p><strong>BSN:</strong><br /><?php echo $selectedprofile["citizenid"]; ?></p>
+                            <p><strong>Volledige Naam:</strong><br /><?php echo $selectedprofile["citizenid"]; ?></p>
                             <p><strong>Status (Word aan gewerkt. Doet het voor nu nog niet):</strong><br /><?php echo $selectedprofile["fingerprint"]; ?></p>
                             <p><strong>Dienst Nummer:</strong><br /><?php echo $selectedprofile["dnacode"]; ?></p>
                             <p><strong>Notitie:</strong><br /><?php echo $selectedprofile["note"]; ?></p>

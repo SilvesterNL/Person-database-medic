@@ -35,6 +35,9 @@
         <link rel="icon" type="image/png" sizes="16x16" href="https://www.politie.nl/politie2018/assets/images/icons/favicon-16.png">
         <link rel="icon" type="image/png" sizes="32x32" href="https://www.politie.nl/politie2018/assets/images/icons/favicon-32.png">
         <link rel="icon" type="image/png" sizes="64x64" href="https://www.politie.nl/politie2018/assets/images/icons/favicon-64.png">
+        <link rel="stylesheet" href="assets/css/style.css">
+        <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+        <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
 
         <title>Ambulance Databank</title>
 
@@ -46,10 +49,10 @@
         <!-- Main -->
         <link href="assets/css/main.css" rel="stylesheet">   
     <!----======== CSS ======== -->
-    <link rel="stylesheet" href="assets/css/style.css">
+    
     
     <!----===== Menu css via cdn omdat veels te groot anders kaas CSS ===== -->
-    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+    
     
     </head>
     <body>
@@ -162,7 +165,7 @@
         <main role="main" class="container">
             <div class="content-introduction">
                 <h3 class="htext">Welkom bij de Ambulance Databank</h3>
-                <p class="lead">Zoek personen en andere informatie op die je kunt gebruiken tijdens je dienst. <br />Ook kun je hier alle rapportages lezen, aanmaken, bijwerken en verwijderen. <br /><strong>Zorg ervoor dat alle documentatie goed wordt opgenomen en alle bewijzen erin worden meegenomen.</strong>
+                <p class="kaas1">Zoek personen en andere informatie op die je kunt gebruiken tijdens je dienst. <br />Ook kun je hier alle rapportages lezen, aanmaken, bijwerken en verwijderen. <br /><strong>Zorg ervoor dat alle documentatie goed wordt opgenomen en alle bewijzen erin worden meegenomen.</strong>
                 <br />
                 <br />
                 </p>
@@ -195,7 +198,7 @@
                                 <input type="hidden" name="personid" value="<?php echo $person['id']; ?>">
                                 <button type="submit" class="btn btn-panel panel-item" style="text-align:left!important;">
                                     <h5 class="panel-title"><?php echo $person['fullname']; ?></h5>
-                                    <p class="panel-author">BSN: <?php echo $person['citizenid']; ?></p>
+                                    <p class="panel-author">Volledige Naam: <?php echo $person['citizenid']; ?></p>
                                 </button>
                             </form>
                         <?php }?>

@@ -4,7 +4,7 @@ const body = document.querySelector('body'),
       searchBtn = body.querySelector(".search-box"),
       modeSwitch = body.querySelector(".toggle-switch"),
       modeText = body.querySelector(".mode-text"),
-      kaas1 = body.querySelector(".lead");
+      kaas1 = body.querySelector(".kaas1");
 
       sidebar.classList.toggle("close");
 toggle.addEventListener("click" , () =>{
@@ -16,7 +16,8 @@ searchBtn.addEventListener("click" , () =>{
 })
 
 modeSwitch.addEventListener("click" , () =>{
-    body.classList.toggle("dark");
+    body.classList.toggle("dark"),
+    kaas1.classList.toggle("lead");
     
     if(body.classList.contains("dark")){
         modeText.innerText = "Licht";

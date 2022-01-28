@@ -6,7 +6,7 @@
     $respone = false;
     if ($_SERVER['REQUEST_METHOD'] == "POST") {
         if ($_POST['type'] == "search") {
-            $result = $con->query("SELECT * FROM profiles WHERE concat(' ', fullname, ' ') LIKE '%".$con->real_escape_string($_POST['search'])."%' OR citizenid = '".$con->real_escape_string($_POST['search'])."' OR dnacode = '".$con->real_escape_string($_POST['search'])."' OR fingerprint = '".$con->real_escape_string($_POST['search'])."'");
+            $result = $con->query("SELECT * FROM profiles WHERE concat(' ', citizenid, ' ') LIKE '%".$con->real_escape_string($_POST['search'])."%' OR citizenid = '".$con->real_escape_string($_POST['search'])."' OR dnacode = '".$con->real_escape_string($_POST['search'])."' OR fingerprint = '".$con->real_escape_string($_POST['search'])."'");
             $search_array = [];
             while ($data = $result->fetch_assoc()) { 
                 $search_array[] = $data;
@@ -45,6 +45,9 @@
         <link rel="icon" type="image/png" sizes="16x16" href="https://www.politie.nl/politie2018/assets/images/icons/favicon-16.png">
         <link rel="icon" type="image/png" sizes="32x32" href="https://www.politie.nl/politie2018/assets/images/icons/favicon-32.png">
         <link rel="icon" type="image/png" sizes="64x64" href="https://www.politie.nl/politie2018/assets/images/icons/favicon-64.png">
+        <link rel="stylesheet" href="assets/css/style.css">
+        <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+        
 
         <title>Ambulance Databank</title>
 
@@ -52,65 +55,117 @@
 
         <!-- Bootstrap core CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
+        
         <!-- Custom styles for this template -->
         <link href="assets/css/main.css" rel="stylesheet">
         <link href="assets/css/profiles.css" rel="stylesheet">
     </head>
     <body>
-    <nav class="navbar navbar-expand-lg fixed-top navbar-custom bg-custom">
-        <a class="nav-label" href="#">
-            <img src="assets/images/icon.png" width="22" height="22" alt="">
-            <span class="title">
-                               Welkom <?php echo $_SESSION["rank"] . " " . $firstname . " " . substr($lastname, 0, 1); ?>.
-                            </span>
-        </a>
-        <a class="nav-button" href="logout">
-            <button class="btn btn-outline-light btn-logout my-2 my-sm-0" type="button">LOG UIT</button>
-        </a>
+    <nav class="sidebar close">
+        <header>
+            <div class="image-text">
+                <span class="image">
+                    <img src="<?php echo $_SESSION["profilepic"]; ?>" alt="profile-pic" width="130" height="40"/>
+                </span>
 
-        <div class="navbar-dark">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-        </div>
+                <div class="text logo-text">
+                    <span class="name"><?php echo $firstname . " " . substr($lastname, 0, 1); ?>.</span>
+                    <span class="profession"><?php echo $_SESSION["rank"]; ?></span>
+                </div>
+            </div>
+            <i class='bx bx-chevron-right toggle'></i>
+        </header>
 
+        <div class="menu-bar">
+            <div class="menu">
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="nav navbar-nav ml-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="dashboard">DASHBOARD</a>
+                <li class="search-box">
+                    <i class='bx bx-search icon'></i>
+                    <input type="text" placeholder="Search...">
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        OPZOEKEN
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="profiles">PERSONEN</a>
-                        <a class="dropdown-item" href="reports">RAPPORTEN</a>
-                        <a class="dropdown-item" href="ambulanciers">Ambulanciers</a>
-                        <!-- <a class="dropdown-item" href="#">VOERTUIGEN</a> -->
-                    </div>
-                </li>
-               
-                               <?php if ($_SESSION["rank"] == "Leiding") { ?>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            LEIDING
+
+                <ul class="menu-links">
+                    <li class="nav-link">
+                        <a href="dashboard">
+                            <i class='bx bx-home-alt icon' ></i>
+                            <span class="text nav-text">Dashboard</span>
                         </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="users">AMBULANCIERS</a>
-                            <a class="dropdown-item" href="createambulancier">NIEUWE AMBULANCIER</a>
-                        </div>
-                        
+                    </li>
+
+                    <li class="nav-link opzoeken">
+                        <a href="profiles">
+                            <i class='bx bx-bar-chart-alt-2 icon' ></i>
+                            <span class="text nav-text">Opzoeken</span>
+                        </a>
+                    </li>
+                    
+                    <?php if ($_SESSION["rank"] == "Leiding") { ?>
+                    <li class="nav-link">
+                        <a href="Dropdown worden luuk">
+                            <i class='bx bx-bell icon'></i>
+                            <!-- <span class="text nav-text" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Leiding</span> -->
+                            <span class="text nav-text">Leiding</span>
+                            <!-- <ul class="dropdown">   -->
+
+                        </a>
                     </li>
                     <?php } ?>
-                <li class="nav-item">
-                    <a class="nav-link-report" href="createreport">NIEUW RAPPORT</a>
+
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class='bx bx-pie-chart-alt icon' ></i>
+                            <span class="text nav-text">Analytics</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class='bx bx-heart icon' ></i>
+                            <span class="text nav-text">Likes</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class='bx bx-wallet icon' ></i>
+                            <span class="text nav-text">Wallets</span>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+
+            <div class="bottom-content">
+                <li class="">
+                    <a href="logout">
+                        <i class='bx bx-log-out icon' ></i>
+                        <span class="text nav-text">Log uit</span>
+                    </a>
                 </li>
-            </ul>
+
+                <li class="mode">
+                    <div class="sun-moon">
+                        <i class='bx bx-moon icon moon'></i>
+                        <i class='bx bx-sun icon sun'></i>
+                    </div>
+                    <span class="mode-text text">Donker</span>
+
+                    <div class="toggle-switch">
+                        <span class="switch"></span>
+                    </div>
+                </li>
+                
+            </div>
         </div>
+
+      
+
+  <script src="./assets/js/script.js"></script>
+
+
     </nav>
+
 
         <main role="main" class="container">
             <div class="content-introduction">
@@ -149,8 +204,8 @@
                                         <input type="hidden" name="type" value="show">
                                         <input type="hidden" name="personid" value="<?php echo $person['id']; ?>">
                                         <button type="submit" class="btn btn-panel panel-item">
-                                            <h5 class="panel-title"><?php echo $person['fullname']; ?></h5>
-                                            <p class="panel-author">BSN: <?php echo $person['citizenid']; ?></p>
+                                            <p class="panel-title"><?php echo $person['citizenid']; ?></p>
+                                            <img class="avatarprofilesel" width="110px" height="150px" src="<?php echo $person['avatar']; ?>" class="panel-author">
                                         </button>
                                     </form>
                                 <?php }?>
@@ -161,11 +216,11 @@
                 <?php if ($_SERVER['REQUEST_METHOD'] == "POST" && $_POST['type'] == "show" && !empty($selectedprofile)) { ?>
                     <div class="profile-panel">
                         <div class="profile-avatar">
-                            <img src="<?php echo $selectedprofile["avatar"]; ?>" alt="profile-pic" width="150" height="150" />
+                            <img class="avatarprofileselin" src="<?php echo $selectedprofile["avatar"]; ?>" alt="profile-pic" width="150" height="150" />
                         </div>
                         <div class="profile-information">
                             <p><strong>Naam:</strong><br /><?php echo $selectedprofile["fullname"]; ?></p>
-                            <p><strong>BSN:</strong><br /><?php echo $selectedprofile["citizenid"]; ?></p>
+                            <p><strong>Bloedgroep</strong><br /><?php echo $selectedprofile["bloedgroep"]; ?></p>
                             <p><strong>Vinger Patroon:</strong><br /><?php echo $selectedprofile["fingerprint"]; ?></p>
                             <p><strong>DNA Code:</strong><br /><?php echo $selectedprofile["dnacode"]; ?></p>
                             <p><strong>Notitie:</strong><br /><?php echo $selectedprofile["note"]; ?></p>

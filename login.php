@@ -18,11 +18,10 @@
                 $_SESSION['name'] = $row['name'];
                 $_SESSION['dienstnummer'] = $row['dienstnummer'];
                 $_SESSION['darkmode'] = $row['color'];
-
-
-
                 $_SESSION['rank'] = $row['rank'];
                 $_SESSION['profilepic'] = $row['profilepic'];
+                $_SESSION['fullname'] = $row['fullname'];
+
                 $_SESSION['id'] = $row['id'];
                 $_SESSION["personid"] = NULL;
                 $_SESSION["reportid"] = NULL;
@@ -54,6 +53,9 @@
         <link rel="icon" type="image/png" sizes="16x16" href="https://www.politie.nl/politie2018/assets/images/icons/favicon-16.png">
         <link rel="icon" type="image/png" sizes="32x32" href="https://www.politie.nl/politie2018/assets/images/icons/favicon-32.png">
         <link rel="icon" type="image/png" sizes="64x64" href="https://www.politie.nl/politie2018/assets/images/icons/favicon-64.png">
+        <link rel="stylesheet" href="assets/css/style.css">
+        <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+        
 
         <title>Ambulance Databank</title>
 
