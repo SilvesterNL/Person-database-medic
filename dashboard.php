@@ -62,7 +62,7 @@
 
                 <div class="text logo-text">
                     <span class="name"><?php echo $firstname . " " . substr($lastname, 0, 1); ?></span>
-                    <span class="profession"><?php echo $_SESSION["rank"]; ?></span>
+                    <span class="profession"><?php echo $_SESSION["rank"]; ?>.</span>
                 </div>
             </div>
 
