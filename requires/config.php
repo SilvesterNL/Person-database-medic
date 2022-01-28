@@ -5,10 +5,10 @@
     ini_set("max_execution_time",500);
 
 
-    $db_hosti = "localhost";
-    $db_useri = "root";
-    $db_passi = "";
-    $db_datai = "meos";
+    $db_hosti = "sql11.freemysqlhosting.net";
+    $db_useri = "sql11468819";
+    $db_passi = "EgaryhSnr9";
+    $db_datai = "sql11468819";
 
     $con = new mysqli($db_hosti,$db_useri,$db_passi,$db_datai);
 ?>
