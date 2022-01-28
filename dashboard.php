@@ -43,12 +43,12 @@
         <!-- Bootstrap core CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-        <!-- Custom styles for this template -->
+        <!-- Main -->
         <link href="assets/css/main.css" rel="stylesheet">   
     <!----======== CSS ======== -->
     <link rel="stylesheet" href="assets/css/style.css">
     
-    <!----===== Boxicons CSS ===== -->
+    <!----===== Menu css via cdn omdat veels te groot anders kaas CSS ===== -->
     <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
     
     </head>
@@ -57,7 +57,7 @@
         <header>
             <div class="image-text">
                 <span class="image">
-                    <img src="./assets/images/pv_logo.png" alt="">
+                    <img src="<?php echo $_SESSION["profilepic"]; ?>" alt="profile-pic" width="130" height="40" />
                 </span>
 
                 <div class="text logo-text">
@@ -150,7 +150,7 @@
                 
             </div>
         </div>
-<<<<<<< HEAD
+
         <ul class="sub-menu">
           <li><a class="link_name" href="#">Plugins</a></li>
           <li><a href="#">UI Face</a></li>
@@ -206,13 +206,12 @@
   </section>
 
   <script src="./assets/js/script.js"></script>
-=======
+
 
     </nav>
 
 
     <script src="./assets/js/script.js"></script>
->>>>>>> parent of dafdb1b (nieuwe nav man)
 
   <!-- Navbar xx -->
         <main role="main" class="container">
