@@ -162,7 +162,7 @@
   <!-- Navbar xx -->
         <main role="main" class="container">
             <div class="content-introduction">
-                <h3>Welkom bij de Ambulance Databank</h3>
+                <h3 class="htext">Welkom bij de Ambulance Databank</h3>
                 <p class="lead">Zoek personen en andere informatie op die je kunt gebruiken tijdens je dienst. <br />Ook kun je hier alle rapportages lezen, aanmaken, bijwerken en verwijderen. <br /><strong>Zorg ervoor dat alle documentatie goed wordt opgenomen en alle bewijzen erin worden meegenomen.</strong>
                 <br />
                 <br />
