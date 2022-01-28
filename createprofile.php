@@ -47,7 +47,7 @@
         <link rel="icon" type="image/png" sizes="32x32" href="https://www.politie.nl/politie2018/assets/images/icons/favicon-32.png">
         <link rel="icon" type="image/png" sizes="64x64" href="https://www.politie.nl/politie2018/assets/images/icons/favicon-64.png">
 
-        <title>Politie Databank</title>
+        <title>Ambulance Databank</title>
 
         <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/starter-template/">
 
@@ -124,7 +124,7 @@
                     <input type="hidden" name="type" value="realedit">
                     <input type="hidden" name="profileid" value="<?php echo $selectedprofile["id"]; ?>">
                     <div class="input-group mb-3">
-                        <input type="text" name="citizenid" class="form-control login-user" value="<?php echo $selectedprofile["citizenid"]; ?>" placeholder="bsn" required>
+                        <input type="text" name="citizenid" class="form-control login-user" value="<?php echo $selectedprofile["citizenid"]; ?>" placeholder="Burger Service Nummer (Niet verplicht)">
                     </div>
                     <div class="input-group mb-2">
                         <input type="text" name="fullname" class="form-control login-pass" value="<?php echo $selectedprofile["fullname"]; ?>" placeholder="volledige naam" required>
@@ -150,19 +150,28 @@
                 <form method="post">
                     <input type="hidden" name="type" value="create">
                     <div class="input-group mb-3">
-                        <input type="text" name="citizenid" class="form-control login-user" value="" placeholder="bsn" required>
+                        <input type="text" name="citizenid" class="form-control login-user" value="" placeholder="Burger Service Nummer (Niet verplicht)">
                     </div>
                     <div class="input-group mb-2">
                         <input type="text" name="fullname" class="form-control login-pass" value="" placeholder="volledige naam" required>
                     </div>
                     <div class="input-group mb-3">
-                        <input type="text" name="avatar" class="form-control login-user" value="" placeholder="profiel foto (imgur URL vb. https://i.imgur.com/zKDjdhe.png)">
+                        <input type="url" name="avatar" class="form-control login-user" value="" placeholder="profiel foto (imgur URL vb. https://i.imgur.com/zKDjdhe.png)">
                     </div>
                     <div class="input-group mb-3">
-                        <input type="text" name="fingerprint" class="form-control login-user" value="" placeholder="vinger patroon">
+                        <input type="date" name="fingerprint" class="form-control login-user" value="" placeholder="">
                     </div>
                     <div class="input-group mb-3">
-                        <input type="text" name="dnacode" class="form-control login-user" value="" placeholder="dna code">
+                    <input placeholder="Bloedgroep" value="" class="form-control login-user" list="dnacode" name="dnacode" required>
+                        <datalist id="dnacode">
+                            <option value="A+">
+                            <option value="A-">
+                            <option value="B+">
+                            <option value="AB+">
+                            <option value="AB-">
+                            <option value="O+">
+                            <option value="O-">
+                            <option value="Onbekend">
                     </div>
                     <div class="input-group mb-2">
                         <textarea name="note" class="form-control" value="" placeholder="notitie"></textarea>

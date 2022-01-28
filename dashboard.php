@@ -197,8 +197,7 @@
                                 <input type="hidden" name="type" value="show">
                                 <input type="hidden" name="personid" value="<?php echo $person['id']; ?>">
                                 <button type="submit" class="btn btn-panel panel-item" style="text-align:left!important;">
-                                    <h5 class="panel-title"><?php echo $person['fullname']; ?></h5>
-                                    <p class="panel-author">Volledige Naam: <?php echo $person['citizenid']; ?></p>
+                                    <p class="panel-author">Naam: <?php echo $person['fullname']; ?></p>
                                 </button>
                             </form>
                         <?php }?>

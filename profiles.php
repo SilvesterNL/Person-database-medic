@@ -46,7 +46,7 @@
         <link rel="icon" type="image/png" sizes="32x32" href="https://www.politie.nl/politie2018/assets/images/icons/favicon-32.png">
         <link rel="icon" type="image/png" sizes="64x64" href="https://www.politie.nl/politie2018/assets/images/icons/favicon-64.png">
 
-        <title>Politie Databank</title>
+        <title>Ambulance Databank</title>
 
         <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/starter-template/">
 
@@ -165,9 +165,9 @@
                         </div>
                         <div class="profile-information">
                             <p><strong>Naam:</strong><br /><?php echo $selectedprofile["fullname"]; ?></p>
-                            <p><strong>BSN (Mag leeg):</strong><br /><?php echo $selectedprofile["citizenid"]; ?></p>
-                            <p><strong>Vinger Patroon:</strong><br /><?php echo $selectedprofile["fingerprint"]; ?></p>
-                            <p><strong>DNA Code:</strong><br /><?php echo $selectedprofile["dnacode"]; ?></p>
+                            <p><strong>Burger Service Nummer (Mag leeg):</strong><br /><?php echo $selectedprofile["citizenid"]; ?></p>
+                            <p><strong>Geboortedatum:</strong><br /><?php echo $selectedprofile["fingerprint"]; ?></p>
+                            <p><strong>Bloedgroep:</strong><br /><?php echo $selectedprofile["dnacode"]; ?></p>
                             <p><strong>Notitie:</strong><br /><?php echo $selectedprofile["note"]; ?></p>
                         </div>
                     </div>
