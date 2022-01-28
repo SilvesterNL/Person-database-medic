@@ -125,6 +125,7 @@ textarea {
 
 .content-introduction .lead{
     font-size: 14px!important;
+    .text-color: white!important;
 }
 
 .dashboard-container {
