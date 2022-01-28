@@ -164,7 +164,7 @@
         <img src="<?php echo $_SESSION["profilepic"]; ?>" alt="Foto">
       </div>
       <div class="name-job">
-        <div class="profile_name"><?php echo $_SESSION["name"]; ?></div>
+        <div class="profile_name"><?php echo $firstname ; ?></div>
         <div class="job"><?php echo $_SESSION["rank"]; ?></div>
       </div>
       <a href="logout"><i href="logout" class='bx bx-log-out' ></i></a>
