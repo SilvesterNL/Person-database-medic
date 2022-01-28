@@ -140,7 +140,7 @@
                         <input type="text" name="avatar" class="form-control login-user" value="<?php echo $selectedprofile["avatar"]; ?>" placeholder="profiel foto (imgur URL vb. https://i.imgur.com/zKDjdhe.png)" required>
                     </div>
                     <div class="input-group mb-3">
-                        <input type="text" name="fingerprint" class="form-control login-user" value="<?php echo $selectedprofile["fingerprint"]; ?>" placeholder="Status">
+                        <input type="text" name="fingerprint" class="form-control login-user" value="<?php echo $selectedprofile["fingerprint"]; ?>" placeholder="Status (Vul een 1 in. Aangezien de functie nog niet werkt)">
                     </div>
                     <div class="input-group mb-3">
                         <input type="text" name="dnacode" class="form-control login-user" value="<?php echo $selectedprofile["dnacode"]; ?>" placeholder="Dienst Nummer">
@@ -166,7 +166,7 @@
                         <input type="text" name="avatar" class="form-control login-user" value="" placeholder="profiel foto (imgur URL vb. https://i.imgur.com/zKDjdhe.png)">
                     </div>
                     <div class="input-group mb-3">
-                        <input type="text" name="fingerprint" class="form-control login-user" value="" placeholder="Status">
+                        <input type="text" name="fingerprint" class="form-control login-user" value="" placeholder="Status (Vul 1 in aangezien de functie nog niet werkt)">
                     </div>
                     <div class="input-group mb-3">
                         <input type="text" name="dnacode" class="form-control login-user" value="" placeholder="Dienst Nummer">

@@ -16,6 +16,8 @@
                 $_SESSION['username'] = $_POST['username'];
                 $_SESSION['role'] = $row['role'];
                 $_SESSION['name'] = $row['name'];
+                $_SESSION['dienstnummer'] = $row['dienstnummer'];
+
 
                 $_SESSION['rank'] = $row['rank'];
                 $_SESSION['profilepic'] = $row['profilepic'];

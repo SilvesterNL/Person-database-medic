@@ -1,8 +1,15 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap');
 
+@keyframes loading {
+    from {transform: scale(0.9);}
+    to {transform: scale(0.9.9);}
+  }
+
 body {
     padding-top: 5rem;
     font-family: 'Roboto Mono', monospace!important;
+    animation-name: loading;
+    animation-duration: 0.4s;
 }
 
 ::-webkit-scrollbar
@@ -118,6 +125,7 @@ textarea {
 
 .content-introduction .lead{
     font-size: 14px!important;
+    .text-color: white!important;
 }
 
 .dashboard-container {
