@@ -65,7 +65,7 @@
                     <span class="profession"><?php echo $_SESSION["rank"]; ?></span>
                 </div>
             </div>
-
+            <i class='bx bx-chevron-right toggle'></i>
         </header>
 
         <div class="menu-bar">
