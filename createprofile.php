@@ -7,9 +7,9 @@
     if ($_SERVER['REQUEST_METHOD'] == "POST") {
         if ($_POST['type'] == "create") {
             $note = nl2br($_POST["note"]);
-            $insert = $con->query("INSERT INTO profiles (citizenid,fullname,avatar,fingerprint,dnacode,note,lastsearch) VALUES('".$con->real_escape_string($_POST['citizenid'])."','".$con->real_escape_string($_POST['fullname'])."','".$con->real_escape_string($_POST['avatar'])."','".$con->real_escape_string($_POST['fingerprint'])."','".$con->real_escape_string($_POST['dnacode'])."','".$con->real_escape_string($note)."',".time().")");
+            $insert = $con->query("INSERT INTO profiles (citizenid,fullname,avatar,fingerprint,dnacode,note,lastsearch) VALUES('".$con->real_escape_string($_POST['fingerprint'])."','".$con->real_escape_string($_POST['fullname'])."','".$con->real_escape_string($_POST['avatar'])."','".$con->real_escape_string($_POST['fingerprint'])."','".$con->real_escape_string($_POST['dnacode'])."','".$con->real_escape_string($note)."',".time().")");
             if ($insert) {
-                $last_id = $con->insert_id;
+                $last_id = explode(" ", $_SESSION["fullname"]);
                 $_SESSION["personid"] = $last_id;
                 $respone = true;
                 header('Location: profiles');

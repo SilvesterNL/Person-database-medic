@@ -18,7 +18,7 @@
             $lawids = array_map('intval', explode(',', $_POST["laws"]));
             array_shift($lawids);
             if (isset($_POST["citizenid"]) && $_POST["citizenid"] != "") {
-                $query = $con->query("SELECT * FROM profiles WHERE citizenid = '".$con->real_escape_string($_POST["citizenid"])."'");
+                $query = $con->query("SELECT * FROM profiles WHERE fullname = '".$con->real_escape_string($_POST["citizenid"])."'");
                 $profile = $query->fetch_assoc();
                 if ($profile != NULL) {
                     $profileid = $profile["id"];
@@ -37,9 +37,7 @@
                 }
             }
 
-            $con->query("INSERT INTO bills (citizenid,type,amount) VALUES ('".$con->real_escape_string($_POST["citizenid"])."','police','".$con->real_escape_string($totalprice)."')");
 
-            if ($insert) {
                 $last_id = $con->insert_id;
                 $_SESSION["reportid"] = $last_id;
                 $respone = true;
@@ -81,7 +79,7 @@
                 $response = false;
             }
         }
-    }
+    
     $name = explode(" ", $_SESSION["name"]);
     $firstname = $name[0];
     $last_word_start = strrpos($_SESSION["name"], ' ') + 1;
@@ -122,7 +120,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="description" content="">
         <meta name="author" content="">
-        <link rel="shortcut icon" href="https://cdn.silvesterhensen.nl/icon.ico" type="image/x-icon" />
+        <link rel="shortcut icon" href="https://www.politie.nl/politie2018/assets/images/icons/favicon.ico" type="image/x-icon" />
         <link rel="icon" type="image/png" sizes="16x16" href="https://www.politie.nl/politie2018/assets/images/icons/favicon-16.png">
         <link rel="icon" type="image/png" sizes="32x32" href="https://www.politie.nl/politie2018/assets/images/icons/favicon-32.png">
         <link rel="icon" type="image/png" sizes="64x64" href="https://www.politie.nl/politie2018/assets/images/icons/favicon-64.png">
@@ -325,7 +323,7 @@
                     <form method="post">
                         <input type="hidden" name="type" value="realedit">
                         <input type="hidden" name="author" class="form-control login-pass" value="<?php echo $_SESSION["name"]; ?>" placeholder="" required>
-                        <input type="hidden" name="reportid" class="form-control login-pass" value="<?php echo $selectedreport["id"]; ?>" placeholder="" required>
+                        <input type="hidden" name="reportid" class="form-control login-pass" value="<?php echo $_SESSION["fullname"]; ?>" placeholder="" required>
                         <div class="input-group mb-3">
                             <input type="text" name="title" class="form-control login-user" value="<?php echo $selectedreport["title"]; ?>" placeholder="titel" required>
                         </div>
@@ -359,7 +357,7 @@
                         </div>
                         <?php if ($_SERVER['REQUEST_METHOD'] == "POST" && $_POST['type'] == "createnew") { ?>
                             <div class="input-group mb-3">
-                                <input type="text" name="citizenid" class="form-control login-user" value="<?php echo $selectedprofile["citizenid"]; ?>" placeholder="koppel Volledige Naam (mag leeg)">
+                                <input type="text" name="citizenid" class="form-control login-user" value="<?php echo $selectedprofile["fullname"]; ?>" placeholder="koppel Volledige Naam (mag leeg)">
                             </div>
                         <?php } else {?>
                             <div class="input-group mb-3">
