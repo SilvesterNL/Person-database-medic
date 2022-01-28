@@ -6,7 +6,7 @@
     $respone = false;
     if ($_SERVER['REQUEST_METHOD'] == "POST") {
         if ($_POST['type'] == "search") {
-            $result = $con->query("SELECT * FROM profiles WHERE concat(' ', citizenid, ' ') LIKE '%".$con->real_escape_string($_POST['search'])."%' OR citizenid = '".$con->real_escape_string($_POST['search'])."' OR dnacode = '".$con->real_escape_string($_POST['search'])."' OR fingerprint = '".$con->real_escape_string($_POST['search'])."'");
+            $result = $con->query("SELECT * FROM profiles WHERE concat(' ', fullname, ' ') LIKE '%".$con->real_escape_string($_POST['search'])."%' OR citizenid = '".$con->real_escape_string($_POST['search'])."' OR dnacode = '".$con->real_escape_string($_POST['search'])."' OR fingerprint = '".$con->real_escape_string($_POST['search'])."'");
             $search_array = [];
             while ($data = $result->fetch_assoc()) { 
                 $search_array[] = $data;
@@ -41,131 +41,76 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="description" content="">
         <meta name="author" content="">
-        <link rel="shortcut icon" href="https://www.politie.nl/politie2018/assets/images/icons/favicon.ico" type="image/x-icon" />
+        <link rel="shortcut icon" href="https://cdn.silvesterhensen.nl/icon.ico" type="image/x-icon" />
         <link rel="icon" type="image/png" sizes="16x16" href="https://www.politie.nl/politie2018/assets/images/icons/favicon-16.png">
         <link rel="icon" type="image/png" sizes="32x32" href="https://www.politie.nl/politie2018/assets/images/icons/favicon-32.png">
         <link rel="icon" type="image/png" sizes="64x64" href="https://www.politie.nl/politie2018/assets/images/icons/favicon-64.png">
-        <link rel="stylesheet" href="assets/css/style.css">
-        <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
-        
 
-        <title>Ambulance Databank</title>
+        <title>Politie Databank</title>
 
         <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/starter-template/">
 
         <!-- Bootstrap core CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        
+
         <!-- Custom styles for this template -->
         <link href="assets/css/main.css" rel="stylesheet">
         <link href="assets/css/profiles.css" rel="stylesheet">
     </head>
     <body>
-    <nav class="sidebar close">
-        <header>
-            <div class="image-text">
-                <span class="image">
-                    <img src="<?php echo $_SESSION["profilepic"]; ?>" alt="profile-pic" width="130" height="40"/>
-                </span>
+    <nav class="navbar navbar-expand-lg fixed-top navbar-custom bg-custom">
+        <a class="nav-label" href="#">
+            <img src="assets/images/icon.png" width="22" height="22" alt="">
+            <span class="title">
+                               Welkom <?php echo $_SESSION["rank"] . " " . $firstname . " " . substr($lastname, 0, 1); ?>.
+                            </span>
+        </a>
+        <a class="nav-button" href="logout">
+            <button class="btn btn-outline-light btn-logout my-2 my-sm-0" type="button">LOG UIT</button>
+        </a>
 
-                <div class="text logo-text">
-                    <span class="name"><?php echo $firstname . " " . substr($lastname, 0, 1); ?>.</span>
-                    <span class="profession"><?php echo $_SESSION["rank"]; ?></span>
-                </div>
-            </div>
-            <i class='bx bx-chevron-right toggle'></i>
-        </header>
-
-        <div class="menu-bar">
-            <div class="menu">
-
-                <li class="search-box">
-                    <i class='bx bx-search icon'></i>
-                    <input type="text" placeholder="Search...">
-                </li>
-
-                <ul class="menu-links">
-                    <li class="nav-link">
-                        <a href="dashboard">
-                            <i class='bx bx-home-alt icon' ></i>
-                            <span class="text nav-text">Dashboard</span>
-                        </a>
-                    </li>
-
-                    <li class="nav-link opzoeken">
-                        <a href="profiles">
-                            <i class='bx bx-bar-chart-alt-2 icon' ></i>
-                            <span class="text nav-text">Opzoeken</span>
-                        </a>
-                    </li>
-                    
-                    <?php if ($_SESSION["rank"] == "Leiding") { ?>
-                    <li class="nav-link">
-                        <a href="Dropdown worden luuk">
-                            <i class='bx bx-bell icon'></i>
-                            <!-- <span class="text nav-text" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Leiding</span> -->
-                            <span class="text nav-text">Leiding</span>
-                            <!-- <ul class="dropdown">   -->
-
-                        </a>
-                    </li>
-                    <?php } ?>
-
-                    <li class="nav-link">
-                        <a href="#">
-                            <i class='bx bx-pie-chart-alt icon' ></i>
-                            <span class="text nav-text">Analytics</span>
-                        </a>
-                    </li>
-
-                    <li class="nav-link">
-                        <a href="#">
-                            <i class='bx bx-heart icon' ></i>
-                            <span class="text nav-text">Likes</span>
-                        </a>
-                    </li>
-
-                    <li class="nav-link">
-                        <a href="#">
-                            <i class='bx bx-wallet icon' ></i>
-                            <span class="text nav-text">Wallets</span>
-                        </a>
-                    </li>
-
-                </ul>
-            </div>
-
-            <div class="bottom-content">
-                <li class="">
-                    <a href="logout">
-                        <i class='bx bx-log-out icon' ></i>
-                        <span class="text nav-text">Log uit</span>
-                    </a>
-                </li>
-
-                <li class="mode">
-                    <div class="sun-moon">
-                        <i class='bx bx-moon icon moon'></i>
-                        <i class='bx bx-sun icon sun'></i>
-                    </div>
-                    <span class="mode-text text">Donker</span>
-
-                    <div class="toggle-switch">
-                        <span class="switch"></span>
-                    </div>
-                </li>
-                
-            </div>
+        <div class="navbar-dark">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
         </div>
 
-      
 
-  <script src="./assets/js/script.js"></script>
-
-
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="nav navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="dashboard">DASHBOARD</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        OPZOEKEN
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="profiles">PERSONEN</a>
+                        <a class="dropdown-item" href="reports">REPORTS</a>
+                        <!-- <a class="dropdown-item" href="#">VOERTUIGEN</a> -->
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="warrants">ARRESTATIEBEVELEN</a>
+                </li>
+                <?php if ($_SESSION["role"] == "admin") { ?>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            ADMIN
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="laws">STRAFFEN</a>
+                            <a class="dropdown-item" href="users">GEBRUIKERS</a>
+                        </div>
+                    </li>
+                <?php } ?>
+                <li class="nav-item">
+                    <a class="nav-link-report" href="createreport">NIEUW RAPPORT</a>
+                </li>
+            </ul>
+        </div>
     </nav>
-
 
         <main role="main" class="container">
             <div class="content-introduction">
@@ -204,8 +149,8 @@
                                         <input type="hidden" name="type" value="show">
                                         <input type="hidden" name="personid" value="<?php echo $person['id']; ?>">
                                         <button type="submit" class="btn btn-panel panel-item">
-                                            <p class="panel-title"><?php echo $person['citizenid']; ?></p>
-                                            <img class="avatarprofilesel" width="110px" height="150px" src="<?php echo $person['avatar']; ?>" class="panel-author">
+                                            <h5 class="panel-title"><?php echo $person['fullname']; ?></h5>
+                                            <p class="panel-author">BSN: <?php echo $person['citizenid']; ?></p>
                                         </button>
                                     </form>
                                 <?php }?>
@@ -216,11 +161,11 @@
                 <?php if ($_SERVER['REQUEST_METHOD'] == "POST" && $_POST['type'] == "show" && !empty($selectedprofile)) { ?>
                     <div class="profile-panel">
                         <div class="profile-avatar">
-                            <img class="avatarprofileselin" src="<?php echo $selectedprofile["avatar"]; ?>" alt="profile-pic" width="150" height="150" />
+                            <img src="<?php echo $selectedprofile["avatar"]; ?>" alt="profile-pic" width="150" height="150" />
                         </div>
                         <div class="profile-information">
                             <p><strong>Naam:</strong><br /><?php echo $selectedprofile["fullname"]; ?></p>
-                            <p><strong>Bloedgroep</strong><br /><?php echo $selectedprofile["bloedgroep"]; ?></p>
+                            <p><strong>BSN (Mag leeg):</strong><br /><?php echo $selectedprofile["citizenid"]; ?></p>
                             <p><strong>Vinger Patroon:</strong><br /><?php echo $selectedprofile["fingerprint"]; ?></p>
                             <p><strong>DNA Code:</strong><br /><?php echo $selectedprofile["dnacode"]; ?></p>
                             <p><strong>Notitie:</strong><br /><?php echo $selectedprofile["note"]; ?></p>
@@ -231,11 +176,12 @@
                             <form method="post" action="createreport" style="float:right; margin-left: 1vw;">
                                 <input type="hidden" name="type" value="createnew">
                                 <input type="hidden" name="profileid" value="<?php echo $selectedprofile['id']; ?>">
-                                <button type="submit" name="issabutn" style="" class="btn btn-success btn-md my-0 ml-sm-2">NIEUW RAPPORT</button>
+                                <button type="submit" name="issabutn" style="margin-left:0!important;" class="btn btn-success btn-md my-0 ml-sm-2">NIEUW RAPPORT</button>
                             </form>
                             <form method="post" action="createwarrant" style="float:right;">
                                 <input type="hidden" name="type" value="create">
                                 <input type="hidden" name="profileid" value="<?php echo $selectedprofile['id']; ?>">
+                                <button type="submit" name="issabutn" style="margin-left:0!important;" class="btn btn-danger btn-md my-0 ml-sm-2">NIEUW BEVEL</button>
                             </form>
                             <br />
                             <h5 class="panel-container-title">Laatste rapportages</h5>
