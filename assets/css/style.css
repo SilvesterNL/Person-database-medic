@@ -12,6 +12,7 @@
     --primary-color-light: #F6F5FF;
     --toggle-color: #DDD;
     --text-color: #707070;
+    --always-white: #FFF;
 
     --tran-03: all 0.2s ease;
     --tran-03: all 0.3s ease;
@@ -37,6 +38,9 @@ body.dark{
     color: var(--text-color);
 } 
 
+.name2 {
+    color: var(--always-white);
+}
 
  .sidebar{
     position: fixed;
