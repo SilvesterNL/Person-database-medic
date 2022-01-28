@@ -54,7 +54,7 @@
         <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
         
 
-        <title>Ambulance Databank</title>
+        <title>Politie Databank</title>
 
         <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/starter-template/">
 
@@ -171,7 +171,7 @@
                     <div class="report-show">
                         <h4 class="report-title"><?php echo $selectedreport["title"]; ?></h4>
                         <?php if ($profiledata != NULL) {?>
-                            <p>Betfreft: <?php echo $profiledata["fullname"]; ?> (<?php echo $profiledata["citizenid"]; ?>)
+                            <p>Betfreft: <?php echo $profiledata["fullname"]; ?>
                         <?php } ?>
                         <hr>
                         <strong>Reportage:</strong>
