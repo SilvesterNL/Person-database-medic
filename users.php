@@ -232,6 +232,10 @@
                         <div class="input-group mb-3">
                             <input type="text" name="profilepic" class="form-control login-nummer" value="" placeholder="Profielfoto (Bijvoorbeeld: Imgur.com/938472.jpg)" required>
                         </div>
+                        <div class="input-group mb-3">
+                            <input type="text" name="darkmode" class="form-control login-nummer" value="" placeholder="Theme: Gebruik alleen light of dark" required>
+                        </div>
+                        
 
                         <select class="form-control" style="margin-bottom:2vh;" name="rank" required>
                             <option value="Stagiair">Stagiair</option>
