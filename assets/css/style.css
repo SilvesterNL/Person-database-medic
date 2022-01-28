@@ -24,7 +24,6 @@ body{
     transition: var(--tran-05);
 }
 
-
 body.dark{
     --sidebar-color: #242526;
     --primary-color: #3a3b3c;
@@ -33,6 +32,11 @@ body.dark{
     --text-color: #ccc;
     background-color: #0d0d0d;
 }
+
+.h3text, .p1text, .panel-container-title, .nopersp2text {
+    color: var(--text-color);
+} 
+
 
  .sidebar{
     position: fixed;
