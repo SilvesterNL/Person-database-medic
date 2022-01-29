@@ -14,9 +14,10 @@ body {
 }
 
 
-.avatarprofilesel {
+
+
+.profilepicpro {
     border-radius: 20px;
-    float: right;
 }
 
 .avatarprofileselin {
@@ -137,7 +138,7 @@ textarea {
 
 .content-introduction .lead{
     font-size: 14px!important;
-    text-color: white!important;
+    color: white!important;
 }
 
 .kaas1 .lead {
@@ -215,6 +216,18 @@ textarea {
 
 .panel-item .panel-title {
     color: #ffffff!important;
+}
+
+.panel-titleprof {
+    color: #ffffff!important;
+    float: center;
+
+}
+
+.newrapportbtn {
+    float: left;
+    margin-left: -340px!important;
+    margin-top: 17px!important;
 }
 
 .panel-title {
@@ -425,6 +438,7 @@ textarea {
 .warrents-container {
     width: 100%;
 }
+
 
 .warrants-list {
     width: 35%;

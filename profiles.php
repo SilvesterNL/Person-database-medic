@@ -199,8 +199,8 @@
                                         <input type="hidden" name="type" value="show">
                                         <input type="hidden" name="personid" value="<?php echo $person['id']; ?>">
                                         <button type="submit" class="btn btn-panel panel-item">
-                                            <h5 class="panel-title"><?php echo $person['fullname']; ?></h5>
-                                            <img width="200" height="200" class="panel-author" src="<?php echo $person['avatar']; ?>">
+                                            <h5 class="panel-titleprof"><?php echo $person['fullname']; ?></h5>
+                                            <img width="200" height="200" class="panel-author profilepicpro" src="<?php echo $person['avatar']; ?>">
                                         </button>
                                     </form>
                                 <?php }?>
@@ -215,9 +215,8 @@
                         </div>
                         <div class="profile-information">
                             <p><strong>Naam:</strong><br /><?php echo $selectedprofile["fullname"]; ?></p>
-                            <p><strong>BSN:</strong><br /><?php echo $selectedprofile["citizenid"]; ?></p>
-                            <p><strong>Vinger Patroon:</strong><br /><?php echo $selectedprofile["fingerprint"]; ?></p>
-                            <p><strong>DNA Code:</strong><br /><?php echo $selectedprofile["dnacode"]; ?></p>
+                            <p><strong>Geboortedatum:</strong><br /><?php echo $selectedprofile["fingerprint"]; ?></p>
+                            <p><strong>Bloedgroep:</strong><br /><?php echo $selectedprofile["dnacode"]; ?></p>
                             <p><strong>Notitie:</strong><br /><?php echo $selectedprofile["note"]; ?></p>
                         </div>
                     </div>
@@ -226,12 +225,11 @@
                             <form method="post" action="createreport" style="float:right; margin-left: 1vw;">
                                 <input type="hidden" name="type" value="createnew">
                                 <input type="hidden" name="profileid" value="<?php echo $selectedprofile['id']; ?>">
-                                <button type="submit" name="issabutn" style="margin-left:0!important;" class="btn btn-success btn-md my-0 ml-sm-2">NIEUW RAPPORT</button>
+                                <button type="submit" name="issabutn"  class="btn btn-success btn-md my-0 ml-sm-2 newrapportbtn">NIEUW RAPPORT</button>
                             </form>
                             <form method="post" action="createwarrant" style="float:right;">
                                 <input type="hidden" name="type" value="create">
                                 <input type="hidden" name="profileid" value="<?php echo $selectedprofile['id']; ?>">
-                                <button type="submit" name="issabutn" style="margin-left:0!important;" class="btn btn-danger btn-md my-0 ml-sm-2">NIEUW BEVEL</button>
                             </form>
                             <br />
                             <h5 class="panel-container-title">Laatste rapportages</h5>
