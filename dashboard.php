@@ -111,6 +111,14 @@
                         </a>
                     </li>
 
+                    
+                    <li class="nav-link">
+                        <a href="ambulanciers">
+                            <i class='bx bx-heart icon' ></i>
+                            <span class="text nav-text">Nieuw Persoon</span>
+                        </a>
+                    </li>
+
                     <li class="nav-link">
                     <span class="text nav-text"></span>
                     </li>
@@ -136,7 +144,7 @@
                     
                     <li class="nav-link">
                         <a href="createambulancier">
-                            <i class='bx bx-wallet icon' ></i>
+                            <i class='bx bx-bookmarks' ></i>
                             <span class="text nav-text">Administratie</span>
                         </a>
                     </li>
@@ -147,7 +155,7 @@
             <div class="bottom-content">
                 <li class="">
                     <a href="logout">
-                        <i class='bx bx-log-out icon' ></i>
+                        <i class='bx bx-log-out icon' ><img src=""></i>
                         <span class="text nav-text">Log uit</span>
                     </a>
                 </li>
