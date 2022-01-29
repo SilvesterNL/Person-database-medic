@@ -323,17 +323,17 @@
                     <form method="post">
                         <input type="hidden" name="type" value="realedit">
                         <input type="hidden" name="author" class="form-control login-pass" value="<?php echo $_SESSION["name"]; ?>" placeholder="" required>
-                        <input type="hidden" name="reportid" class="form-control login-pass" value="<?php echo $_SESSION["fullname"]; ?>" placeholder="" required>
+                        <input type="hidden" name="reportid" class="form-control login-pass" value="<?php echo $selectedreport["id"]; ?>" placeholder="" required>
                         <div class="input-group mb-3">
                             <input type="text" name="title" class="form-control login-user" value="<?php echo $selectedreport["title"]; ?>" placeholder="titel" required>
                         </div>
                         <?php if (!empty($profiledata)) { ?>
                             <div class="input-group mb-3">
-                                <input type="text" name="citizenid" class="form-control login-user" value="<?php echo $profiledata["citizenid"]; ?>" placeholder="koppel Volledige Naam (mag leeg)">
+                                <input type="text" name="citizenid" class="form-control login-user" value="<?php echo $profiledata["citizenid"]; ?>" placeholder="koppel bsn (mag leeg)">
                             </div>
                         <?php } else {?>
                             <div class="input-group mb-3">
-                                <input type="text" name="citizenid" class="form-control login-user" value="" placeholder="koppel Volledige Naam (mag leeg)">
+                                <input type="text" name="citizenid" class="form-control login-user" value="" placeholder="koppel bsn (mag leeg)">
                             </div>
                         <?php } ?>
                         <?php $report = str_replace( "<br />", '', $selectedreport["report"]); ?>

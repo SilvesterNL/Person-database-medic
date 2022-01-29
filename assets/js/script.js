@@ -5,7 +5,6 @@ const body = document.querySelector('body'),
       modeSwitch = body.querySelector(".toggle-switch"),
       modeText = body.querySelector(".mode-text");
 
-      sidebar.classList.toggle("close");
 toggle.addEventListener("click" , () =>{
     sidebar.classList.toggle("close");
 })
@@ -25,10 +24,15 @@ searchBtn.addEventListener("click" , () =>{
 modeSwitch.addEventListener("click" , () =>{
     body.classList.toggle("dark");
     
+    
+    
+    
     if(body.classList.contains("dark")){
         modeText.innerText = "Licht";
+        document.cookie = "isDark=true";
     }else{
         modeText.innerText = "Donker";
+        document.cookie = "isDark=false";
         
     }
 });
