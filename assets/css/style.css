@@ -71,7 +71,7 @@ body.dark{
     border-radius: 6px;
 }
 
-.sidebar .icon, .bx-bx-wallet-icon{
+.sidebar .icon{
     min-width: 60px;
     border-radius: 6px;
     height: 100%;
@@ -156,6 +156,10 @@ body.dark .sidebar header .toggle{
 
 .sidebar.close .toggle{
     transform: translateY(-50%) rotate(0deg);
+}
+
+#kanker {
+    left: 1000px;
 }
 
 .sidebar .menu{
