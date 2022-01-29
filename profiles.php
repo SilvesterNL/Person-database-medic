@@ -6,7 +6,7 @@
     $respone = false;
     if ($_SERVER['REQUEST_METHOD'] == "POST") {
         if ($_POST['type'] == "search") {
-            $result = $con->query("SELECT * FROM profiles WHERE concat(' ', fullname, ' ') LIKE '%".$con->real_escape_string($_POST['search'])."%' OR fullname = '".$con->real_escape_string($_POST['search'])."' OR dnacode = '".$con->real_escape_string($_POST['search'])."' OR fingerprint = '".$con->real_escape_string($_POST['search'])."'");
+            $result = $con->query("SELECT * FROM profiles WHERE concat(' ', fullname, ' ') LIKE '%".$con->real_escape_string($_POST['search'])."%' OR citizenid = '".$con->real_escape_string($_POST['search'])."' OR dnacode = '".$con->real_escape_string($_POST['search'])."' OR fingerprint = '".$con->real_escape_string($_POST['search'])."'");
             $search_array = [];
             while ($data = $result->fetch_assoc()) { 
                 $search_array[] = $data;
@@ -41,12 +41,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="description" content="">
         <meta name="author" content="">
-        <link rel="shortcut icon" href="https://cdn.silvesterhensen.nl/icon.ico" type="image/x-icon" />
+        <link rel="shortcut icon" href="https://www.politie.nl/politie2018/assets/images/icons/favicon.ico" type="image/x-icon" />
         <link rel="icon" type="image/png" sizes="16x16" href="https://www.politie.nl/politie2018/assets/images/icons/favicon-16.png">
         <link rel="icon" type="image/png" sizes="32x32" href="https://www.politie.nl/politie2018/assets/images/icons/favicon-32.png">
         <link rel="icon" type="image/png" sizes="64x64" href="https://www.politie.nl/politie2018/assets/images/icons/favicon-64.png">
 
-        <title>Ambulance Databank</title>
+        <title>Politie Databank</title>
 
         <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/starter-template/">
 
@@ -150,7 +150,7 @@
                                         <input type="hidden" name="personid" value="<?php echo $person['id']; ?>">
                                         <button type="submit" class="btn btn-panel panel-item">
                                             <h5 class="panel-title"><?php echo $person['fullname']; ?></h5>
-                                            <p class="panel-author">BSN: <?php echo $person['citizenid']; ?></p>
+                                            <img width="200" height="200" class="panel-author" src="<?php echo $person['avatar']; ?>">
                                         </button>
                                     </form>
                                 <?php }?>
@@ -165,9 +165,9 @@
                         </div>
                         <div class="profile-information">
                             <p><strong>Naam:</strong><br /><?php echo $selectedprofile["fullname"]; ?></p>
-                            <p><strong>Burger Service Nummer (Mag leeg):</strong><br /><?php echo $selectedprofile["citizenid"]; ?></p>
-                            <p><strong>Geboortedatum:</strong><br /><?php echo $selectedprofile["fingerprint"]; ?></p>
-                            <p><strong>Bloedgroep:</strong><br /><?php echo $selectedprofile["dnacode"]; ?></p>
+                            <p><strong>BSN:</strong><br /><?php echo $selectedprofile["citizenid"]; ?></p>
+                            <p><strong>Vinger Patroon:</strong><br /><?php echo $selectedprofile["fingerprint"]; ?></p>
+                            <p><strong>DNA Code:</strong><br /><?php echo $selectedprofile["dnacode"]; ?></p>
                             <p><strong>Notitie:</strong><br /><?php echo $selectedprofile["note"]; ?></p>
                         </div>
                     </div>
