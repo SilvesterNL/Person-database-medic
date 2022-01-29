@@ -88,26 +88,27 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="profiles">PERSONEN</a>
-                        <a class="dropdown-item" href="reports">REPORTS</a>
+                        <a class="dropdown-item" href="reports">RAPPORTEN</a>
                         <!-- <a class="dropdown-item" href="#">VOERTUIGEN</a> -->
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="warrants">ARRESTATIEBEVELEN</a>
                 </li>
-                <?php if ($_SESSION["role"] == "admin") { ?>
+                <?php if ($_SESSION["rank"] == "Leiding") { ?>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            ADMIN
+                            LEIDING
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="laws">STRAFFEN</a>
-                            <a class="dropdown-item" href="users">GEBRUIKERS</a>
+                            <a class="dropdown-item" href="users">AMBULANCIERS</a>
+                            <a class="dropdown-item" href="createambulancier">NIEUWE AMBULANCIER</a>
+                            <a class="dropdown-item" href="createambulancier">ADMINISTRATIE</a>
                         </div>
+                        
                     </li>
-                <?php } ?>
+                    <?php } ?>
                 <li class="nav-item">
-                    <a class="nav-link-report" href="createreport">NIEUW RAPPORT</a>
+                    <a class="nav-link-report" href="createprofile">NIEUW PERSOON</a>
                 </li>
             </ul>
         </div>

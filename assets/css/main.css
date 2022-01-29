@@ -235,8 +235,7 @@ textarea {
 }
 
 .newrapportbtn {
-    float: left;
-    margin-left: -340px!important;
+    float: left!important;
     margin-top: 17px!important;
 }
 
