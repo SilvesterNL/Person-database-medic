@@ -176,8 +176,7 @@
                                 <input type="hidden" name="type" value="show">
                                 <input type="hidden" name="reportid" value="<?php echo $report['id']; ?>">
                                 <button type="submit" class="btn btn-panel panel-item" style="text-align:left!important;">
-                                    <h5 class="panel-title">#<?php echo $report['id']; ?> <?php echo $report['title']; ?></h5>
-                                    <p class="panel-author">door: <?php echo $report['author']; ?></p>
+                                    <p class="panel-title">#<?php echo $report['title']; ?></p>
                                 </button>
                             </form>
                         <?php }?>
