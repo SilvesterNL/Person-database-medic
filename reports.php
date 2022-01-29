@@ -134,7 +134,6 @@
                         <form method="post" action="createreport">
                             <input type="hidden" name="type" value="edit">
                             <input type="hidden" name="reportid" value="<?php echo $selectedreport['id']; ?>">
-                            <button type="submit" name="issabutn" class="btn btn-pol btn-md my-0 ml-sm-2">PAS REPORT AAN</button>
                         </form>
                     <?php } ?>
                     <br /><br />

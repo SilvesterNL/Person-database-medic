@@ -138,7 +138,7 @@ textarea {
 
 .content-introduction .lead{
     font-size: 14px!important;
-    color: white!important;
+    color: rgb(0, 0, 0)!important;
 }
 
 .kaas1 .lead {

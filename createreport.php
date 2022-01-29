@@ -120,7 +120,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="description" content="">
         <meta name="author" content="">
-        <link rel="shortcut icon" href="https://www.politie.nl/politie2018/assets/images/icons/favicon.ico" type="image/x-icon" />
+        <link rel="shortcut icon" href="https://cdn.silvesterhensen.nl/icon.ico" type="image/x-icon" />
         <link rel="icon" type="image/png" sizes="16x16" href="https://www.politie.nl/politie2018/assets/images/icons/favicon-16.png">
         <link rel="icon" type="image/png" sizes="32x32" href="https://www.politie.nl/politie2018/assets/images/icons/favicon-32.png">
         <link rel="icon" type="image/png" sizes="64x64" href="https://www.politie.nl/politie2018/assets/images/icons/favicon-64.png">
@@ -315,7 +315,7 @@
         <main role="main" class="container">
             <div class="content-introduction">
                 <h3>Report Maken</h3>
-                <p class="lead">Hier kun je een nieuw reportage aanmaken.<br />Je kunt een Volledige Naam koppelen aan een reportage (Hiervoor MOET er een profiel bestaan) of je kan het leeg laten en later toevoegen.<br />Je kunt ook straffen toevoegen (wanneer nodig) onderaan de pagina.</br>Om een straf weg te halen kun je klikken op dezelfde straf bij "Geselecteerde Straffen"</p>
+                <p class="lead">Hier kun je een nieuw reportage aanmaken.<br />Je kunt een Volledige Naam koppelen aan een reportage (Hiervoor MOET er een profiel bestaan) of je kan het leeg laten en later toevoegen.<br /><strong>Let op alles wat hier word geschreven kan later niet worden aangepast om corruptie te verkomen!</strong></p>
             </div>
             <div class="createreport-container">
                 <div class="createreport-left">
@@ -424,9 +424,9 @@
                     <br>Ik, van team Ambulance <strong>${name}</strong> met de functie <strong>${rank}</strong>, maak het volgende rapport.</p>
                 <p >Op <strong>${date}</strong>, omstreeks <span style="color: rgb(235, 107, 86);">TIJD</span> uur, bevond ik mij in dienst van de ambulance. En heb het volgende geconstateerd&nbsp;</p>
                 <p style="line-height: 1.2;">BEVINDINGEN</p>
-                <p >Locatie van gebeurtenis:
-                    <br>Staat van persoon bij aantreffen:
-                    <br>Welke handelingen zijn gedaan door <strong>${name}</strong> met de functie <strong>${rank}</strong>:
+                <p >Locatie van gebeurtenis:</br>
+                    <br>Staat van persoon bij aantreffen:</br>
+                    <br>Welke handelingen zijn gedaan door <strong>${name}</strong> met de functie <strong>${rank}</strong>:</br></br></br>
                     <br>Zijn er nog handelingen gebeurd door een andere ambulancier:</p>
                 <p>
                     <br>
