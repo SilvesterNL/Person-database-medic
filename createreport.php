@@ -492,7 +492,8 @@
                 <p dir="ltr" style="line-height: 1.38; text-align: left; margin-top: 0pt; margin-bottom: 0pt;">
                     <br>
                 </p><p>Deze persoon heeft na het vragen van ${name} met dienstnummer <?php echo $_SESSION["dienstnummer"]; ?> een pleister ontvangen. Er waren verder geen gecompliceerde acties verreist. 
-</p> <br /> <p>Gegevens van slachtoffer:</p> <br />`
+</p> <br /> <p>Gegevens van slachtoffer:</p> <br /> <p>Volledige naam: <?php echo $selectedprofile["fullname"]; ?></p>
+<p>Bloedgroep: <?php echo $selectedprofile["dnacode"]; ?></p><p>Geboortedatum: <?php echo $selectedprofile["fingerprint"]; ?> </p>`
                 ,
                 `<p dir="ltr" style="line-height: 1.38; text-align: center; margin-top: 0pt; margin-bottom: 0pt;"><img src="./assets/images/pv_logo.png" style="width: 205px; padding-top: 50px;" class="fr-fic fr-dii"></p>
                 <p dir="ltr" style="line-height: 1.38; text-align: left; margin-top: 0pt; margin-bottom: 0pt;"><span style="font-size: 14px; "><strong>EENHEID QUACKCITY</strong></span></p>

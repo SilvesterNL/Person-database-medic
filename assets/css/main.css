@@ -218,6 +218,16 @@ textarea {
     color: #ffffff!important;
 }
 
+.panelprof {
+    font-size: 15px!important;
+    float: left;
+}
+
+.panelaupro {
+    font-size: 15px!important;
+    float: right;
+}
+
 .panel-titleprof {
     color: #ffffff!important;
     float: center;
@@ -437,6 +447,10 @@ textarea {
 
 .warrents-container {
     width: 100%;
+}
+
+.container {
+    width: 80%;
 }
 
 

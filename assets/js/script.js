@@ -10,6 +10,14 @@ toggle.addEventListener("click" , () =>{
     sidebar.classList.toggle("close");
 })
 
+window.addEventListener("resize", function() {
+    if (window.matchMedia("(min-width: 1635px)").matches) {
+        sidebar.classList.remove("close");
+    } else {
+        sidebar.classList.add("close");
+    }
+  })
+
 searchBtn.addEventListener("click" , () =>{
     sidebar.classList.remove("close");
 })
