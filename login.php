@@ -49,41 +49,86 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="description" content="">
         <meta name="author" content="">
+        <!-- <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
         <link rel="shortcut icon" href="https://cdn.silvesterhensen.nl/icon.ico" type="image/x-icon" />
         <link rel="icon" type="image/png" sizes="16x16" href="https://www.politie.nl/politie2018/assets/images/icons/favicon-16.png">
         <link rel="icon" type="image/png" sizes="32x32" href="https://www.politie.nl/politie2018/assets/images/icons/favicon-32.png">
         <link rel="icon" type="image/png" sizes="64x64" href="https://www.politie.nl/politie2018/assets/images/icons/favicon-64.png">
-        <link rel="stylesheet" href="assets/css/style.css">
-        <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
-        
-
-        <title>Ambulance Databank</title>
-
         <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/starter-template/">
-
-        <!-- Bootstrap core CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
-        <!-- Custom styles for this template -->
         <link href="assets/css/main.css" rel="stylesheet">
         <link href="assets/css/login.css" rel="stylesheet">
+        <link href="assets/css/style.css" rel="stylesheet">
+
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+    
+        <title>Ambulance Databank</title>
     </head>
     <body>
-        <nav class="navbar fixed-top navbar-expand-lg navbar-custom bg-custom">
-            <div class="collapse navbar-collapse" id="navbarsExampleDefault">
 
-                <!-- Left menu -->
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a class="nav-label" href="#">
-                            <img src="assets/images/icon.png" width="22" height="22" alt="">
-                            <span class="title">AMBULANCE FORTIS </span>
-                            <span class="title">Log in om verder te gaan..</span>
+    <nav class="sidebar close">
+        <header>
+            <div class="image-text">
+                </span>
+
+                <div class="text logo-text">
+                    <span class="name2">Codinglab</span>
+                    <span class="name2">Web developer</span>
+                </div>
+            </div>
+
+        </header>
+
+        <div class="menu-bar">
+            <div class="menu">
+
+                    <li class="nav-link">
+
                         </a>
                     </li>
+
+                    <li class="nav-link">
+
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+
+                        </a>
+                    </li>
+
                 </ul>
             </div>
-        </nav>
+
+            <div class="bottom-content">
+                <li class="">
+                    </a>
+                </li>
+
+                <li class="mode">
+                    <div class="sun-moon">
+                        <i class='bx bx-moon icon moon'></i>
+                        <i class='bx bx-sun icon sun'></i>
+                    </div>
+                    <span class="mode-text text">Donker</span>
+
+                    <div class="toggle-switch">
+                        <span class="switch"></span>
+                    </div>
+                </li>
+                
+            </div>
+        </div>
+
+    </nav>
+        
+
+  <script src="./assets/js/script.js"></script>
+
+
+    </nav>
 
         <main role="main" class="container">
             <div class="login-container">
