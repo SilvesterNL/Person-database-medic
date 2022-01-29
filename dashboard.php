@@ -36,6 +36,7 @@
         <link rel="icon" type="image/png" sizes="32x32" href="https://www.politie.nl/politie2018/assets/images/icons/favicon-32.png">
         <link rel="icon" type="image/png" sizes="64x64" href="https://www.politie.nl/politie2018/assets/images/icons/favicon-64.png">
         <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="assets/css/dropdown.css">
         <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
         <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
 
@@ -98,11 +99,7 @@
                     <li class="nav-link">
                         <a href="Dropdown worden luuk">
                             <i class='bx bx-bell icon'></i>
-                            <!-- <span class="text nav-text" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Leiding</span> -->
                             <span class="text nav-text">Leiding</span>
-                            <!-- <ul class="dropdown">   -->
-
                         </a>
                     </li>
                     <?php } ?>
