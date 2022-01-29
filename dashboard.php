@@ -105,6 +105,13 @@
                     <?php } ?>
 
                     <li class="nav-link">
+                        <a href="ambulanciers">
+                            <i class='bx bx-heart icon' ></i>
+                            <span class="text nav-text">Ambulanciers</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
                     <span class="text nav-text"></span>
                     </li>
 
@@ -114,16 +121,16 @@
                     </li>
 
                     <li class="nav-link">
-                        <a href="ambulanciers">
+                        <a href="users">
                             <i class='bx bx-heart icon' ></i>
-                            <span class="text nav-text">Ambulanciers</span>
+                            <span class="text nav-text">Users</span>
                         </a>
                     </li>
 
                     <li class="nav-link">
                         <a href="users">
                             <i class='bx bx-wallet icon' ></i>
-                            <span class="text nav-text">Nieuwe Ambula!</span>
+                            <span class="text nav-text">Nieuwe Ambu</span>
                         </a>
                     </li>
                     
