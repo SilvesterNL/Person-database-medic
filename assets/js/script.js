@@ -10,13 +10,16 @@ toggle.addEventListener("click" , () =>{
     sidebar.classList.toggle("close");
 })
 
-window.addEventListener("resize", function() {
+setInterval(function(){ 
+    //this code runs every second 
+
     if (window.matchMedia("(min-width: 1635px)").matches) {
         sidebar.classList.remove("close");
     } else {
         sidebar.classList.add("close");
     }
   })
+, 1000;
 
 searchBtn.addEventListener("click" , () =>{
     sidebar.classList.remove("close");
