@@ -424,7 +424,7 @@
                     <br>Ik, van team Ambulance <strong>${name}</strong> met de functie <strong>${rank}</strong>, maak het volgende rapport.</p>
                 <p >Op <strong>${date}</strong>, omstreeks <span style="color: rgb(235, 107, 86);">TIJD</span> uur, bevond ik mij in dienst van de ambulance. En heb het volgende geconstateerd&nbsp;</p>
                 <p style="line-height: 1.2;">BEVINDINGEN</p>
-                <p >Locatie van gebeurtenis:</br>
+                <p >Locatie van gebeurtenis:
                     <br>Staat van persoon bij aantreffen:</br>
                     <br>Welke handelingen zijn gedaan door <strong>${name}</strong> met de functie <strong>${rank}</strong>:</br></br></br>
                     <br>Zijn er nog handelingen gebeurd door een andere ambulancier:</p>

@@ -125,7 +125,7 @@
                     <input type="hidden" name="type" value="realedit">
                     <input type="hidden" name="profileid" value="<?php echo $selectedprofile["id"]; ?>">
                     <div class="input-group mb-3">
-                        <input type="text" name="citizenid" class="form-control login-user" value="<?php echo $selectedprofile["citizenid"]; ?>" placeholder="bsn" required>
+
                     </div>
                     <div class="input-group mb-2">
                         <input type="text" name="fullname" class="form-control login-pass" value="<?php echo $selectedprofile["fullname"]; ?>" placeholder="volledige naam" required>
