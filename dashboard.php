@@ -110,7 +110,7 @@
 
                     
                     <li class="nav-link">
-                    <span class="text nav-text">Leiding</span>
+                    <span class="text nav-text leidingcenter">Leiding</span>
                     </li>
 
                     <li class="nav-link">
