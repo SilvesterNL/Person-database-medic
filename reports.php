@@ -67,137 +67,106 @@
         <link href="assets/css/laws.css" rel="stylesheet">
     </head>
     <body>
-    <nav class="navbar navbar-expand-lg fixed-top navbar-custom bg-custom">
-        <a class="nav-label" href="#">
-            <img src="assets/images/icon.png" width="22" height="22" alt="">
-            <span class="title">
-                               Welkom <?php echo $_SESSION["rank"] . " " . $firstname . " " . substr($lastname, 0, 1); ?>.
-                            </span>
-        </a>
-        <a class="nav-button" href="logout">
-            <button class="btn btn-outline-light btn-logout my-2 my-sm-0" type="button">LOG UIT</button>
-        </a>
+    <nav class="sidebar close">
+        <header>
+            <div class="image-text">
+                <span class="image">
+                    <img src="<?php echo $_SESSION["profilepic"]; ?>" alt="profile-pic" width="130" height="40"/>
+                </span>
 
-        <div class="navbar-dark">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-        </div>
-
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="nav navbar-nav ml-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="dashboard">DASHBOARD</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        OPZOEKEN
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="profiles">PERSONEN</a>
-                        <a class="dropdown-item" href="reports">REPORTS</a>
-                        <!-- <a class="dropdown-item" href="#">VOERTUIGEN</a> -->
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="warrants">ARRESTATIEBEVELEN</a>
-                </li>
-                <?php if ($_SESSION["role"] == "admin") { ?>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            ADMIN
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="laws">STRAFFEN</a>
-                            <a class="dropdown-item" href="users">GEBRUIKERS</a>
-                        </div>
-                    </li>
-                <?php } ?>
-                <li class="nav-item">
-                    <a class="nav-link-report" href="createreport">NIEUW RAPPORT</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-
-        <main role="main" class="container">
-            <div class="content-introduction">
-                <h3>Reports</h3>
-                <p class="lead">Hier kun je reportages opzoeken, lezen en bijwerken. <br/> Gelieve niet een report bij te werken van iemand anders mits je toestemming heb gekregen!</p>
-            </div>
-            <div class="profile-container">
-                <div class="profile-search">
-                    <?php if ($_SERVER['REQUEST_METHOD'] != "POST" || $_SERVER['REQUEST_METHOD'] == "POST" && $_POST['type'] != "show") { ?>
-                        <a href="createreport" class="btn btn-pol btn-md my-0 ml-sm-2">MAAK NIEUW REPORTAGE</a>
-                    <?php } else { ?>
-                        <form method="post" action="createreport">
-                            <input type="hidden" name="type" value="edit">
-                            <input type="hidden" name="reportid" value="<?php echo $selectedreport['id']; ?>">
-                        </form>
-                    <?php } ?>
-                    <br /><br />
-                    <form method="post" class="form-inline ml-auto">
-                        <input type="hidden" name="type" value="search">
-                        <div class="md-form my-0">
-                            <input class="form-control" name="search" type="text" placeholder="Zoek een report.." aria-label="Search">
-                        </div>
-                        <button type="submit" name="issabutn" class="btn btn-pol btn-md my-0 ml-sm-2">ZOEK</button>
-                    </form>
+                <div class="text logo-text">
+                    <span class="name"><?php echo $firstname . " " . substr($lastname, 0, 1); ?>.</span>
+                    <span class="profession"><?php echo $_SESSION["rank"]; ?></span>
                 </div>
-                <?php if ($_SERVER['REQUEST_METHOD'] == "POST" && $_POST['type'] == "search") { ?>
-                    <div class="search-panel">
-                        <h5 class="panel-container-title">Gevonden reports..</h5>
-                        <div class="panel-list">
-                            <?php if (empty($search_array)) { ?>
-                                <p>Geen reportages gevonden..</p>
-                            <?php } else { ?>
-                                <?php foreach($search_array as $report) {?>
-                                    <form method="post">
-                                        <input type="hidden" name="type" value="show">
-                                        <input type="hidden" name="reportid" value="<?php echo $report['id']; ?>">
-                                        <button type="submit" class="btn btn-panel panel-item">
-                                            <h5 class="panel-title">#<?php echo $report['id']; ?> <?php echo $report['title']; ?></h5>
-                                            <p class="panel-author">door: <?php echo $report['author']; ?></p>
-                                        </button>
-                                    </form>
-                                <?php }?>
-                            <?php } ?>
-                        </div>
-                    </div>
-                <?php } ?>
-                <?php if ($_SERVER['REQUEST_METHOD'] == "POST" && $_POST['type'] == "show" && !empty($selectedreport)) { ?>
-                    <div class="report-show">
-                        <h4 class="report-title"><?php echo $selectedreport["title"]; ?></h4>
-                        <?php if ($profiledata != NULL) {?>
-                            <p>Betfreft: <?php echo $profiledata["fullname"]; ?>
-                        <?php } ?>
-                        <hr>
-                        <strong>Reportage:</strong>
-                        <p class="report-description"><?php echo $selectedreport["report"]; ?></p>
-                        <p class="report-author"><i>Geschreven door: <?php echo $selectedreport["author"]; ?></i></p>
-                    </div>
-                    <div class="laws-added">
-                        <?php if ($lawdata != NULL) {?>
-                            <h5 class="report-laws-title">Voorgelegde Straffen:</h5>
-                            <?php foreach($lawdata as $law){?>
-                                <div class="law-item" data-toggle="tooltip" data-html="true" title="<?php echo $law['description']; ?>">
-                                    <h5 class="lawlist-title"><?php echo $law['name']; ?></h5>
-                                    <p class="lawlist-fine">Boete: €<?php echo $law['fine']; ?></p>
-                                    <p class="lawlist-months">Cel: <?php echo $law['months']; ?> maanden</p>
-                                </div>
-                            <?php }?>
-                        <?php } ?>
-                    </div>
-                <?php } ?>
             </div>
-        </main><!-- /.container -->
+            <i class='bx bx-chevron-right toggle'></i>
+        </header>
 
-        <!-- Optional JavaScript -->
-        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-        <script src="assets/js/main.js"></script>
+        <div class="menu-bar">
+            <div class="menu">
+
+                <li class="search-box">
+                    <i class='bx bx-search icon'></i>
+                    <input type="text" placeholder="Search...">
+                </li>
+
+                <ul class="menu-links">
+                    <li class="nav-link">
+                        <a href="dashboard">
+                            <i class='bx bx-home-alt icon' ></i>
+                            <span class="text nav-text">Dashboard</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link opzoeken">
+                        <a href="profiles">
+                            <i class='bx bx-bar-chart-alt-2 icon' ></i>
+                            <span class="text nav-text">Opzoeken</span>
+                        </a>
+                    </li>
+                    
+                    <?php if ($_SESSION["rank"] == "Leiding") { ?>
+                    <li class="nav-link">
+                        <a href="Dropdown worden luuk">
+                            <i class='bx bx-bell icon'></i>
+                            <span class="text nav-text">Leiding</span>
+                        </a>
+                    </li>
+                    <?php } ?>
+
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class='bx bx-pie-chart-alt icon' ></i>
+                            <span class="text nav-text">Analytics</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class='bx bx-heart icon' ></i>
+                            <span class="text nav-text">Likes</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class='bx bx-wallet icon' ></i>
+                            <span class="text nav-text">Wallets</span>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+
+            <div class="bottom-content">
+                <li class="">
+                    <a href="logout">
+                        <i class='bx bx-log-out icon' ></i>
+                        <span class="text nav-text">Log uit</span>
+                    </a>
+                </li>
+
+                <li class="mode">
+                    <div class="sun-moon">
+                        <i class='bx bx-moon icon moon'></i>
+                        <i class='bx bx-sun icon sun'></i>
+                    </div>
+                    <span class="mode-text text">Donker</span>
+
+                    <div class="toggle-switch">
+                        <span class="switch"></span>
+                    </div>
+                </li>
+                
+            </div>
+        </div>
+
+      
+
+  <script src="./assets/js/script.js"></script>
+
+
+    </nav>
+    
     </body>
 </html>

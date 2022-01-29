@@ -95,37 +95,46 @@
                     <li class="nav-link opzoeken">
                         <a href="profiles">
                             <i class='bx bx-bar-chart-alt-2 icon' ></i>
-                            <span class="text nav-text">Opzoeken</span>
+                            <span class="text nav-text">Personen</span>
                         </a>
                     </li>
                     
                     <?php if ($_SESSION["rank"] == "Leiding") { ?>
                     <li class="nav-link">
-                        <a href="Dropdown worden luuk">
+                        <a href="reports">
                             <i class='bx bx-bell icon'></i>
-                            <span class="text nav-text">Leiding</span>
+                            <span class="text nav-text">Rapporten</span>
                         </a>
                     </li>
                     <?php } ?>
 
                     <li class="nav-link">
-                        <a href="#">
-                            <i class='bx bx-pie-chart-alt icon' ></i>
-                            <span class="text nav-text">Analytics</span>
-                        </a>
+                    <span class="text nav-text"></span>
+                    </li>
+
+                    
+                    <li class="nav-link">
+                    <span class="text nav-text">🡣 Leiding 🡣</span>
                     </li>
 
                     <li class="nav-link">
-                        <a href="#">
+                        <a href="ambulanciers">
                             <i class='bx bx-heart icon' ></i>
-                            <span class="text nav-text">Likes</span>
+                            <span class="text nav-text">Ambulanciers</span>
                         </a>
                     </li>
 
                     <li class="nav-link">
-                        <a href="#">
+                        <a href="users">
                             <i class='bx bx-wallet icon' ></i>
-                            <span class="text nav-text">Wallets</span>
+                            <span class="text nav-text">Nieuwe Ambula!</span>
+                        </a>
+                    </li>
+                    
+                    <li class="nav-link">
+                        <a href="createambulancier">
+                            <i class='bx bx-wallet icon' ></i>
+                            <span class="text nav-text">Administratie</span>
                         </a>
                     </li>
 
