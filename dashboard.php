@@ -90,7 +90,7 @@
 
                     <li class="nav-link opzoeken">
                         <a href="profiles">
-                            <i class='bx bx-bar-chart-alt-2 icon' ></i>
+                        <i class='bx bxs-group icon'></i>
                             <span class="text nav-text">Personen</span>
                         </a>
                     </li>
@@ -98,7 +98,7 @@
                     <?php if ($_SESSION["rank"] == "Leiding") { ?>
                     <li class="nav-link">
                         <a href="reports">
-                            <i class='bx bx-bell icon'></i>
+                        <i class='bx bx-file icon' ></i>
                             <span class="text nav-text">Rapporten</span>
                         </a>
                     </li>
@@ -106,8 +106,16 @@
 
                     <li class="nav-link">
                         <a href="ambulanciers">
-                            <i class='bx bx-heart icon' ></i>
+                        <i class='bx bx-plus-medical icon' ></i>
                             <span class="text nav-text">Ambulanciers</span>
+                        </a>
+                    </li>
+
+                    
+                    <li class="nav-link">
+                        <a href="ambulanciers">
+                        <i class='bx bx-user-plus icon'></i>
+                            <span class="text nav-text">Nieuw Persoon</span>
                         </a>
                     </li>
 
@@ -117,26 +125,26 @@
 
                     
                     <li class="nav-link">
-                    <span class="text nav-text leidingcenter">Leiding</span>
+                    <span class="text nav-text leidingcenter">━━Leiding━━</span>
                     </li>
 
                     <li class="nav-link">
                         <a href="users">
-                            <i class='bx bx-heart icon' ></i>
+                        <i class='bx bx-male icon'></i>
                             <span class="text nav-text">Users</span>
                         </a>
                     </li>
 
                     <li class="nav-link">
                         <a href="users">
-                            <i class='bx bx-wallet icon' ></i>
+                        <i class='bx bxs-duplicate icon'></i>
                             <span class="text nav-text">Nieuwe Ambu</span>
                         </a>
                     </li>
                     
                     <li class="nav-link">
                         <a href="createambulancier">
-                            <i class='bx bx-wallet icon' ></i>
+                            <i class='bx bx-bookmarks icon' ></i>
                             <span class="text nav-text">Administratie</span>
                         </a>
                     </li>
@@ -147,7 +155,7 @@
             <div class="bottom-content">
                 <li class="">
                     <a href="logout">
-                        <i class='bx bx-log-out icon' ></i>
+                        <i class='bx bx-log-out icon' ><img src=""></i>
                         <span class="text nav-text">Log uit</span>
                     </a>
                 </li>

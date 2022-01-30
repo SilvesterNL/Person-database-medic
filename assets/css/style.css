@@ -57,7 +57,7 @@ body.dark{
     width: 88px;
 }
 
-.sidebar li{
+.sidebar li {
     height: 50px;
     list-style: none;
     display: flex;
@@ -156,6 +156,10 @@ body.dark .sidebar header .toggle{
 
 .sidebar.close .toggle{
     transform: translateY(-50%) rotate(0deg);
+}
+
+#kanker {
+    left: 1000px;
 }
 
 .sidebar .menu{
