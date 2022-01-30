@@ -1,5 +1,4 @@
 
-
 const body = document.querySelector('body'),
       sidebar = body.querySelector('nav'),
       toggle = body.querySelector(".toggle"),
@@ -12,6 +11,8 @@ const body = document.querySelector('body'),
 toggle.addEventListener("click" , () =>{
     sidebar.classList.toggle("close");
 })
+
+
 
 setInterval(function(){ 
     //this code runs every second 
@@ -30,25 +31,23 @@ searchBtn.addEventListener("click" , () =>{
 
 
 
+if (sessionStorage['dark']) {
+    body.classList.add("dark");
+} else {
+    sessionStorage.removeItem("dark");
+}
+
+
 darkmode.addEventListener("click" , () =>{
     body.classList.add("dark");
-    document.cookie = "darkmode=true";
+    sessionStorage.setItem("dark","true");
 }) 
 
 lightmode.addEventListener("click" , () =>{
     body.classList.remove("dark");
-    document.cookie = "darkmode=false";
+    sessionStorage.removeItem("dark");
 
 }) 
 
-
-
-if (document.cookie = "darkmode=true") {
-    body.classList.add("dark");
-}
-    
-if (document.cookie = "darkmode=false"){
-    body.classList.remove("dark");
-}
 
 

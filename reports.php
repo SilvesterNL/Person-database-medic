@@ -162,17 +162,16 @@
                     </a>
                 </li>
 
-                <li class="mode">
-                    <div class="sun-moon">
-                        <i class='bx bx-moon icon moon'></i>
-                        <i class='bx bx-sun icon sun'></i>
-                    </div>
-                    <span class="mode-text text">Donker</span>
-
-                    <div class="toggle-switch">
-                        <span class="switch"></span>
-                    </div>
-                </li>
+                <li class="nav-link">
+                        <a class="darkmode">
+                            <i class="bx bx-moon icon moon"></i>
+                            <span class="text nav-text donkerwit">Dark</span>
+                            </a>
+                            <a class="lightmode">
+                            <i class="bx bx-sun icon sun"></i>
+                            <span class="text nav-text donkerlicht">Light</span>
+                        </a>
+                    </li>
                 
             </div>
         </div>
