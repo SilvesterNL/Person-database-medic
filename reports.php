@@ -37,7 +37,24 @@
     $firstname = $name[0];
     $last_word_start = strrpos($_SESSION["name"], ' ') + 1;
     $lastname = substr($_SESSION["name"], $last_word_start);
+    
+    if ($_POST['type'] == "removereport") {
+        $reportId = $_SESSION["reportid"];
+        $query = "DELETE FROM reports WHERE id = '$reportid'";
+      
+
+        }
+
+
+
 ?>
+
+
+
+
+
+
+
 
 <!doctype html>
 <html lang="en">
@@ -193,9 +210,9 @@
                     <?php if ($_SERVER['REQUEST_METHOD'] != "POST" || $_SERVER['REQUEST_METHOD'] == "POST" && $_POST['type'] != "show") { ?>
                         <a href="createreport" class="btn btn-pol btn-md my-0 ml-sm-2">MAAK NIEUW REPORTAGE</a>
                     <?php } else { ?>
-                        <form method="post" action="createreport">
-                            <input type="hidden" name="type" value="edit">
-                            <input type="hidden" name="reportid" value="<?php echo $selectedreport['id']; ?>">
+                        <form method="post">
+                            <input type="hidden" name="type" value="removereport">
+                            <button type="removereport" name="removereport" class="btn btn-pol btn-md my-0 ml-sm-2">VERWIJDER REPORT</button>
                         </form>
                     <?php } ?>
                     <br /><br />
