@@ -187,7 +187,7 @@
         <main role="main" class="container">
             <div class="content-introduction">
                 <h3>Reports</h3>
-                <p class="lead">Hier kun je reportages opzoeken, lezen en bijwerken. <br/> Gelieve niet een report bij te werken van iemand anders mits je toestemming heb gekregen!</p>
+                <p class="lead">Hier kun je reportages opzoeken en lezen<br/></p>
             </div>
             <div class="profile-container">
                 <div class="profile-search">
