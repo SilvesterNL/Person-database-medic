@@ -99,8 +99,8 @@
 
     <main role="main" class="container">
             <div class="content-introduction">
-                <h3>Welkom <?php echo $_SESSION["name"]; ?> bij de overzicht pagina.</h3>
-                <p class="lead">Hier kan ja alle informatie zien die je tijdens je dienst maar ook buiten je dienst nodig hebt als ambulancier <br />Zoals sollicitatie's zien en grafieken over aanwezigheid.<br /><strong style="font-size="20";">LET OP NOG NIET ALLE FUNCTIES WERKEN HIER WORD AAN GEWERKT. VOOR VRAGEN DM @Silvester#8287</strong>
+                <h3>Welkom op de administratie pagina!</h3>
+                <p class="lead">Hier kan je alle informatie zien die je tijdens je dienst maar ook buiten je dienst nodig hebt als ambulancier <br />Zoals sollicitatie's zien en grafieken over aanwezigheid.<br /><strong style="font-size="20";">LET OP NOG NIET ALLE FUNCTIES WERKEN HIER WORD AAN GEWERKT. VOOR VRAGEN DM @Silvester#8287</strong>
                 <br />
                 <br />
                 </p>

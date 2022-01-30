@@ -35,7 +35,7 @@ body.dark{
     background-color: #141414;
 }
 
-.report-description {
+.p {
     color: var(--text-color)!important;
 }
 

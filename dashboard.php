@@ -125,7 +125,7 @@
 
                     
                     <li class="nav-link">
-                    <span class="text nav-text leidingcenter">━━Leiding━━</span>
+                    <span class="text nav-text leidingcenter">Leiding</span>
                     </li>
 
                     <li class="nav-link">
@@ -136,14 +136,14 @@
                     </li>
 
                     <li class="nav-link">
-                        <a href="users">
+                        <a href="createambulancier">
                         <i class='bx bxs-duplicate icon'></i>
                             <span class="text nav-text">Nieuwe Ambu</span>
                         </a>
                     </li>
                     
                     <li class="nav-link">
-                        <a href="createambulancier">
+                        <a href="overzicht">
                             <i class='bx bx-bookmarks icon' ></i>
                             <span class="text nav-text">Administratie</span>
                         </a>
