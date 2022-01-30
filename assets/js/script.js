@@ -25,9 +25,7 @@ setInterval(function(){
   })
 , 1000;
 
-searchBtn.addEventListener("click" , () =>{
-    sidebar.classList.remove("close");
-})
+
 
 
 
@@ -35,6 +33,7 @@ if (sessionStorage['dark']) {
     body.classList.add("dark");
 } else {
     sessionStorage.removeItem("dark");
+    body.classList.remove("dark");
 }
 
 
@@ -42,6 +41,7 @@ darkmode.addEventListener("click" , () =>{
     body.classList.add("dark");
     sessionStorage.setItem("dark","true");
 }) 
+
 
 lightmode.addEventListener("click" , () =>{
     body.classList.remove("dark");

@@ -35,8 +35,8 @@ body.dark{
     background-color: #141414;
 }
 
-.p {
-    color: var(--text-color)!important;
+.profile-information.p {
+    color:white!important ;
 }
 
 .h3text, .p1text, .panel-container-title, .nopersp2text, .h3profile, .pprofile {

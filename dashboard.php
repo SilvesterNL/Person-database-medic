@@ -75,11 +75,6 @@
         <div class="menu-bar">
             <div class="menu">
 
-                <li class="search-box">
-                    <i class='bx bx-search icon'></i>
-                    <input type="text" placeholder="Search...">
-                </li>
-
                 <ul class="menu-links">
                     <li class="nav-link">
                         <a href="dashboard">
@@ -95,14 +90,13 @@
                         </a>
                     </li>
                     
-                    <?php if ($_SESSION["rank"] == "Leiding") { ?>
+
                     <li class="nav-link">
                         <a href="reports">
                         <i class='bx bx-file icon' ></i>
                             <span class="text nav-text">Rapporten</span>
                         </a>
                     </li>
-                    <?php } ?>
 
                     <li class="nav-link">
                         <a href="ambulanciers">
@@ -113,7 +107,7 @@
 
                     
                     <li class="nav-link">
-                        <a href="ambulanciers">
+                        <a href="createprofile">
                         <i class='bx bx-user-plus icon'></i>
                             <span class="text nav-text">Nieuw Persoon</span>
                         </a>
@@ -123,7 +117,7 @@
                     <span class="text nav-text"></span>
                     </li>
 
-                    
+                    <?php if ($_SESSION["rank"] == "Leiding") { ?>
                     <li class="nav-link">
                     <span class="text nav-text leidingcenter">Leiding</span>
                     </li>
@@ -134,7 +128,7 @@
                             <span class="text nav-text">Users</span>
                         </a>
                     </li>
-
+                    
                     <li class="nav-link">
                         <a href="createambulancier">
                         <i class='bx bxs-duplicate icon'></i>
@@ -148,10 +142,11 @@
                             <span class="text nav-text">Administratie</span>
                         </a>
                     </li>
+                    
 
                 </ul>
             </div>
-
+            <?php } ?>
             <div class="bottom-content">
                 <li class="">
                     <a href="logout">
