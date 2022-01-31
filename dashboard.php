@@ -150,7 +150,7 @@
             <div class="bottom-content">
                 <li class="">
                     <a href="logout">
-                        <i class='bx bx-log-out icon' ><img src=""></i>
+                        <i class='bx bx-log-out icon' ></i>
                         <span class="text nav-text">Log uit</span>
                     </a>
                 </li>
