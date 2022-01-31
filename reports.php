@@ -38,15 +38,6 @@
     $last_word_start = strrpos($_SESSION["name"], ' ') + 1;
     $lastname = substr($_SESSION["name"], $last_word_start);
     
-    if ($_POST['type'] == "removereport") {
-        $reportId = $_SESSION["reportid"];
-        $query = "DELETE FROM reports WHERE id = '$reportid'";
-      
-
-        }
-
-
-
 ?>
 
 
