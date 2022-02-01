@@ -71,64 +71,98 @@
     <nav class="sidebar close">
         <header>
             <div class="image-text">
+                <span class="image">
+                   
                 </span>
 
                 <div class="text logo-text">
-                    <span class="name2">Codinglab</span>
-                    <span class="name2">Web developer</span>
                 </div>
             </div>
-
+            <i class='bx bx-chevron-right toggle'></i>
         </header>
 
         <div class="menu-bar">
             <div class="menu">
 
+                <ul class="menu-links">
                     <li class="nav-link">
 
-                        </a>
+                    </li>
+
+                    <li class="nav-link opzoeken">
+
+                    </li>
+                    
+
+                    <li class="nav-link">
+
                     </li>
 
                     <li class="nav-link">
 
-                        </a>
+                    </li>
+
+                    
+                    <li class="nav-link">
+
                     </li>
 
                     <li class="nav-link">
-
-                        </a>
+                    
                     </li>
+
+                    <li class="nav-link">
+                    </li>
+
+                    <li class="nav-link">
+                    </li>
+                    
+                    <li class="nav-link">
+
+                    </li>
+                    
+                    <li class="nav-link">
+                    </li>
+                    <li class="nav-link">
+</li>
+
+                    
 
                 </ul>
             </div>
-
             <div class="bottom-content">
                 <li class="">
-                    </a>
                 </li>
 
-                <li class="mode">
-                    <div class="sun-moon">
-                        <i class='bx bx-moon icon moon'></i>
-                        <i class='bx bx-sun icon sun'></i>
-                    </div>
-                    <span class="mode-text text">Donker</span>
 
-                    <div class="toggle-switch">
-                        <span class="switch"></span>
-                    </div>
-                </li>
+
+                <li class="nav-link">
+                        <a class="darkmode">
+                            <i class="bx bx-moon icon moon"></i>
+                            <span class="text nav-text donkerwit">Dark</span>
+                            </a>
+                            <a class="lightmode">
+                            <i class="bx bx-sun icon sun"></i>
+                            <span class="text nav-text donkerlicht">Light</span>
+                        </a>
+                    </li>
+                    
                 
             </div>
         </div>
 
-    </nav>
-        
+      
 
   <script src="./assets/js/script.js"></script>
 
 
     </nav>
+
+       
+        
+
+
+
 
         <main role="main" class="container">
             <div class="login-container">

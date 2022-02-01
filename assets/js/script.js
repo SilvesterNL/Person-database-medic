@@ -13,6 +13,7 @@ const body = document.querySelector('body'),
 
 
 
+
 window.addEventListener('load', (event) => {
     if (window.matchMedia("(min-width: 1635px)").matches) {
         sidebar.classList.remove("close");
