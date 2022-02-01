@@ -18,7 +18,7 @@
                 $personId = $_POST['personid'];
             }
             $query = $con->query("SELECT * FROM ambulanciers WHERE id = ".$con->real_escape_string($personId));
-            $selectedprofile = $query->fetch_assoc();
+            $selectedambu = $query->fetch_assoc();
             $result = $con->query("SELECT * FROM reports WHERE profileid = ".$con->real_escape_string($personId)." ORDER BY created DESC");
             $update = $con->query("UPDATE ambulanciers SET lastsearch = ".time()." WHERE id = ".$personId);
             $reports_array = [];
@@ -62,7 +62,127 @@
     </head>
     <body>
     <!-- Hier moet NAVBAR komen -->
+    <nav class="sidebar close">
+        <header>
+            <div class="image-text">
+                <span class="image">
+                    <img src="<?php echo $_SESSION["profilepic"]; ?>" alt="profile-pic" width="130" height="40"/>
+                </span>
 
+                <div class="text logo-text">
+                    <span class="name"><?php echo $firstname . " " . substr($lastname, 0, 1); ?>.</span>
+                    <span class="profession"><?php echo $_SESSION["rank"]; ?></span>
+                </div>
+            </div>
+            <i class='bx bx-chevron-right toggle'></i>
+        </header>
+
+        <div class="menu-bar">
+            <div class="menu">
+
+                <ul class="menu-links">
+                    <li class="nav-link">
+                        <a href="dashboard">
+                            <i class='bx bx-home-alt icon' ></i>
+                            <span class="text nav-text">Dashboard</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link opzoeken">
+                        <a href="profiles">
+                        <i class='bx bxs-group icon'></i>
+                            <span class="text nav-text">Personen</span>
+                        </a>
+                    </li>
+                    
+
+                    <li class="nav-link">
+                        <a href="reports">
+                        <i class='bx bx-file icon' ></i>
+                            <span class="text nav-text">Rapporten</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a href="ambulanciers">
+                        <i class='bx bx-plus-medical icon' ></i>
+                            <span class="text nav-text">Ambulanciers</span>
+                        </a>
+                    </li>
+
+                    
+                    <li class="nav-link">
+                        <a href="createprofile">
+                        <i class='bx bx-user-plus icon'></i>
+                            <span class="text nav-text">Nieuw Persoon</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                    <span class="text nav-text"></span>
+                    </li>
+
+                    <?php if ($_SESSION["rank"] == "Leiding") { ?>
+                    <li class="nav-link">
+                    <span class="text nav-text leidingcenter">Leiding</span>
+                    </li>
+
+                    <li class="nav-link">
+                        <a href="users">
+                        <i class='bx bx-male icon'></i>
+                            <span class="text nav-text">Users</span>
+                        </a>
+                    </li>
+                    
+                    <li class="nav-link">
+                        <a href="createambulancier">
+                        <i class='bx bxs-duplicate icon'></i>
+                            <span class="text nav-text">Nieuwe Ambu</span>
+                        </a>
+                    </li>
+                    
+                    <li class="nav-link">
+                        <a href="overzicht">
+                            <i class='bx bx-bookmarks icon' ></i>
+                            <span class="text nav-text">Administratie</span>
+                        </a>
+                    </li>
+                    
+
+                </ul>
+            </div>
+            <?php } ?>
+            <div class="bottom-content">
+                <li class="">
+                    <a href="logout">
+                        <i class='bx bx-log-out icon' ></i>
+                        <span class="text nav-text">Log uit</span>
+                    </a>
+                </li>
+
+
+
+                <li class="nav-link">
+                        <a class="darkmode">
+                            <i class="bx bx-moon icon moon"></i>
+                            <span class="text nav-text donkerwit">Dark</span>
+                            </a>
+                            <a class="lightmode">
+                            <i class="bx bx-sun icon sun"></i>
+                            <span class="text nav-text donkerlicht">Light</span>
+                        </a>
+                    </li>
+                    
+                
+            </div>
+        </div>
+
+      
+
+  <script src="./assets/js/script.js"></script>
+
+
+    </nav>
         <main role="main" class="container">
             <div class="content-introduction">
                 <h3>Ambulanciers</h3>
@@ -91,7 +211,7 @@
                                         <input type="hidden" name="personid" value="<?php echo $person['id']; ?>">
                                         <button type="submit" class="btn btn-panel panel-item">
                                             <h5 class="panel-title"><?php echo $person['fullname']; ?></h5>
-                                            <p class="panel-author">Volledige Naam: <?php echo $person['citizenid']; ?></p>
+                                            <p class="panel-author">BSN: <?php echo $person['citizenid']; ?></p>
                                         </button>
                                     </form>
                                 <?php }?>
@@ -99,29 +219,29 @@
                         </div>
                     </div>
                 <?php } ?>
-                <?php if ($_SERVER['REQUEST_METHOD'] == "POST" && $_POST['type'] == "show" && !empty($selectedprofile)) { ?>
+                <?php if ($_SERVER['REQUEST_METHOD'] == "POST" && $_POST['type'] == "show" && !empty($selectedambu)) { ?>
                     <div class="profile-panel">
                         <div class="profile-avatar">
-                            <img src="<?php echo $selectedprofile["avatar"]; ?>" alt="Hier hoort stiekem een profielfoto maar leiding is te lui geweest waarschijnlijk" width="150" height="150" />
+                            <img src="<?php echo $selectedambu["avatar"]; ?>" alt="Hier hoort stiekem een profielfoto maar leiding is te lui geweest waarschijnlijk" width="150" height="150" />
                         </div>
                         <div class="profile-information">
-                            <p><strong>Naam:</strong><br /><?php echo $selectedprofile["fullname"]; ?></p>
-                            <p><strong>Volledige Naam:</strong><br /><?php echo $selectedprofile["citizenid"]; ?></p>
-                            <p><strong>Status (Word aan gewerkt. Doet het voor nu nog niet):</strong><br /><?php echo $selectedprofile["fingerprint"]; ?></p>
-                            <p><strong>Dienst Nummer:</strong><br /><?php echo $selectedprofile["dnacode"]; ?></p>
-                            <p><strong>Notitie:</strong><br /><?php echo $selectedprofile["note"]; ?></p>
+                            <p><strong>Naam:</strong><br /><?php echo $selectedambu["fullname"]; ?></p>
+                            <p><strong>Volledige Naam:</strong><br /><?php echo $selectedambu["citizenid"]; ?></p>
+                            <p><strong>Status (Word aan gewerkt. Doet het voor nu nog niet):</strong><br /><?php echo $selectedambu["fingerprint"]; ?></p>
+                            <p><strong>Dienst Nummer:</strong><br /><?php echo $selectedambu["dnacode"]; ?></p>
+                            <p><strong>Notitie:</strong><br /><?php echo $selectedambu["note"]; ?></p>
                         </div>
                     </div>
                     <div class="profile-reports-panel">
                         <div class="profile-lastincidents">
                             <form method="post" action="createreport" style="float:right; margin-left: 1vw;">
                                 <input type="hidden" name="type" value="createnew">
-                                <input type="hidden" name="profileid" value="<?php echo $selectedprofile['id']; ?>">
+                                <input type="hidden" name="profileid" value="<?php echo $selectedambu['id']; ?>">
                                 <button type="submit" name="issabutn" style="margin-left:0!important;" class="btn btn-success btn-md my-0 ml-sm-2">NIEUW RAPPORT</button>
                             </form>
                             <form method="post" action="createwarrant" style="float:right;">
                                 <input type="hidden" name="type" value="create">
-                                <input type="hidden" name="profileid" value="<?php echo $selectedprofile['id']; ?>">
+                                <input type="hidden" name="profileid" value="<?php echo $selectedambu['id']; ?>">
                                 <button type="submit" name="issabutn" style="margin-left:0!important;" class="btn btn-danger btn-md my-0 ml-sm-2">NIEUW BEVEL</button>
                             </form>
                             <br />
