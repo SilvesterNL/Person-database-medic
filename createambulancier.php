@@ -3,32 +3,25 @@
     if (!$_SESSION['loggedin']) {
         Header("Location: login");
     }
-    if ($_SESSION["rank"] != "Leiding") {
-        Header("Location: createambulancier");
-    }
     $respone = false;
     if ($_SERVER['REQUEST_METHOD'] == "POST") {
-        if (trim($_POST['type']) == NULL) {
-            Header("Location:dashboard");
-        }}
-    if ($_SERVER['REQUEST_METHOD'] == "POST") {
-        if ($_POST['type'] == "createambu") {
+        if ($_POST['type'] == "create") {
             $note = nl2br($_POST["note"]);
-            $insert = $con->query("INSERT INTO ambulanciers (citizenid,fullname,avatar,fingerprint,dnacode,note,lastsearch) VALUES('".$con->real_escape_string($_POST['citizenid'])."','".$con->real_escape_string($_POST['fullname'])."','".$con->real_escape_string($_POST['avatar'])."','".$con->real_escape_string($_POST['fingerprint'])."','".$con->real_escape_string($_POST['dnacode'])."','".$con->real_escape_string($note)."',".time().")");
+            $insert = $con->query("INSERT INTO ambulanciers (fullname,avatar,fingerprint,dnacode,note,lastsearch) VALUES('".$con->real_escape_string($_POST['fullname'])."','".$con->real_escape_string($_POST['avatar'])."','".$con->real_escape_string($_POST['fingerprint'])."','".$con->real_escape_string($_POST['dnacode'])."','".$con->real_escape_string($note)."',".time().")");
             if ($insert) {
                 $last_id = $con->insert_id;
-                $_SESSION["personid"] = $last_id;
+                $_SESSION["personidam"] = $last_id;
                 $respone = true;
                 header('Location: ambulanciers');
             }
-        } elseif ($_POST['type'] == "editambu") {
+        } elseif ($_POST['type'] == "edit") {
             $query = $con->query("SELECT * FROM ambulanciers WHERE id = ".$con->real_escape_string($_POST['profileid']));
-            $selectedprofile = $query->fetch_assoc();
-        } elseif ($_POST['type'] == "realeditambu") {
+            $selectedambu = $query->fetch_assoc();
+        } elseif ($_POST['type'] == "realedit") {
             $note = nl2br($_POST["note"]);
             $update = $con->query("UPDATE ambulanciers SET citizenid = '".$con->real_escape_string($_POST['citizenid'])."', fullname = '".$con->real_escape_string($_POST['fullname'])."', avatar = '".$con->real_escape_string($_POST['avatar'])."', fingerprint = '".$con->real_escape_string($_POST['fingerprint'])."', dnacode = '".$con->real_escape_string($_POST['dnacode'])."', note = '".$con->real_escape_string($note)."' WHERE id = ".$_POST['profileid']);
             if ($update) {
-                $_SESSION["personid"] = $_POST['profileid'];
+                $_SESSION["personidam"] = $_POST['profileid'];
                 $respone = true;
                 header('Location: ambulanciers');
             } else {
@@ -55,7 +48,6 @@
         <link rel="icon" type="image/png" sizes="64x64" href="https://www.politie.nl/politie2018/assets/images/icons/favicon-64.png">
         <link rel="stylesheet" href="assets/css/style.css">
         <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
-        
 
         <title>Ambulance Databank</title>
 
@@ -191,45 +183,44 @@
 
     </nav>
 
-
         <main role="main" class="container">
             <div class="content-introduction">
-                <h3 class="titelgroot">Nieuwe ambulancier maken</h3>
-                <p class="lead">Hier kan je als leiding een nieuwe ambulance broeder in het systeem zetten<br />Zorg ervoor dat alle gegevens kloppen en dat er een juiste foto is geplaatst!</p>
+                <h3 class="titelgroot">Profiel Maken</h3>
+                <p class="lead">Hier maak je een profiel aan als een nieuwe crimineel in wordt gebracht.<br />Zorg ervoor dat alle gegevens kloppen en dat er een juiste foto is geplaatst!</p>
             </div>
             <div class="createprofile-container">
-            <?php if ($_SERVER['REQUEST_METHOD'] == "POST" && $_POST['type'] == "editambu" && !empty($selectedprofile)) { ?>
+            <?php if ($_SERVER['REQUEST_METHOD'] == "POST" && $_POST['type'] == "edit" && !empty($selectedambu)) { ?>
                 <form method="post">
-                    <input type="hidden" name="type" value="realeditambu">
-                    <input type="hidden" name="profileid" value="<?php echo $selectedprofile["id"]; ?>">
+                    <input type="hidden" name="type" value="realedit">
+                    <input type="hidden" name="profileid" value="<?php echo $selectedambu["id"]; ?>">
                     <div class="input-group mb-3">
-                        <input type="text" name="citizenid" class="form-control login-user" value="<?php echo $selectedprofile["citizenid"]; ?>" placeholder="CitizenID" required>
+
                     </div>
                     <div class="input-group mb-2">
-                        <input type="text" name="fullname" class="form-control login-pass" value="<?php echo $selectedprofile["fullname"]; ?>" placeholder="volledige naam" required>
+                        <input type="text" name="fullname" class="form-control login-pass" value="<?php echo $selectedambu["fullname"]; ?>" placeholder="volledige naam" required>
                     </div>
                     <div class="input-group mb-3">
-                        <input type="text" name="avatar" class="form-control login-user" value="<?php echo $selectedprofile["avatar"]; ?>" placeholder="profiel foto (imgur URL vb. https://i.imgur.com/zKDjdhe.png)" required>
+                        <input type="text" name="avatar" class="form-control login-user" value="<?php echo $selectedambu["avatar"]; ?>" placeholder="profiel foto (imgur URL vb. https://i.imgur.com/zKDjdhe.png)" required>
                     </div>
                     <div class="input-group mb-3">
-                        <input type="text" name="fingerprint" class="form-control login-user" value="<?php echo $selectedprofile["fingerprint"]; ?>" placeholder="Status (Vul een 1 in. Aangezien de functie nog niet werkt)">
+                        <input type="text" name="fingerprint" class="form-control login-user" value="<?php echo $selectedambu["fingerprint"]; ?>" placeholder=" Geboortedatum">
                     </div>
                     <div class="input-group mb-3">
-                        <input type="text" name="dnacode" class="form-control login-user" value="<?php echo $selectedprofile["dnacode"]; ?>" placeholder="Dienst Nummer">
+                        <input type="text" name="dnacode" class="form-control login-user" value="<?php echo $selectedambu["dnacode"]; ?>" placeholder="Bloedgroep">
                     </div>
-                    <?php $notes = str_replace( "<br />", '', $selectedprofile["note"]); ?>
+                    <?php $notes = str_replace( "<br />", '', $selectedambu["note"]); ?>
                     <div class="input-group mb-2">
                         <textarea name="note" class="form-control" value="<?php echo $notes; ?>" placeholder="notitie" required><?php echo $notes; ?></textarea>
                     </div>
                     <div class="form-group">
-                        <button type="submit" name="createambu" class="btn btn-primary btn-police">Pas Aan</button>
+                        <button type="submit" name="create" class="btn btn-primary btn-police">Pas Aan</button>
                     </div>
                 </form>
             <?php } else { ?>
                 <form method="post">
-                    <input type="hidden" name="type" value="createambu">
+                    <input type="hidden" name="type" value="create">
                     <div class="input-group mb-3">
-                        <input type="text" name="citizenid" class="form-control login-user" value="" placeholder="CitizenID" required>
+                        <!-- <input type="text" name="citizenid" class="form-control login-user" value="" placeholder="bsn" required> -->
                     </div>
                     <div class="input-group mb-2">
                         <input type="text" name="fullname" class="form-control login-pass" value="" placeholder="volledige naam" required>
@@ -238,16 +229,25 @@
                         <input type="text" name="avatar" class="form-control login-user" value="" placeholder="profiel foto (imgur URL vb. https://i.imgur.com/zKDjdhe.png)">
                     </div>
                     <div class="input-group mb-3">
-                        <input type="text" name="fingerprint" class="form-control login-user" value="" placeholder="Status (Vul 1 in aangezien de functie nog niet werkt)">
+                        <input type="date" name="fingerprint" class="form-control login-user" value="" placeholder="Geboortedatum">
                     </div>
                     <div class="input-group mb-3">
-                        <input type="text" name="dnacode" class="form-control login-user" value="" placeholder="Dienst Nummer">
+                    <input placeholder="Bloedgroep" value="" class="form-control login-user" list="dnacode" name="dnacode" required>
+                        <datalist id="dnacode">
+                            <option value="A+">
+                            <option value="A-">
+                            <option value="B+">
+                            <option value="AB+">
+                            <option value="AB-">
+                            <option value="O+">
+                            <option value="O-">
+                            <option value="Onbekend">
                     </div>
                     <div class="input-group mb-2">
                         <textarea name="note" class="form-control" value="" placeholder="notitie"></textarea>
                     </div>
                     <div class="form-group">
-                        <button type="submit" name="createambu" class="btn btn-primary btn-police">Voeg toe</button>
+                        <button type="submit" name="create" class="btn btn-primary btn-police">Voeg toe</button>
                     </div>
                 </form>
             <?php } ?>

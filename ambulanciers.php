@@ -11,21 +11,20 @@
             while ($data = $result->fetch_assoc()) { 
                 $search_array[] = $data;
             }
-        }elseif ($_POST['type'] == "show" || isset($_SESSION["personid"]) && $_SESSION["personid"] != NULL) {
-            if (isset($_SESSION["personid"]) && $_SESSION["personid"] != NULL) {
-                $personId = $_SESSION["personid"];
+        }elseif ($_POST['type'] == "show" || isset($_SESSION["personidam"]) && $_SESSION["personidam"] != NULL) {
+            if (isset($_SESSION["personidam"]) && $_SESSION["personidam"] != NULL) {
+                $personIdam = $_SESSION["personidam"];
             } else {
-                $personId = $_POST['personid'];
+                $personIdam = $_POST['personidam'];
             }
-            $query = $con->query("SELECT * FROM ambulanciers WHERE id = ".$con->real_escape_string($personId));
+            $query = $con->query("SELECT * FROM ambulanciers WHERE id = ".$con->real_escape_string($personIdam));
             $selectedambu = $query->fetch_assoc();
-            $result = $con->query("SELECT * FROM reports WHERE profileid = ".$con->real_escape_string($personId)." ORDER BY created DESC");
-            $update = $con->query("UPDATE ambulanciers SET lastsearch = ".time()." WHERE id = ".$personId);
+            $update = $con->query("UPDATE ambulanciers SET lastsearch = ".time()." WHERE id = ".$personIdam);
             $reports_array = [];
             while ($data = $result->fetch_assoc()) { 
                 $reports_array[] = $data;
             }
-            $_SESSION["personid"] = NULL;
+            $_SESSION["personidam"] = NULL;
         }
     }
     $name = explode(" ", $_SESSION["name"]);
@@ -47,20 +46,20 @@
         <link rel="icon" type="image/png" sizes="64x64" href="https://www.politie.nl/politie2018/assets/images/icons/favicon-64.png">
         <link rel="stylesheet" href="assets/css/style.css">
         <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
-        
+        <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
 
         <title>Ambulance Databank</title>
 
         <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/starter-template/">
 
-
+        <!-- Bootstrap core CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
+        <!-- Custom styles for this template -->
         <link href="assets/css/main.css" rel="stylesheet">
         <link href="assets/css/profiles.css" rel="stylesheet">
     </head>
     <body>
-
     <nav class="sidebar close">
         <header>
             <div class="image-text">
@@ -182,13 +181,24 @@
 
 
     </nav>
+  
         <main role="main" class="container">
             <div class="content-introduction">
-                <h3 class="titelgroot">Ambulanciers</h3>
-                <p class="lead">Hier kan je het hele team van de ambulance in zien. <br /></p>
+                <h3 class="h3profile">Personen</h3>
+                <p class="pprofile">Hier kun je personen opzoeken om informatie in te zien, een rapportage aan te maken of profielen aanmaken. <br />Het zou kunnen zijn dat een persoon niet bestaat, maak hiervoor een profiel aan en voer de juiste gegevens in.</p>
             </div>
             <div class="profile-container">
                 <div class="profile-search">
+                    <?php if ($_SERVER['REQUEST_METHOD'] != "POST" || $_SERVER['REQUEST_METHOD'] == "POST" && $_POST['type'] != "show") { ?>
+                        <a href="createprofile" class="btn btn-pol btn-md my-0 ml-sm-2">MAAK NIEUW PROFIEL</a>
+                    <?php } else { ?>
+                        <form method="post" action="createprofile">
+                            <input type="hidden" name="type" value="edit">
+                            <input type="hidden" name="profileid" value="<?php echo $selectedambu['id']; ?>">
+                            <button type="submit" name="issabutn" class="btn btn-pol btn-md my-0 ml-sm-2">PAS PROFIEL AAN</button>
+                        </form>
+                    <?php } ?>
+                    <br /><br />
                     <form method="post" class="form-inline ml-auto">
                         <input type="hidden" name="type" value="search">
                         <div class="md-form my-0">
@@ -207,10 +217,10 @@
                                 <?php foreach($search_array as $person) {?>
                                     <form method="post">
                                         <input type="hidden" name="type" value="show">
-                                        <input type="hidden" name="personid" value="<?php echo $person['id']; ?>">
+                                        <input type="hidden" name="personidam" value="<?php echo $person['id']; ?>">
                                         <button type="submit" class="btn btn-panel panel-item">
-                                            <h5 class="panel-title"><?php echo $person['fullname']; ?></h5>
-                                            <p class="panel-author">BSN: <?php echo $person['citizenid']; ?></p>
+                                            <h5 class="panel-titleprof"><?php echo $person['fullname']; ?></h5>
+                                            <img width="200" height="200" class="panel-author profilepicpro" src="<?php echo $person['avatar']; ?>">
                                         </button>
                                     </form>
                                 <?php }?>
@@ -221,13 +231,12 @@
                 <?php if ($_SERVER['REQUEST_METHOD'] == "POST" && $_POST['type'] == "show" && !empty($selectedambu)) { ?>
                     <div class="profile-panel">
                         <div class="profile-avatar">
-                            <img src="<?php echo $selectedambu["avatar"]; ?>" alt="Hier hoort stiekem een profielfoto maar leiding is te lui geweest waarschijnlijk" width="150" height="150" />
+                            <img src="<?php echo $selectedambu["avatar"]; ?>" alt="profile-pic" width="150" height="150" />
                         </div>
                         <div class="profile-information">
                             <p><strong>Naam:</strong><br /><?php echo $selectedambu["fullname"]; ?></p>
-                            <p><strong>Volledige Naam:</strong><br /><?php echo $selectedambu["citizenid"]; ?></p>
-                            <p><strong>Status (Word aan gewerkt. Doet het voor nu nog niet):</strong><br /><?php echo $selectedambu["fingerprint"]; ?></p>
-                            <p><strong>Dienst Nummer:</strong><br /><?php echo $selectedambu["dnacode"]; ?></p>
+                            <p><strong>Geboortedatum:</strong><br /><?php echo $selectedambu["fingerprint"]; ?></p>
+                            <p><strong>Bloedgroep:</strong><br /><?php echo $selectedambu["dnacode"]; ?></p>
                             <p><strong>Notitie:</strong><br /><?php echo $selectedambu["note"]; ?></p>
                         </div>
                     </div>
@@ -236,12 +245,11 @@
                             <form method="post" action="createreport" style="float:right; margin-left: 1vw;">
                                 <input type="hidden" name="type" value="createnew">
                                 <input type="hidden" name="profileid" value="<?php echo $selectedambu['id']; ?>">
-                                <button type="submit" name="issabutn" style="margin-left:0!important;" class="btn btn-success btn-md my-0 ml-sm-2">NIEUW RAPPORT</button>
+                                <button type="submit" name="issabutn"  class="btn btn-success btn-md my-0 ml-sm-2 newrapportbtn">NIEUW RAPPORT</button>
                             </form>
                             <form method="post" action="createwarrant" style="float:right;">
                                 <input type="hidden" name="type" value="create">
                                 <input type="hidden" name="profileid" value="<?php echo $selectedambu['id']; ?>">
-                                <button type="submit" name="issabutn" style="margin-left:0!important;" class="btn btn-danger btn-md my-0 ml-sm-2">NIEUW BEVEL</button>
                             </form>
                             <br />
                             <h5 class="panel-container-title">Laatste rapportages</h5>
@@ -254,8 +262,8 @@
                                             <input type="hidden" name="type" value="show">
                                             <input type="hidden" name="reportid" value="<?php echo $report['id']; ?>">
                                             <button type="submit" class="btn btn-panel panel-item">
-                                                <h5 class="panel-title">#<?php echo $report['id']; ?> <?php echo $report['title']; ?></h5>
-                                                <p class="panel-author">door: <?php echo $report['author']; ?></p>
+                                                <h5 class="panel-title panelprof">#<?php echo $report['id']; ?> <?php echo $report['title']; ?></h5>
+                                                <p class="panel-author panelaupro">door: <?php echo $report['author']; ?></p>
                                             </button>
                                         </form>
                                     <?php }?>
