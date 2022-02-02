@@ -91,12 +91,6 @@
                     </li>
                     
 
-                    <li class="nav-link">
-                        <a href="reports">
-                        <i class='bx bx-file icon' ></i>
-                            <span class="text nav-text">Rapporten</span>
-                        </a>
-                    </li>
 
                     <li class="nav-link">
                         <a href="ambulanciers">
