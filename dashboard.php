@@ -127,6 +127,7 @@
 
                 </ul>
             </div>
+
             <?php } ?>
             <div class="bottom-content">
                 <li class="">
