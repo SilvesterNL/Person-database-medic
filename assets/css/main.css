@@ -16,13 +16,31 @@ input:-webkit-autofill,
 input:-webkit-autofill:hover, 
 input:-webkit-autofill:focus, 
 input:-webkit-autofill:active{
-    -webkit-box-shadow: 0 0 0 30px rgb(255, 255, 255) inset !important;
+    -webkit-box-shadow: 0 0 0 30px rgba(0, 0, 0, 0) inset !important;
     background-color: #2a3136!important;
-    color: black;
+    color: white;
+}
+
+
+.second-toolbar {
+    background: rgba(0, 0, 0, 0)!important;
+}
+
+.fr-toolbar {
+    background: rgba(0, 0, 0, 0)!important;
+}
+
+.fr-wrapper:before{
+    background: rgba(0, 0, 0, 0)!important;
+    content: ""!important;
+}
+
+.fr-wrapper {
+    background: rgba(0, 0, 0, 0)!important;
 }
 
 input:-webkit-autofill{
-    -webkit-text-fill-color: rgb(255, 255, 255) !important;
+    -webkit-text-fill-color: rgb(0, 0, 0) !important;
 }
 
 .form-control:focus{
