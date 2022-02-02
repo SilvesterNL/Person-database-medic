@@ -13,7 +13,15 @@
         }}
         $name = explode(" ", $_SESSION["name"]);
         $firstname = $name[0];
+
+
+        $name = explode(" ", $_SESSION["name"]);
+        $firstname = $name[0];
+        $last_word_start = strrpos($_SESSION["name"], ' ') + 1;
+        $lastname = substr($_SESSION["name"], $last_word_start);
 ?>
+
+
 
 <!doctype html>
 <html lang="en">
