@@ -12,6 +12,26 @@ body {
     animation-name: loading;
     animation-duration: 0.4s;
 }
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active{
+    -webkit-box-shadow: 0 0 0 30px white inset !important;
+}
+
+input:-webkit-autofill{
+    -webkit-text-fill-color: yellow !important;
+}
+.form-control{
+    display: block;
+    width: 150px;
+    margin: 0 0 20px;
+    padding: 8px 0 10px 0;
+    text-align: center;
+    border: 1px solid rgba(0,0,0,.5);
+    background: rgba(0,0,0,.25);
+  }
+
 
 .profilepicpro {
     border-radius: 20px;
@@ -208,8 +228,8 @@ textarea {
     margin-bottom: 0.5rem;
 }
 
-.panel-item .panel-title {
-    color: #ffffff!important;
+.panel-item .panel-title, .panel-author {
+    color: #ccc!important;
 }
 
 .panelprof {
