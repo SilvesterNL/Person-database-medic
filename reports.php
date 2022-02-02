@@ -93,11 +93,6 @@
         <div class="menu-bar">
             <div class="menu">
 
-                <li class="search-box">
-                    <i class='bx bx-search icon'></i>
-                    <input type="text" placeholder="Search...">
-                </li>
-
                 <ul class="menu-links">
                     <li class="nav-link">
                         <a href="dashboard">
@@ -108,24 +103,31 @@
 
                     <li class="nav-link opzoeken">
                         <a href="profiles">
-                            <i class='bx bx-bar-chart-alt-2 icon' ></i>
+                        <i class='bx bxs-group icon'></i>
                             <span class="text nav-text">Personen</span>
                         </a>
                     </li>
                     
-                    <?php if ($_SESSION["rank"] == "Leiding") { ?>
+
                     <li class="nav-link">
                         <a href="reports">
-                            <i class='bx bx-bell icon'></i>
+                        <i class='bx bx-file icon' ></i>
                             <span class="text nav-text">Rapporten</span>
                         </a>
                     </li>
-                    <?php } ?>
 
                     <li class="nav-link">
                         <a href="ambulanciers">
-                            <i class='bx bx-heart icon' ></i>
+                        <i class='bx bx-plus-medical icon' ></i>
                             <span class="text nav-text">Ambulanciers</span>
+                        </a>
+                    </li>
+
+                    
+                    <li class="nav-link">
+                        <a href="createprofile">
+                        <i class='bx bx-user-plus icon'></i>
+                            <span class="text nav-text">Nieuw Persoon</span>
                         </a>
                     </li>
 
@@ -133,35 +135,36 @@
                     <span class="text nav-text"></span>
                     </li>
 
-                    
+                    <?php if ($_SESSION["rank"] == "Leiding") { ?>
                     <li class="nav-link">
                     <span class="text nav-text leidingcenter">Leiding</span>
                     </li>
 
                     <li class="nav-link">
                         <a href="users">
-                            <i class='bx bx-heart icon' ></i>
+                        <i class='bx bx-male icon'></i>
                             <span class="text nav-text">Users</span>
-                        </a>
-                    </li>
-
-                    <li class="nav-link">
-                        <a href="users">
-                            <i class='bx bx-wallet icon' ></i>
-                            <span class="text nav-text">Nieuwe Ambu</span>
                         </a>
                     </li>
                     
                     <li class="nav-link">
                         <a href="createambulancier">
-                            <i class='bx bx-wallet icon' ></i>
+                        <i class='bx bxs-duplicate icon'></i>
+                            <span class="text nav-text">Nieuwe Ambu</span>
+                        </a>
+                    </li>
+                    
+                    <li class="nav-link">
+                        <a href="overzicht">
+                            <i class='bx bx-bookmarks icon' ></i>
                             <span class="text nav-text">Administratie</span>
                         </a>
                     </li>
+                    
 
                 </ul>
             </div>
-
+            <?php } ?>
             <div class="bottom-content">
                 <li class="">
                     <a href="logout">
@@ -169,6 +172,8 @@
                         <span class="text nav-text">Log uit</span>
                     </a>
                 </li>
+
+
 
                 <li class="nav-link">
                         <a class="darkmode">
@@ -180,6 +185,7 @@
                             <span class="text nav-text donkerlicht">Light</span>
                         </a>
                     </li>
+                    
                 
             </div>
         </div>
@@ -193,7 +199,7 @@
 
         <main role="main" class="container">
             <div class="content-introduction">
-                <h3>Reports</h3>
+                <h3 class="titelgroot">Reports</h3>
                 <p class="lead">Hier kun je reportages opzoeken en lezen<br/></p>
             </div>
             <div class="profile-container">

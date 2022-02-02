@@ -87,11 +87,6 @@
         <div class="menu-bar">
             <div class="menu">
 
-                <li class="search-box">
-                    <i class='bx bx-search icon'></i>
-                    <input type="text" placeholder="Search...">
-                </li>
-
                 <ul class="menu-links">
                     <li class="nav-link">
                         <a href="dashboard">
@@ -102,48 +97,68 @@
 
                     <li class="nav-link opzoeken">
                         <a href="profiles">
-                            <i class='bx bx-bar-chart-alt-2 icon' ></i>
-                            <span class="text nav-text">Opzoeken</span>
+                        <i class='bx bxs-group icon'></i>
+                            <span class="text nav-text">Personen</span>
                         </a>
                     </li>
                     
+
+                    <li class="nav-link">
+                        <a href="reports">
+                        <i class='bx bx-file icon' ></i>
+                            <span class="text nav-text">Rapporten</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a href="ambulanciers">
+                        <i class='bx bx-plus-medical icon' ></i>
+                            <span class="text nav-text">Ambulanciers</span>
+                        </a>
+                    </li>
+
+                    
+                    <li class="nav-link">
+                        <a href="createprofile">
+                        <i class='bx bx-user-plus icon'></i>
+                            <span class="text nav-text">Nieuw Persoon</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                    <span class="text nav-text"></span>
+                    </li>
+
                     <?php if ($_SESSION["rank"] == "Leiding") { ?>
                     <li class="nav-link">
-                        <a href="Dropdown worden luuk">
-                            <i class='bx bx-bell icon'></i>
-                            <!-- <span class="text nav-text" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Leiding</span> -->
-                            <span class="text nav-text">Leiding</span>
-                            <!-- <ul class="dropdown">   -->
-
-                        </a>
-                    </li>
-                    <?php } ?>
-
-                    <li class="nav-link">
-                        <a href="#">
-                            <i class='bx bx-pie-chart-alt icon' ></i>
-                            <span class="text nav-text">Analytics</span>
-                        </a>
+                    <span class="text nav-text leidingcenter">Leiding</span>
                     </li>
 
                     <li class="nav-link">
-                        <a href="#">
-                            <i class='bx bx-heart icon' ></i>
-                            <span class="text nav-text">Likes</span>
+                        <a href="users">
+                        <i class='bx bx-male icon'></i>
+                            <span class="text nav-text">Users</span>
                         </a>
                     </li>
-
+                    
                     <li class="nav-link">
-                        <a href="#">
-                            <i class='bx bx-wallet icon' ></i>
-                            <span class="text nav-text">Wallets</span>
+                        <a href="createambulancier">
+                        <i class='bx bxs-duplicate icon'></i>
+                            <span class="text nav-text">Nieuwe Ambu</span>
                         </a>
                     </li>
+                    
+                    <li class="nav-link">
+                        <a href="overzicht">
+                            <i class='bx bx-bookmarks icon' ></i>
+                            <span class="text nav-text">Administratie</span>
+                        </a>
+                    </li>
+                    
 
                 </ul>
             </div>
-
+            <?php } ?>
             <div class="bottom-content">
                 <li class="">
                     <a href="logout">
@@ -152,17 +167,19 @@
                     </a>
                 </li>
 
-                <li class="mode">
-                    <div class="sun-moon">
-                        <i class='bx bx-moon icon moon'></i>
-                        <i class='bx bx-sun icon sun'></i>
-                    </div>
-                    <span class="mode-text text">Donker</span>
 
-                    <div class="toggle-switch">
-                        <span class="switch"></span>
-                    </div>
-                </li>
+
+                <li class="nav-link">
+                        <a class="darkmode">
+                            <i class="bx bx-moon icon moon"></i>
+                            <span class="text nav-text donkerwit">Dark</span>
+                            </a>
+                            <a class="lightmode">
+                            <i class="bx bx-sun icon sun"></i>
+                            <span class="text nav-text donkerlicht">Light</span>
+                        </a>
+                    </li>
+                    
                 
             </div>
         </div>
@@ -177,7 +194,7 @@
 
         <main role="main" class="container">
             <div class="content-introduction">
-                <h3>Nieuwe ambulancier maken</h3>
+                <h3 class="titelgroot">Nieuwe ambulancier maken</h3>
                 <p class="lead">Hier kan je als leiding een nieuwe ambulance broeder in het systeem zetten<br />Zorg ervoor dat alle gegevens kloppen en dat er een juiste foto is geplaatst!</p>
             </div>
             <div class="createprofile-container">

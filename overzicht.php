@@ -50,64 +50,131 @@
         <link href="assets/css/profiles.css" rel="stylesheet">
     </head>
     <body>
-    <nav class="navbar navbar-expand-lg fixed-top navbar-custom bg-custom">
-        <a class="nav-label" href="#">
-            <img src="assets/images/icon.png" width="22" height="22" alt="">
-            <span class="title">
-                               Welkom <?php echo $_SESSION["name"]; ?>.
-                            </span>
-        </a>
-        <a class="nav-button" href="logout">
-            <button class="btn btn-outline-light btn-logout my-2 my-sm-0" type="button">LOG UIT</button>
-        </a>
+    <nav class="sidebar close">
+        <header>
+            <div class="image-text">
+                <span class="image">
+                    <img src="<?php echo $_SESSION["profilepic"]; ?>" alt="profile-pic" width="130" height="40"/>
+                </span>
 
-        <div class="navbar-dark">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-        </div>
+                <div class="text logo-text">
+                    <span class="name"><?php echo $firstname . " " . substr($lastname, 0, 1); ?>.</span>
+                    <span class="profession"><?php echo $_SESSION["rank"]; ?></span>
+                </div>
+            </div>
+            <i class='bx bx-chevron-right toggle'></i>
+        </header>
 
+        <div class="menu-bar">
+            <div class="menu">
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="nav navbar-nav ml-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="dashboard">DASHBOARD</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        OPZOEKEN
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="profiles">PERSONEN</a>
-                        <a class="dropdown-item" href="reports">RAPPORTEN</a>
-                        <a class="dropdown-item" href="ambulanciers">Ambulanciers</a>
-                        <!-- <a class="dropdown-item" href="#">VOERTUIGEN</a> -->
-                    </div>
-                </li>
-               
-                               <?php if ($_SESSION["rank"] == "Leiding") { ?>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            LEIDING
+                <ul class="menu-links">
+                    <li class="nav-link">
+                        <a href="dashboard">
+                            <i class='bx bx-home-alt icon' ></i>
+                            <span class="text nav-text">Dashboard</span>
                         </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="users">AMBULANCIERS</a>
-                            <a class="dropdown-item" href="createambulancier">NIEUWE AMBULANCIER</a>
-                        </div>
-                        
                     </li>
-                    <?php } ?>
-                <li class="nav-item">
-                    <a class="nav-link-report" href="createreport">NIEUW RAPPORT</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
 
+                    <li class="nav-link opzoeken">
+                        <a href="profiles">
+                        <i class='bx bxs-group icon'></i>
+                            <span class="text nav-text">Personen</span>
+                        </a>
+                    </li>
+                    
+
+                    <li class="nav-link">
+                        <a href="reports">
+                        <i class='bx bx-file icon' ></i>
+                            <span class="text nav-text">Rapporten</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a href="ambulanciers">
+                        <i class='bx bx-plus-medical icon' ></i>
+                            <span class="text nav-text">Ambulanciers</span>
+                        </a>
+                    </li>
+
+                    
+                    <li class="nav-link">
+                        <a href="createprofile">
+                        <i class='bx bx-user-plus icon'></i>
+                            <span class="text nav-text">Nieuw Persoon</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                    <span class="text nav-text"></span>
+                    </li>
+
+                    <?php if ($_SESSION["rank"] == "Leiding") { ?>
+                    <li class="nav-link">
+                    <span class="text nav-text leidingcenter">Leiding</span>
+                    </li>
+
+                    <li class="nav-link">
+                        <a href="users">
+                        <i class='bx bx-male icon'></i>
+                            <span class="text nav-text">Users</span>
+                        </a>
+                    </li>
+                    
+                    <li class="nav-link">
+                        <a href="createambulancier">
+                        <i class='bx bxs-duplicate icon'></i>
+                            <span class="text nav-text">Nieuwe Ambu</span>
+                        </a>
+                    </li>
+                    
+                    <li class="nav-link">
+                        <a href="overzicht">
+                            <i class='bx bx-bookmarks icon' ></i>
+                            <span class="text nav-text">Administratie</span>
+                        </a>
+                    </li>
+                    
+
+                </ul>
+            </div>
+            <?php } ?>
+            <div class="bottom-content">
+                <li class="">
+                    <a href="logout">
+                        <i class='bx bx-log-out icon' ></i>
+                        <span class="text nav-text">Log uit</span>
+                    </a>
+                </li>
+
+
+
+                <li class="nav-link">
+                        <a class="darkmode">
+                            <i class="bx bx-moon icon moon"></i>
+                            <span class="text nav-text donkerwit">Dark</span>
+                            </a>
+                            <a class="lightmode">
+                            <i class="bx bx-sun icon sun"></i>
+                            <span class="text nav-text donkerlicht">Light</span>
+                        </a>
+                    </li>
+                    
+                
+            </div>
+        </div>
+
+      
+
+  <script src="./assets/js/script.js"></script>
+
+
+    </nav>
 
     <main role="main" class="container">
             <div class="content-introduction">
-                <h3>Welkom op de administratie pagina!</h3>
+                <h3 class="titelgroot">Welkom op de administratie pagina!</h3>
                 <p class="lead">Hier kan je alle informatie zien die je tijdens je dienst maar ook buiten je dienst nodig hebt als ambulancier <br />Zoals sollicitatie's zien en grafieken over aanwezigheid.<br /><strong style="font-size="20";">LET OP NOG NIET ALLE FUNCTIES WERKEN HIER WORD AAN GEWERKT. VOOR VRAGEN DM @Silvester#8287</strong>
                 <br />
                 <br />

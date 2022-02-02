@@ -13,9 +13,6 @@ body {
     animation-duration: 0.4s;
 }
 
-
-
-
 .profilepicpro {
     border-radius: 20px;
 }
@@ -35,9 +32,6 @@ body {
 	background-color: #2a3136;
 }
 
-h1, h2, h3, h4, h5 {
-    color: #000000;
-}
 
 textarea {
     height: 30vh!important;
@@ -136,7 +130,7 @@ textarea {
     font-weight: bold;
 }
 
-.content-introduction .lead{
+.content-introduction{
     font-size: 14px!important;
     color: rgb(0, 0, 0)!important;
 }
