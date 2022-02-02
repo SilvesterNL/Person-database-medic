@@ -41,7 +41,7 @@
                 $last_id = $con->insert_id;
                 $_SESSION["reportid"] = $last_id;
                 $respone = true;
-                header('Location: reports');
+                header('Location: dashboard');
             }
         } elseif ($_POST["type"] == "edit") {
             $query = $con->query("SELECT * FROM reports WHERE id = ".$con->real_escape_string($_POST['reportid']));
@@ -240,14 +240,6 @@
                     </li>
                     
 
-
-                    <li class="nav-link">
-                        <a href="ambulanciers">
-                        <i class='bx bx-plus-medical icon' ></i>
-                            <span class="text nav-text">Ambulanciers</span>
-                        </a>
-                    </li>
-
                     
                     <li class="nav-link">
                         <a href="createprofile">
@@ -272,12 +264,6 @@
                         </a>
                     </li>
                     
-                    <li class="nav-link">
-                        <a href="createambulancier">
-                        <i class='bx bxs-duplicate icon'></i>
-                            <span class="text nav-text">Nieuwe Ambu</span>
-                        </a>
-                    </li>
                     
                     <li class="nav-link">
                         <a href="overzicht">

@@ -108,62 +108,107 @@
 
     </head>
     <body>
-        <nav class="navbar fixed-top navbar-expand-lg navbar-custom bg-custom">
-            <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+    <nav class="sidebar close">
+        <header>
+            <div class="image-text">
+                <span class="image">
+                    <img src="<?php echo $_SESSION["profilepic"]; ?>" alt="profile-pic" width="130" height="40"/>
+                </span>
 
-                <!-- Left menu -->
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a class="nav-label" href="#">
-                            <img src="assets/images/icon.png" width="22" height="22" alt="">
-                            <span class="title">
-                                Welkom <?php echo $_SESSION["rank"] . " " . $firstname . " " . substr($lastname, 0, 1); ?>.
-                            </span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-button" href="logout">
-                            <button class="btn btn-outline-light btn-logout my-2 my-sm-0" type="button">LOG UIT</button>
-                        </a>
-                    </li>
-                </ul>
+                <div class="text logo-text">
+                    <span class="name"><?php echo $firstname . " " . substr($lastname, 0, 1); ?>.</span>
+                    <span class="profession"><?php echo $_SESSION["rank"]; ?></span>
+                </div>
+            </div>
+            <i class='bx bx-chevron-right toggle'></i>
+        </header>
 
-                <!-- Right menu -->
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="dashboard">DASHBOARD</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            OPZOEKEN
+        <div class="menu-bar">
+            <div class="menu">
+
+                <ul class="menu-links">
+                    <li class="nav-link">
+                        <a href="dashboard">
+                            <i class='bx bx-home-alt icon' ></i>
+                            <span class="text nav-text">Dashboard</span>
                         </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="profiles">PERSONEN</a>
-                            <a class="dropdown-item" href="reports">RAPPORTEN</a>
-                            <!-- <a class="dropdown-item" href="#">VOERTUIGEN</a> -->
-                        </div>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="warrants">ARRESTATIEBEVELEN</a>
-                    </li>
-                    <?php if ($_SESSION["role"] == "admin") { ?>
-                        <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        ADMIN
+
+                    <li class="nav-link opzoeken">
+                        <a href="profiles">
+                        <i class='bx bxs-group icon'></i>
+                            <span class="text nav-text">Personen</span>
                         </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            
-                            <a class="dropdown-item" href="users">GEBRUIKERS</a>
-                        </div>
                     </li>
-                    <?php } ?>
-                    <li class="nav-item">
-                        <a class="nav-link-report" href="createreport">NIEUW RAPPORT</a>
+                    
+
+                    
+                    <li class="nav-link">
+                        <a href="createprofile">
+                        <i class='bx bx-user-plus icon'></i>
+                            <span class="text nav-text">Nieuw Persoon</span>
+                        </a>
                     </li>
+
+                    <li class="nav-link">
+                    <span class="text nav-text"></span>
+                    </li>
+
+                    <?php if ($_SESSION["rank"] == "Leiding") { ?>
+                    <li class="nav-link">
+                    <span class="text nav-text leidingcenter">Leiding</span>
+                    </li>
+
+                    <li class="nav-link">
+                        <a href="users">
+                        <i class='bx bx-male icon'></i>
+                            <span class="text nav-text">Users</span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="nav-link">
+                        <a href="overzicht">
+                            <i class='bx bx-bookmarks icon' ></i>
+                            <span class="text nav-text">Administratie</span>
+                        </a>
+                    </li>
+                    
+
                 </ul>
             </div>
-        </nav>
+            <?php } ?>
+            <div class="bottom-content">
+                <li class="">
+                    <a href="logout">
+                        <i class='bx bx-log-out icon' ></i>
+                        <span class="text nav-text">Log uit</span>
+                    </a>
+                </li>
 
+
+
+                <li class="nav-link">
+                        <a class="darkmode">
+                            <i class="bx bx-moon icon moon"></i>
+                            <span class="text nav-text donkerwit">Dark</span>
+                            </a>
+                            <a class="lightmode">
+                            <i class="bx bx-sun icon sun"></i>
+                            <span class="text nav-text donkerlicht">Light</span>
+                        </a>
+                    </li>
+                    
+                
+            </div>
+        </div>
+
+      
+
+  <script src="./assets/js/script.js"></script>
+
+
+    </nav>
 
         <main role="main" class="container">
             <div class="content-introduction">

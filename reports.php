@@ -12,6 +12,8 @@
                 $search_array[] = $data;
             }
         }
+        
+        
         if ($_POST['type'] == "show" || isset($_SESSION["reportid"]) && $_SESSION["reportid"] != NULL) {
             if (isset($_SESSION["reportid"]) && $_SESSION["reportid"] != NULL) {
                 $reportId = $_SESSION["reportid"];
@@ -33,6 +35,16 @@
             $_SESSION["reportid"] = NULL;
         }
     }
+
+    if ($_POST['type'] == "removereport" || isset($_SESSION["reportid"]) && $_SESSION["reportid"] != NULL) {
+        if (isset($_SESSION["reportid"]) && $_SESSION["reportid"] != NULL) {
+            $reportId = $_SESSION["reportid"];
+        } else {
+            $reportId = $_POST['reportid'];
+        }
+        $sql = "DELETE FROM reports WHERE id = ".$con->real_escape_string($_POST['deletereport']);
+        }
+
     $name = explode(" ", $_SESSION["name"]);
     $firstname = $name[0];
     $last_word_start = strrpos($_SESSION["name"], ' ') + 1;
@@ -109,20 +121,6 @@
                     </li>
                     
 
-                    <li class="nav-link">
-                        <a href="reports">
-                        <i class='bx bx-file icon' ></i>
-                            <span class="text nav-text">Rapporten</span>
-                        </a>
-                    </li>
-
-                    <li class="nav-link">
-                        <a href="ambulanciers">
-                        <i class='bx bx-plus-medical icon' ></i>
-                            <span class="text nav-text">Ambulanciers</span>
-                        </a>
-                    </li>
-
                     
                     <li class="nav-link">
                         <a href="createprofile">
@@ -147,12 +145,6 @@
                         </a>
                     </li>
                     
-                    <li class="nav-link">
-                        <a href="createambulancier">
-                        <i class='bx bxs-duplicate icon'></i>
-                            <span class="text nav-text">Nieuwe Ambu</span>
-                        </a>
-                    </li>
                     
                     <li class="nav-link">
                         <a href="overzicht">
@@ -205,13 +197,11 @@
             <div class="profile-container">
                 <div class="profile-search">
                     <?php if ($_SERVER['REQUEST_METHOD'] != "POST" || $_SERVER['REQUEST_METHOD'] == "POST" && $_POST['type'] != "show") { ?>
-                        <a href="createreport" class="btn btn-pol btn-md my-0 ml-sm-2">MAAK NIEUW REPORTAGE</a>
                     <?php } else { ?>
-                        <form method="post">
-                            <input type="hidden" name="type" value="removereport">
-                            <button type="removereport" name="removereport" class="btn btn-pol btn-md my-0 ml-sm-2">VERWIJDER REPORT</button>
+                        <form method="post" name="deletereport">
+                            <input type="hidden" name="type" value="<?php echo $report["id"] ?>">
+                            <?php }?>
                         </form>
-                    <?php } ?>
                     <br /><br />
                     <form method="post" class="form-inline ml-auto">
                         <input type="hidden" name="type" value="search">

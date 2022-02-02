@@ -91,14 +91,6 @@
                     </li>
                     
 
-
-                    <li class="nav-link">
-                        <a href="ambulanciers">
-                        <i class='bx bx-plus-medical icon' ></i>
-                            <span class="text nav-text">Ambulanciers</span>
-                        </a>
-                    </li>
-
                     
                     <li class="nav-link">
                         <a href="createprofile">
@@ -115,6 +107,7 @@
                     <li class="nav-link">
                     <span class="text nav-text leidingcenter">Leiding</span>
                     </li>
+                    
 
                     <li class="nav-link">
                         <a href="users">
@@ -123,12 +116,6 @@
                         </a>
                     </li>
                     
-                    <li class="nav-link">
-                        <a href="createambulancier">
-                        <i class='bx bxs-duplicate icon'></i>
-                            <span class="text nav-text">Nieuwe Ambu</span>
-                        </a>
-                    </li>
                     
                     <li class="nav-link">
                         <a href="overzicht">
@@ -196,7 +183,7 @@
                             </form>
                         <?php }?>
                     <?php } else { ?>
-                            <p class="nopersp2text">Geen personen opgezocht..</p>
+                            <p class="nopersp2text">Geen rapporten opgezocht..</p>
                     <?php } ?>
                 </div>  
                 <div class="right-panel-container">

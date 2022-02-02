@@ -94,20 +94,6 @@
                     </li>
                     
 
-                    <li class="nav-link">
-                        <a href="reports">
-                        <i class='bx bx-file icon' ></i>
-                            <span class="text nav-text">Rapporten</span>
-                        </a>
-                    </li>
-
-                    <li class="nav-link">
-                        <a href="ambulanciers">
-                        <i class='bx bx-plus-medical icon' ></i>
-                            <span class="text nav-text">Ambulanciers</span>
-                        </a>
-                    </li>
-
                     
                     <li class="nav-link">
                         <a href="createprofile">
@@ -132,12 +118,6 @@
                         </a>
                     </li>
                     
-                    <li class="nav-link">
-                        <a href="createambulancier">
-                        <i class='bx bxs-duplicate icon'></i>
-                            <span class="text nav-text">Nieuwe Ambu</span>
-                        </a>
-                    </li>
                     
                     <li class="nav-link">
                         <a href="overzicht">
