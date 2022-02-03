@@ -218,6 +218,8 @@ body.dark .sidebar header .toggle{
     font-weight: 500;
     transition: var(--tran-05);
 }
+
+
 .sidebar li a{
     list-style: none;
     height: 100%;

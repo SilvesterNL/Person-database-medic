@@ -102,6 +102,10 @@
                     <li class="nav-link">
                     <span class="text nav-text"></span>
                     </li>
+             
+                   
+                   
+
 
                     <?php if ($_SESSION["rank"] == "Leiding") { ?>
                     <li class="nav-link">
