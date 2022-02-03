@@ -122,6 +122,10 @@ textarea {
     margin-left: 1vw;
 }
 
+.show-placeholder {
+    display: none!important;
+}
+
 .navbar-custom .nav-link:hover {
     background: rgba(0, 0, 0, 0.2)!important;
 }

@@ -78,7 +78,7 @@
         <main role="main" class="container">
             <div class="login-container">
                 <div class="login-content">
-                    <div class="inlogcenter">
+                    <div style="text-align: center;" class="inlogcenter">
                     <h4 ><strong>Databank Inloggen</strong></h4></div>
                     <hr>
                     <?php if (isset($_GET['error'])) { ?>

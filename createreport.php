@@ -157,6 +157,10 @@
                 font-family: 'Roboto Mono', monospace!important;
             }
 
+            .show-placeholder {
+                display: none;
+            }
+
             .fr-toolbar {
                 border-radius: .25rem .25rem 0vh 0vh !important;
                 border: 1px solid #ced4da;
@@ -182,7 +186,8 @@
             .fr-wrapper::before{
                 font-family: 'Roboto Mono', monospace!important;
                 text-align: left;
-                content: "Unlicensed copy of the Froala Editor. Use it legally by purchasing a license.";
+                content: "";
+                display: none;
                 position:absolute;
                 width:100%;
                 z-index:10000;
