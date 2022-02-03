@@ -133,6 +133,8 @@
             </div>
 
             <?php } ?>
+            
+        
             <div class="bottom-content">
                 <li class="">
                     <a href="logout">
