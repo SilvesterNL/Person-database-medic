@@ -11,6 +11,12 @@
     padding: 2vh 2vw;
 }
 
+.inlogcenter {
+    text-align: center;
+}
+
+
+
 .form-control {
     border-radius: 10px;
 }

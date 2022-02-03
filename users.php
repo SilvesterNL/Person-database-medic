@@ -41,7 +41,7 @@
             $query = $con->query("SELECT * FROM users WHERE id = ".$con->real_escape_string($_POST['edituser']));
             $selecteduser = $query->fetch_assoc();
         } elseif ($_POST['type'] == "realedit") {
-            $update = $con->query("UPDATE users SET username = '".$con->real_escape_string($_POST['username'])."', name = '".$con->real_escape_string($_POST['fullname'])."', rank = '".$con->real_escape_string($_POST['rank'])."' WHERE id = ".$_POST['userid']);
+            $update = $con->query("UPDATE users SET username = '".$con->real_escape_string($_POST['username'])."', name = '".$con->real_escape_string($_POST['fullname'])."', rank = '".$con->real_escape_string($_POST['rank'])."', profilepic = '".$con->real_escape_string($_POST['profilepic'])."' WHERE id = ".$_POST['userid']);
             if ($update) {
                 $respone = true;
             } else {
@@ -209,6 +209,9 @@
                         </div>
                         <div class="input-group mb-3">
                             <input type="text" name="rank" class="form-control login-user" value="<?php echo $selecteduser['rank']; ?>" placeholder="rank">
+                        </div>
+                        <div class="input-group mb-3">
+                            <input type="text" name="profilepic" class="form-control login-user" value="<?php echo $selecteduser['profilepic']; ?>" placeholder="rank">
                         </div>
                         <div class="form-group">
                             <button type="submit" name="create" class="btn btn-primary btn-police">Pas aan</button>

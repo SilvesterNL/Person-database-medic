@@ -78,7 +78,8 @@
         <main role="main" class="container">
             <div class="login-container">
                 <div class="login-content">
-                    <h4><strong>Databank Inloggen</strong></h4>
+                    <div class="inlogcenter">
+                    <h4 ><strong>Databank Inloggen</strong></h4></div>
                     <hr>
                     <?php if (isset($_GET['error'])) { ?>
                     <p style="color:#9f1010;">Verkeerde inlog gegevens!</p>
