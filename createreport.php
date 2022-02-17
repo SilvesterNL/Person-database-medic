@@ -367,6 +367,7 @@
                             </div>
                         <?php } ?>
                         <textarea id="text" name="report" rows="50" cols="95">
+ 
  AMBULANCE
  DISTRICT FORTIS
  BASISTEAM PILLBOX HILL
@@ -376,14 +377,14 @@
 
 
 
- Ik, van team Ambulance "NAAM" met de functie "FUNCTIE", maak het volgende rapport.
- Op "DATUM" omstreeks TIJD uur, bevond ik mij in dienst van de ambulance. En heb het volgende geconstateerd
+ Ik, van team Ambulance <?php echo $_SESSION["rank"] . " " . $firstname . " " . substr($lastname, 0, 1); ?>, maak het volgende rapport.
+ Op <?php echo date("d/m/Y") ?> omstreeks <?php echo date("H:i") ?> uur, bevond ik mij in dienst van de ambulance. En heb het volgende geconstateerd
  
  
  BEVINDINGEN
  Locatie van gebeurtenis:
  Staat van persoon bij aantreffen:
- Welke handelingen zijn gedaan door Silvester Hensen met de functie Leiding:
+ Welke handelingen zijn gedaan door <?php echo $firstname . " " . substr($lastname, 0, 1); ?> met de functie <?php echo $_SESSION["rank"] ?>:
  Zijn er nog handelingen gebeurd door een andere ambulancier:
 
  Rit:
