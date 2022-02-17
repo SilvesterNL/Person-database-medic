@@ -84,7 +84,7 @@
     $firstname = $name[0];
     $last_word_start = strrpos($_SESSION["name"], ' ') + 1;
     $lastname = substr($_SESSION["name"], $last_word_start);
-
+    $ip = NULL;
     function getUserIP()
     {
         // Get real visitor IP behind CloudFlare network
@@ -340,7 +340,7 @@
                         <?php } ?>
                         <?php $report = str_replace( "<br />", '', $selectedreport["report"]); ?>
                         <div class="input-group mb-2">
-                            <textarea name="report" id="froala-editor" class="form-control" value="" placeholder="reportage.." required="" style="display: none;"><?php echo $report; ?></textarea>
+                            <textarea name="report" id="" class="form-control" value="" placeholder="reportage.." required="" style="display: none;"><?php echo $report; ?></textarea>
                         </div>
 						<script>
 						document.getElementById("textVanRapport").style.width = "500px";
@@ -366,9 +366,32 @@
                                 <input type="text" name="citizenid" class="form-control login-user" value="" placeholder="koppel Volledige Naam (mag leeg)">
                             </div>
                         <?php } ?>
-                        <div class="">
-                            <textarea name="report" class="form-control" value="" placeholder="reportage.." required></textarea>
-                        </div>				
+                        <textarea id="text" name="report" rows="50" cols="95">
+ AMBULANCE
+ DISTRICT FORTIS
+ BASISTEAM PILLBOX HILL
+
+
+ RAPPORTAGE:
+
+
+
+ Ik, van team Ambulance "NAAM" met de functie "FUNCTIE", maak het volgende rapport.
+ Op "DATUM" omstreeks TIJD uur, bevond ik mij in dienst van de ambulance. En heb het volgende geconstateerd
+ 
+ 
+ BEVINDINGEN
+ Locatie van gebeurtenis:
+ Staat van persoon bij aantreffen:
+ Welke handelingen zijn gedaan door Silvester Hensen met de functie Leiding:
+ Zijn er nog handelingen gebeurd door een andere ambulancier:
+
+ Rit:
+ Prioriteit (A1, A2, A3):
+ DIA:
+ Arr zorg:
+ Rit naar ziekenhuis :
+                        </textarea>				
                         <div class="form-group">
                             <button type="submit" name="create" class="btn btn-primary btn-police">Maak reportage</button>
                         </div>

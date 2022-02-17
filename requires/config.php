@@ -11,10 +11,10 @@
     // $db_datai = "sql11468819";
 
     
-    $db_hosti = "localhost";
-    $db_useri = "root";
-    $db_passi = "";
-    $db_datai = "meos";
+    $db_hosti = "www02.planetnode.net";
+    $db_useri = "axrdxmta_ambu";
+    $db_passi = "mtt44c2h";
+    $db_datai = "axrdxmta_ambu";
 
     $con = new mysqli($db_hosti,$db_useri,$db_passi,$db_datai);
 ?>
