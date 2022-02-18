@@ -17,6 +17,7 @@
                 $_SESSION['role'] = $row['role'];
                 $_SESSION['name'] = $row['name'];
                 $_SESSION['dienstnummer'] = $row['dienstnummer'];
+                $_SESSION['status'] = $row['status'];
                 $_SESSION['darkmode'] = $row['color'];
                 $_SESSION['rank'] = $row['rank'];
                 $_SESSION['profilepic'] = $row['profilepic'];

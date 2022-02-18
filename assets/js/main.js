@@ -69,3 +69,4 @@ $('.lawsearch').keyup(function(){
         $(this).toggle($(this).text().toLowerCase().indexOf(filterVal) > -1)
     });
 });
+

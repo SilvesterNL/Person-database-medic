@@ -98,6 +98,13 @@
                             <span class="text nav-text">Nieuw Persoon</span>
                         </a>
                     </li>
+                    <li class="nav-link">
+                        <a href="settings">
+                        <i class='bx bx-comment-edit icon'></i>
+                            <span class="text nav-text">Instellingen</span>
+                        </a>
+                    </li>
+
 
                     <li class="nav-link">
                     <span class="text nav-text"></span>
@@ -151,7 +158,7 @@
                             <span class="text nav-text donkerwit">Dark</span>
                             </a>
                             <a class="lightmode">
-                            <i class="bx bx-sun icon sun"></i>
+                            <i style="left:10px!important;" class="bx bx-sun icon sun"></i>
                             <span class="text nav-text donkerlicht">Light</span>
                         </a>
                     </li>

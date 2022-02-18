@@ -36,6 +36,31 @@ body.dark{
 }
 
 
+@keyframes noti {
+    from {transform: scale(0.7);}
+    to {transform: scale(0.9.9);}
+  }
+
+.notification {
+    margin-left: 317px;
+    margin-top: -57px;
+    width: 396px;
+    height: 50px;
+    background-color: #2a3136!important;
+    text-align: center;
+    border-radius: 20px;
+    animation-name: noti;
+    animation-duration: 0.4s;   
+}
+
+.notitekst {
+    color: #ccc!important;
+}
+
+.notitekst{
+    color: #ccc!important;
+}
+
 p, strong, .titelgroot, .report-title, .labeltekst {
     color: var(--text-color)!important;
 }
@@ -206,6 +231,11 @@ body.dark .sidebar header .toggle{
     transition: var(--tran-05);
 }
 
+.profielchange {
+    margin-top: 20px;
+    width: 400px;
+}
+
 .sidebar li.search-box input{
     height: 100%;
     width: 100%;
@@ -280,6 +310,8 @@ body.dark .mode .sun-moon i.moon{
     opacity: 0;
 }
 
+
+
 .menu-bar .bottom-content .toggle-switch{
     position: absolute;
     right: 0;
@@ -299,6 +331,10 @@ body.dark .mode .sun-moon i.moon{
     background-color: var(--toggle-color);
     transition: var(--tran-05);
 }
+
+
+
+
 
 .switch::before{
     content: '';

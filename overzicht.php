@@ -91,6 +91,12 @@
                             <span class="text nav-text">Nieuw Persoon</span>
                         </a>
                     </li>
+                    <li class="nav-link">
+                        <a href="settings">
+                        <i class='bx bx-comment-edit icon'></i>
+                            <span class="text nav-text">Instellingen</span>
+                        </a>
+                    </li>
 
                     <li class="nav-link">
                     <span class="text nav-text"></span>
