@@ -15,6 +15,16 @@
         $firstname = $name[0];
 
 
+        if ($_SERVER['REQUEST_METHOD'] == "POST") {
+            if ($_POST['type'] == "noodknop") {
+                $update = $con->query("INSERT INTO noodknop (bericht) VALUES('".$con->real_escape_string($_POST['noodknop']));
+                if ($update) {
+                    $respone = true;
+                } else {
+                    $response = false;
+                }
+            }}
+
         $name = explode(" ", $_SESSION["name"]);
         $firstname = $name[0];
         $last_word_start = strrpos($_SESSION["name"], ' ') + 1;
@@ -161,12 +171,23 @@
     <main role="main" class="container">
             <div class="content-introduction">
                 <h3 class="titelgroot">Welkom op de administratie pagina!</h3>
-                <p class="lead">Hier kan je alle informatie zien die je tijdens je dienst maar ook buiten je dienst nodig hebt als ambulancier <br />Zoals sollicitatie's zien en grafieken over aanwezigheid.<br /><strong style="font-size="20";">LET OP NOG NIET ALLE FUNCTIES WERKEN HIER WORD AAN GEWERKT. VOOR VRAGEN DM @Silvester#8287</strong>
+                <p class="lead"> je vader
                 <br />
                 <br />
                 </p>
             </div>
             <div class="dashboard-container">
+            <form method="post">
+                    <?php if ($_SERVER['REQUEST_METHOD'] == "POST" && $_POST['type'] == "noodknop" && $respone) {?>
+                        <?php echo "<div class='notification'><p class='notitekst'><strong>SUCCES</strong>  De noodknop is naar alle online mensen gestuurd</p></div>"; ?>
+                    <?php } ?>
+                        <input type="hidden" name="bericht" value="De noodknop is geactiveert <br> Ga in de porto voor meer informatie">
+                        <input type="hidden" name="type" value="noodknop">     
+                        <div style="width:300px;" class="form-group">
+                            <button type="submit" name="noodknop" class="btn btn-primary btn-police">Noodknop</button>
+                        </div>
+                    </form>
+
                 
 
         

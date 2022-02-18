@@ -6,10 +6,10 @@
 
 
     
-    $db_hosti = "www02.planetnode.net";
-    $db_useri = "axrdxmta_ambu";
-    $db_passi = "mtt44c2h";
-    $db_datai = "axrdxmta_ambu";
+    $db_hosti = "web01.hostvalues.net";
+    $db_useri = "silveste_meos";
+    $db_passi = "jekankermoeder";
+    $db_datai = "silveste_meos";
 
     $con = new mysqli($db_hosti,$db_useri,$db_passi,$db_datai);
 ?>

@@ -37,29 +37,39 @@ body.dark{
 
 
 @keyframes noti {
-    from {transform: scale(0.7);}
-    to {transform: scale(0.9.9);}
+    0%   {top: -209px;}
+    25%   {top: -100px;}
+    50%  {top: 10px;}
+    55%  {top: 10px;}
+    57%  {top: 10px;}
+    58%  {top: 10px;}
+    60%  {top: 10px;}
+    75%  {top: -100px;}
+    100% {top: -209px;}
+
+    
   }
 
 .notification {
+    position: absolute;
     margin-left: 317px;
-    margin-top: -57px;
+    top: -209px;
     width: 396px;
-    height: 50px;
+    height: 100px;
     background-color: #2a3136!important;
     text-align: center;
+    vertical-align: center;
+    line-height: 100px;
     border-radius: 20px;
     animation-name: noti;
-    animation-duration: 0.4s;   
+    animation-duration: 4s;   
 }
 
 .notitekst {
     color: #ccc!important;
+    
 }
 
-.notitekst{
-    color: #ccc!important;
-}
 
 p, strong, .titelgroot, .report-title, .labeltekst {
     color: var(--text-color)!important;
@@ -129,6 +139,11 @@ p, strong, .titelgroot, .report-title, .labeltekst {
     align-items: left;
     justify-content: left;
     font-size: 20px;
+}
+
+.statusbtn {
+    height: 100px;
+    width: 200px;
 }
 
 .sidebar .text,

@@ -17,12 +17,12 @@
                 $_SESSION['role'] = $row['role'];
                 $_SESSION['name'] = $row['name'];
                 $_SESSION['dienstnummer'] = $row['dienstnummer'];
-                $_SESSION['status'] = $row['status'];
+                $_SESSION['status'] = $row['dat'];
+                $_SESSION['online'] = $row['onl'];
                 $_SESSION['darkmode'] = $row['color'];
                 $_SESSION['rank'] = $row['rank'];
                 $_SESSION['profilepic'] = $row['profilepic'];
                 $_SESSION['fullname'] = $row['fullname'];
-
                 $_SESSION['id'] = $row['id'];
                 $_SESSION["personid"] = NULL;
                 $_SESSION["reportid"] = NULL;
@@ -33,6 +33,8 @@
                     header('Location: ' . $_SERVER['HTTP_REFERER']);
                 } else {
                     Header("Location: dashboard");
+                    $_POST['online'] = true;
+                    $con->query("UPDATE users SET onl = '".$con->real_escape_string($_POST['online'])."' WHERE id = ".$row['id']);
                 }
             } else {
                 Header("Location: login?error");
@@ -41,6 +43,7 @@
             Header("Location: login?error");
         }
     }
+    
 ?>
 
 <!doctype html>

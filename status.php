@@ -6,15 +6,58 @@
 
 
     if ($_SERVER['REQUEST_METHOD'] == "POST") {
-        if ($_POST['type'] == "change") {
-            $update = $con->query("UPDATE users SET profilepic = '".$con->real_escape_string($_POST['profilepic'])."' WHERE id = ".$_POST['userid']);
+        if ($_POST['type'] == "1") {
+            $update = $con->query("UPDATE users SET dat = '".$con->real_escape_string($_POST['status'])."' WHERE id = ".$_POST['userid']);
             if ($update) {
                 $respone = true;
-                $_SESSION['profilepic'] = $_POST['profilepic'];
+                $_SESSION['status'] = $_POST['status'];
             } else {
                 $response = false;
             }
-        }}
+        } elseif ($_POST['type'] == "2") {
+            $update = $con->query("UPDATE users SET dat = '".$con->real_escape_string($_POST['status'])."' WHERE id = ".$_POST['userid']);
+            if ($update) {
+                $respone = true;
+                $_SESSION['status'] = $_POST['status'];
+            } else {
+                $response = false;
+            }
+        } elseif ($_POST['type'] == "3") {
+            $update = $con->query("UPDATE users SET dat = '".$con->real_escape_string($_POST['status'])."' WHERE id = ".$_POST['userid']);
+            if ($update) {
+                $respone = true;
+                $_SESSION['status'] = $_POST['status'];
+            } else {
+                $response = false;
+            }
+        } elseif ($_POST['type'] == "4") {
+            $update = $con->query("UPDATE users SET dat = '".$con->real_escape_string($_POST['status'])."' WHERE id = ".$_POST['userid']);
+            if ($update) {
+                $respone = true;
+                $_SESSION['status'] = $_POST['status'];
+            } else {
+                $response = false;
+            }
+        } elseif ($_POST['type'] == "5") {
+            $update = $con->query("UPDATE users SET dat = '".$con->real_escape_string($_POST['status'])."' WHERE id = ".$_POST['userid']);
+            if ($update) {
+                $respone = true;
+                $_SESSION['status'] = $_POST['status'];
+            } else {
+                $response = false;
+            }
+        } elseif ($_POST['type'] == "6") {
+            $update = $con->query("UPDATE users SET dat = '".$con->real_escape_string($_POST['status'])."' WHERE id = ".$_POST['userid']);
+            if ($update) {
+                $respone = true;
+                $_SESSION['status'] = $_POST['status'];
+            } else {
+                $response = false;
+            }
+        }
+    
+    
+    }
 
     
 
@@ -113,6 +156,12 @@
                             <span class="text nav-text">Instellingen</span>
                         </a>
                     </li>
+                    <li class="nav-link">
+                        <a href="status">
+                        <i class='bx bx-support icon'></i>
+                            <span class="text nav-text">Status</span>
+                        </a>
+                    </li>
 
                     <li class="nav-link">
                     <span class="text nav-text"></span>
@@ -185,33 +234,81 @@
   <!-- Navbar xx -->
         <main role="main" class="container">
             <div class="content-introduction">
-                <h3 class="h3text">Persoonlijke Instellingen</h3>
-                <p class="p1text">Hier kan je persoonlijke instellingen aanpassen zoals je profielfoto etc
-                <br />
-                <br />
-                </p>
-                <p style="float:left; font-size:17px;">Naam: <?php echo $_SESSION["name"] ?></P><br><br>
-                <p style="float:left; font-size:17px;">dienstnummer: <?php echo $_SESSION["dienstnummer"] ?></P><br><br>
-                <p style="float:left; font-size:17px;">Status: <?php echo $_SESSION["status"] ?></P><br><br>
-                <p style="float:left; font-size:17px;">Profielfoto:</P><br><br>
-                <img height="300px" width="300px" style="float:left; border-radius:25px;" src="<?php echo $_SESSION["profilepic"]; ?>"><br><br>
-                <br>
-
-
-                    <form method="post">
-                    <?php if ($_SERVER['REQUEST_METHOD'] == "POST" && $_POST['type'] == "change" && $respone) {?>
-                        <?php echo "<div class='notification'><p class='notitekst'><strong>SUCCES</strong>  De settings zijn succesvol aangepast</p></div>"; ?>
+                <h3 class="h3text">Status Dashboard</h3>
+                <p class="p1text">Hier kan je zien wie er in dienst zijn en welke status hun zijn</p>
+                
+                <div class="left-panel-container">
+                <form method="post">
+                    <?php if ($_SERVER['REQUEST_METHOD'] == "POST" && $_POST['type'] == "1" && $respone) {?>
+                        <?php echo "<div class='notification'><p class='notitekst'><strong>SUCCES</strong>  Je status is succesvol aangepast</p></div>"; ?>
                     <?php } ?>
                         <input type="hidden" name="userid" value="<?php echo $_SESSION['id']; ?>">
-                        <input type="hidden" name="type" value="change">
-                        <div style="width:300px;" class="input-group mb-3">
-                            <input style="margin-top:267px!important; left:-297px; float:left;" type="url" name="profilepic" class="form-control login-user" value="<?php echo $_SESSION["profilepic"]; ?>" placeholder="Profielfoto (Gebruik een direct linkje)" required>
-                        </div>
-                        
+                        <input type="hidden" name="status" value="1">
+                        <input type="hidden" name="type" value="1">     
                         <div style="width:300px;" class="form-group">
-                            <button type="submit" name="change" class="btn btn-primary btn-police">Pas profelfoto aan</button>
+                            <button type="submit" name="1" class="btn btn-primary btn-police statusbtn">Status 1</button>
                         </div>
                     </form>
+                    <form method="post">
+                    <?php if ($_SERVER['REQUEST_METHOD'] == "POST" && $_POST['type'] == "2" && $respone) {?>
+                        <?php echo "<div class='notification'><p class='notitekst'><strong>SUCCES</strong>  Je status is succesvol aangepast</p></div>"; ?>
+                    <?php } ?>
+                        <input type="hidden" name="userid" value="<?php echo $_SESSION['id']; ?>">
+                        <input type="hidden" name="status" value="2">
+                        <input type="hidden" name="type" value="2">     
+                        <div style="width:300px;" class="form-group">
+                            <button type="submit" name="2" class="btn btn-primary btn-police statusbtn">Status 2</button>
+                        </div>
+                    </form>
+                    <form method="post">
+                    <?php if ($_SERVER['REQUEST_METHOD'] == "POST" && $_POST['type'] == "3" && $respone) {?>
+                        <?php echo "<div class='notification'><p class='notitekst'><strong>SUCCES</strong>  Je status is succesvol aangepast</p></div>"; ?>
+                    <?php } ?>
+                        <input type="hidden" name="userid" value="<?php echo $_SESSION['id']; ?>">
+                        <input type="hidden" name="status" value="3">
+                        <input type="hidden" name="type" value="3">     
+                        <div style="width:300px;" class="form-group">
+                            <button type="submit" name="3" class="btn btn-primary btn-police statusbtn">Status 3</button>
+                        </div>
+                    </form>
+                    <form method="post">
+                    <?php if ($_SERVER['REQUEST_METHOD'] == "POST" && $_POST['type'] == "4" && $respone) {?>
+                        <?php echo "<div class='notification'><p class='notitekst'><strong>SUCCES</strong>  Je status is succesvol aangepast</p></div>"; ?>
+                    <?php } ?>
+                        <input type="hidden" name="userid" value="<?php echo $_SESSION['id']; ?>">
+                        <input type="hidden" name="status" value="4">
+                        <input type="hidden" name="type" value="4">     
+                        <div style="width:300px;" class="form-group">
+                            <button type="submit" name="4" class="btn btn-primary btn-police statusbtn">Status 4</button>
+                        </div>
+                    </form>
+                    <form method="post">
+                    <?php if ($_SERVER['REQUEST_METHOD'] == "POST" && $_POST['type'] == "5" && $respone) {?>
+                        <?php echo "<div class='notification'><p class='notitekst'><strong>SUCCES</strong>  Je status is succesvol aangepast</p></div>"; ?>
+                    <?php } ?>
+                        <input type="hidden" name="userid" value="<?php echo $_SESSION['id']; ?>">
+                        <input type="hidden" name="status" value="5">
+                        <input type="hidden" name="type" value="5">     
+                        <div style="width:300px;" class="form-group">
+                            <button type="submit" name="5" class="btn btn-primary btn-police statusbtn">Status 5</button>
+                        </div>
+                    </form>
+                    <form method="post">
+                    <?php if ($_SERVER['REQUEST_METHOD'] == "POST" && $_POST['type'] == "6" && $respone) {?>
+                        <?php echo "<div class='notification'><p class='notitekst'><strong>SUCCES</strong>  Je status is succesvol aangepast</p></div>"; ?>
+                    <?php } ?>
+                        <input type="hidden" name="userid" value="<?php echo $_SESSION['id']; ?>">
+                        <input type="hidden" name="status" value="6">
+                        <input type="hidden" name="type" value="6">
+                        <div style="width:300px;" class="form-group">
+                            <button type="submit" name="6" class="btn btn-primary btn-police statusbtn">Status 6</button>
+                        </div>
+                    </form>
+                    </div>
+
+                <div class="right-panel-container">
+                <h5 class="h3text">Mensen Online:</h5>
+                    </div>
 
 
         </main>
