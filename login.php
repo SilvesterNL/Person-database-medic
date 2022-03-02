@@ -34,6 +34,10 @@
                 } else {
                     Header("Location: dashboard");
                     $_POST['online'] = true;
+                    if (!isset($_SESSION['LAST_ACTIVITY'])) {
+                        // initiate value
+                        $_SESSION['LAST_ACTIVITY'] = time();
+                    }
                     $con->query("UPDATE users SET onl = '".$con->real_escape_string($_POST['online'])."' WHERE id = ".$row['id']);
                 }
             } else {

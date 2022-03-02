@@ -22,6 +22,14 @@ input:-webkit-autofill:active{
     color: var(--text-color)!important;
 }
 
+li {
+    list-style-type: none;
+}
+
+
+figure.image {
+    text-align: center;
+}
 
 .second-toolbar {
     background: rgba(0, 0, 0, 0)!important;
@@ -31,6 +39,12 @@ input:-webkit-autofill:active{
     background: rgba(0, 0, 0, 0)!important;
 }
 
+
+.geschrevenby {
+    width: 200px;
+    height: 100px;
+    background-color: black;
+}
 
 
 
@@ -123,6 +137,47 @@ textarea {
 .btn-logout {
     font-size: 12px!important;
 }
+
+.\31 {
+    background:rgb(44, 156, 44)!important;
+  }
+
+.\32 {
+    background:orange!important;
+}
+
+
+.verwijderknop {
+    width: 96px;
+    height: 40px;
+    border-radius: 10px;
+    color:white;
+    box-shadow: none!important;
+    background-color: #cf1f1f;
+}
+
+.panel-authorstat{
+    color: white!important;
+}
+
+
+.\33 {
+    background-color: red!important;
+}
+
+.\34 {
+    background-color: red!important;
+}
+
+.\35 {
+    background-color: red!important;
+}
+
+.\36 {
+    background-color: red!important;
+}
+
+
 
 .navbar-custom .nav-label .title {
     font-size: 13px!important;
@@ -239,8 +294,8 @@ textarea {
 
 .panel-item {
     padding: 1vh 1vw;
-    background: #2a3136;
     color: #ffffff!important;
+    background: #2a3136;
     border-radius: 5px;
     margin-bottom: 1vh;
     transition: background 500ms;
@@ -387,6 +442,7 @@ textarea {
 
 .btn-pol:hover {
     background: #2a3136!important;
+    
     border: 0 solid transparent!important;
 }
 

@@ -4,6 +4,14 @@
         Header("Location: login");
     }
 
+    $status = $con->query("SELECT * FROM users WHERE onl='1' ORDER BY dat  " );
+    $recentstatus_array = [];
+    while ($data = $status->fetch_assoc()) { 
+        $recentstatus_array[] = $data;
+    }
+
+
+
 
     if ($_SERVER['REQUEST_METHOD'] == "POST") {
         if ($_POST['type'] == "1") {
@@ -11,6 +19,7 @@
             if ($update) {
                 $respone = true;
                 $_SESSION['status'] = $_POST['status'];
+
             } else {
                 $response = false;
             }
@@ -19,6 +28,7 @@
             if ($update) {
                 $respone = true;
                 $_SESSION['status'] = $_POST['status'];
+
             } else {
                 $response = false;
             }
@@ -27,6 +37,7 @@
             if ($update) {
                 $respone = true;
                 $_SESSION['status'] = $_POST['status'];
+
             } else {
                 $response = false;
             }
@@ -35,6 +46,7 @@
             if ($update) {
                 $respone = true;
                 $_SESSION['status'] = $_POST['status'];
+
             } else {
                 $response = false;
             }
@@ -43,6 +55,13 @@
             if ($update) {
                 $respone = true;
                 $_SESSION['status'] = $_POST['status'];
+                require "requires/config.php";
+                $_SESSION['online'] = 0;
+                $con->query("UPDATE users SET onl = '".$con->real_escape_string($_SESSION['online'])."' WHERE id = ".$_SESSION['id']);
+                session_start();
+                session_destroy();
+                Header("Location:login");
+
             } else {
                 $response = false;
             }
@@ -51,9 +70,17 @@
             if ($update) {
                 $respone = true;
                 $_SESSION['status'] = $_POST['status'];
+
             } else {
                 $response = false;
             }
+        } elseif ($_POST['type'] == "status") {
+                $update = $con->query("UPDATE users SET onl = '".$con->real_escape_string($_POST['offline'])."' WHERE id = ".$_POST['persondienst']);
+                if ($update) {
+                    $respone = true;
+                } else {
+                    $response = false;
+                }
         }
     
     
@@ -145,12 +172,6 @@
 
                     
                     <li class="nav-link">
-                        <a href="createprofile">
-                        <i class='bx bx-user-plus icon'></i>
-                            <span class="text nav-text">Nieuw Persoon</span>
-                        </a>
-                    </li>
-                    <li class="nav-link">
                         <a href="settings">
                         <i class='bx bx-comment-edit icon'></i>
                             <span class="text nav-text">Instellingen</span>
@@ -162,6 +183,13 @@
                             <span class="text nav-text">Status</span>
                         </a>
                     </li>
+                    <li class="nav-link">
+                        <a href="settings">
+                        <i class='bx bx-comment-edit icon'></i>
+                            <span class="text nav-text">Instellingen</span>
+                        </a>
+                    </li>
+
 
                     <li class="nav-link">
                     <span class="text nav-text"></span>
@@ -233,20 +261,22 @@
 
   <!-- Navbar xx -->
         <main role="main" class="container">
-            <div class="content-introduction">
+            <div style="margin-top:-50px;" class="content-introduction">
                 <h3 class="h3text">Status Dashboard</h3>
                 <p class="p1text">Hier kan je zien wie er in dienst zijn en welke status hun zijn</p>
                 
                 <div class="left-panel-container">
+                <h5 style="margin-left:-189px!important;" class="h3text">Status:</h5>
+                <div class="panel-list1">
                 <form method="post">
                     <?php if ($_SERVER['REQUEST_METHOD'] == "POST" && $_POST['type'] == "1" && $respone) {?>
                         <?php echo "<div class='notification'><p class='notitekst'><strong>SUCCES</strong>  Je status is succesvol aangepast</p></div>"; ?>
                     <?php } ?>
                         <input type="hidden" name="userid" value="<?php echo $_SESSION['id']; ?>">
-                        <input type="hidden" name="status" value="1">
+                        <input type="hidden" name="status" value="1 | Beschikbaar">
                         <input type="hidden" name="type" value="1">     
                         <div style="width:300px;" class="form-group">
-                            <button type="submit" name="1" class="btn btn-primary btn-police statusbtn">Status 1</button>
+                            <button type="submit" name="1" class="btn btn-primary btn-police statusbtn">Status 1<br /> Beschikbaar </button>
                         </div>
                     </form>
                     <form method="post">
@@ -254,10 +284,10 @@
                         <?php echo "<div class='notification'><p class='notitekst'><strong>SUCCES</strong>  Je status is succesvol aangepast</p></div>"; ?>
                     <?php } ?>
                         <input type="hidden" name="userid" value="<?php echo $_SESSION['id']; ?>">
-                        <input type="hidden" name="status" value="2">
+                        <input type="hidden" name="status" value="2 | Aanrijdend">
                         <input type="hidden" name="type" value="2">     
                         <div style="width:300px;" class="form-group">
-                            <button type="submit" name="2" class="btn btn-primary btn-police statusbtn">Status 2</button>
+                            <button type="submit" name="2" class="btn btn-primary btn-police statusbtn">Status 2 <br /> Aanrijdend</button>
                         </div>
                     </form>
                     <form method="post">
@@ -265,10 +295,10 @@
                         <?php echo "<div class='notification'><p class='notitekst'><strong>SUCCES</strong>  Je status is succesvol aangepast</p></div>"; ?>
                     <?php } ?>
                         <input type="hidden" name="userid" value="<?php echo $_SESSION['id']; ?>">
-                        <input type="hidden" name="status" value="3">
+                        <input type="hidden" name="status" value="3 | Ter plaatse">
                         <input type="hidden" name="type" value="3">     
                         <div style="width:300px;" class="form-group">
-                            <button type="submit" name="3" class="btn btn-primary btn-police statusbtn">Status 3</button>
+                            <button type="submit" name="3" class="btn btn-primary btn-police statusbtn">Status 3 <br /> Ter plaatse</button>
                         </div>
                     </form>
                     <form method="post">
@@ -276,10 +306,10 @@
                         <?php echo "<div class='notification'><p class='notitekst'><strong>SUCCES</strong>  Je status is succesvol aangepast</p></div>"; ?>
                     <?php } ?>
                         <input type="hidden" name="userid" value="<?php echo $_SESSION['id']; ?>">
-                        <input type="hidden" name="status" value="4">
+                        <input type="hidden" name="status" value="4 | Onbeschikbaar">
                         <input type="hidden" name="type" value="4">     
                         <div style="width:300px;" class="form-group">
-                            <button type="submit" name="4" class="btn btn-primary btn-police statusbtn">Status 4</button>
+                            <button type="submit" name="4" class="btn btn-primary btn-police statusbtn">Status 4 <br /> Onbeschikbaar</button>
                         </div>
                     </form>
                     <form method="post">
@@ -287,10 +317,10 @@
                         <?php echo "<div class='notification'><p class='notitekst'><strong>SUCCES</strong>  Je status is succesvol aangepast</p></div>"; ?>
                     <?php } ?>
                         <input type="hidden" name="userid" value="<?php echo $_SESSION['id']; ?>">
-                        <input type="hidden" name="status" value="5">
+                        <input type="hidden" name="status" value="1">
                         <input type="hidden" name="type" value="5">     
                         <div style="width:300px;" class="form-group">
-                            <button type="submit" name="5" class="btn btn-primary btn-police statusbtn">Status 5</button>
+                            <button type="submit" name="5" class="btn btn-primary btn-police statusbtn">Status 5 <br /> Uit dienst</button>
                         </div>
                     </form>
                     <form method="post">
@@ -298,16 +328,44 @@
                         <?php echo "<div class='notification'><p class='notitekst'><strong>SUCCES</strong>  Je status is succesvol aangepast</p></div>"; ?>
                     <?php } ?>
                         <input type="hidden" name="userid" value="<?php echo $_SESSION['id']; ?>">
-                        <input type="hidden" name="status" value="6">
+                        <input type="hidden" name="status" value="6 | Transport">
                         <input type="hidden" name="type" value="6">
                         <div style="width:300px;" class="form-group">
-                            <button type="submit" name="6" class="btn btn-primary btn-police statusbtn">Status 6</button>
+                            <button type="submit" name="6" class="btn btn-primary btn-police statusbtn">Status 6 <br /> Transport</button>
                         </div>
                     </form>
+
+                    </div>
                     </div>
 
                 <div class="right-panel-container">
                 <h5 class="h3text">Mensen Online:</h5>
+                <div class="panel-list">
+                    <?php if(!empty($recentstatus_array)) { ?>
+                        <?php foreach($recentstatus_array as $person) {?>
+                            <form method="post" action="status">
+                                <input type="hidden" name="type" value="show">
+                                <button class="<?php echo $person['dat']; ?> btn btn-panel panel-item" style="text-align:left!important;">
+                                    <p class="panel-authorstat">Naam: <?php echo $person['name']; ?></p>
+                                    <p class="panel-authorstat">Dienstnummer: <?php echo $person['dienstnummer']; ?></p>
+                                    <p class="panel-authorstat">Status: <?php echo $person['dat']; ?></p>
+                                    <?php if ($_SESSION["rank"] == "Leiding") { ?>
+                                        <form method="post" action="status">
+                                        <input type="hidden" name="type" value="status">
+                                        <input type="hidden" name="offline" value="false">
+                                        <input type="hidden" name="persondienst" value="<?php echo $person['id']?>">
+
+                                      <button class="verwijderknop" style="position:absolute; margin-top:25px; margin-left:-134px!important;">Offline</button> 
+                                    </form>
+                                    <?php } ?>
+                                    <!-- <meta http-equiv='refresh' content='10'> -->
+                                </button>
+                            </form>
+                        <?php }?>
+                    <?php } else { ?>
+                            <p>Er zijn op dit moment geen actieve ambulanciers! (Meld dit even bij @silvester#8287)</p>
+                    <?php } ?>
+                    </div>
                     </div>
 
 
@@ -317,6 +375,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
         <script src="assets/js/main.js"></script>
+        <script src="assets/js/refresh.js"></script>
         
     </body>
 </html>

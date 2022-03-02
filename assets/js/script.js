@@ -8,11 +8,7 @@ const body = document.querySelector('body'),
       modeText = body.querySelector(".mode-text");
 
 
-
-
-
-
-
+      
 
 window.addEventListener('load', (event) => {
     if (window.matchMedia("(min-width: 1635px)").matches) {
@@ -55,6 +51,7 @@ lightmode.addEventListener("click" , () =>{
     sessionStorage.removeItem("dark");
 
 }) 
+
 
 
 

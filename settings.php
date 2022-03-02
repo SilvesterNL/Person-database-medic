@@ -102,9 +102,15 @@
 
                     
                     <li class="nav-link">
-                        <a href="createprofile">
-                        <i class='bx bx-user-plus icon'></i>
-                            <span class="text nav-text">Nieuw Persoon</span>
+                        <a href="settings">
+                        <i class='bx bx-comment-edit icon'></i>
+                            <span class="text nav-text">Instellingen</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="status">
+                        <i class='bx bx-support icon'></i>
+                            <span class="text nav-text">Status</span>
                         </a>
                     </li>
                     <li class="nav-link">
@@ -113,6 +119,7 @@
                             <span class="text nav-text">Instellingen</span>
                         </a>
                     </li>
+
 
                     <li class="nav-link">
                     <span class="text nav-text"></span>

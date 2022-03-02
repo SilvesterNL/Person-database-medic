@@ -36,6 +36,15 @@ body.dark{
 }
 
 
+.ck-content {
+    background-color: (var(--background-color));
+}
+
+
+li {
+    color: var(--text-color)!important;
+}
+
 @keyframes noti {
     0%   {top: -209px;}
     25%   {top: -100px;}
@@ -54,6 +63,7 @@ body.dark{
     position: absolute;
     margin-left: 317px;
     top: -209px;
+    color: white!important;
     width: 396px;
     height: 100px;
     background-color: #2a3136!important;
@@ -65,14 +75,18 @@ body.dark{
     animation-duration: 4s;   
 }
 
+notitekst.strong {
+    color: rgb(255, 255, 255)!important;
+}
+
 .notitekst {
-    color: #ccc!important;
+    color: rgb(255, 255, 255)!important;
     
 }
 
 
 p, strong, .titelgroot, .report-title, .labeltekst {
-    color: var(--text-color)!important;
+    color: var(--text-color);
 }
 
 .h1, .h2, .h4, .h5 {

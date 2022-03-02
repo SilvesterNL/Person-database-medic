@@ -119,6 +119,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="description" content="">
+        
         <meta name="author" content="">
         <link rel="shortcut icon" href="https://cdn.silvesterhensen.nl/icon.ico" type="image/x-icon" />
         <link rel="icon" type="image/png" sizes="16x16" href="https://www.politie.nl/politie2018/assets/images/icons/favicon-16.png">
@@ -137,18 +138,19 @@
 
         <!-- Custom styles for this template -->
         <link href="assets/css/main.css" rel="stylesheet">
+        <link rel="stylesheet" href="assets/css/content-styles.css" type="text/css">
         <link href="assets/css/profiles.css" rel="stylesheet">
         <link href="assets/css/laws.css" rel="stylesheet">
 
 		 <!-- Froala text-editor scripts -->
-        <link href="./_files/codemirror.min.css" rel="stylesheet">
+        <!-- <link href="./_files/codemirror.min.css" rel="stylesheet">
         <script src="./_files/codemirror.min.js"></script>
         <script src="./_files/xml.min.js"></script>
         <link href="./_files/font-awesome.min.css" rel="stylesheet">
         <script src="./_files/froala_editor.pkgd.min.js"></script>
         <link href="./_files/froala_editor.pkgd.min.css" rel="stylesheet">
         <link href="./_files/froala_editor.min.css" rel="stylesheet">
-        <script src="./_files/nl.js"></script>
+        <script src="./_files/nl.js"></script> -->
 
 		<!-- Froala Style Rules -->
         <style>
@@ -247,9 +249,15 @@
 
                     
                     <li class="nav-link">
-                        <a href="createprofile">
-                        <i class='bx bx-user-plus icon'></i>
-                            <span class="text nav-text">Nieuw Persoon</span>
+                        <a href="settings">
+                        <i class='bx bx-comment-edit icon'></i>
+                            <span class="text nav-text">Instellingen</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="status">
+                        <i class='bx bx-support icon'></i>
+                            <span class="text nav-text">Status</span>
                         </a>
                     </li>
                     <li class="nav-link">
@@ -315,7 +323,7 @@
       
 
   <script src="./assets/js/script.js"></script>
-
+  
 
     </nav>
 
@@ -372,33 +380,34 @@
                                 <input type="text" name="citizenid" class="form-control login-user" value="" placeholder="koppel Volledige Naam (mag leeg)">
                             </div>
                         <?php } ?>
-                        <textarea id="text" name="report" rows="50" cols="95">
- 
- AMBULANCE
- DISTRICT FORTIS
- BASISTEAM PILLBOX HILL
+            <textarea class="ck-content" name="report" id="editor">
 
+			<figure class="image">
+                <img src="./assets/images/icon.png">
+                <p></p>
+        </figure>
+            <li>AMBULANCE</li>
+            <li>DISTRICT FORTIS</li>
+            <li>BASISTEAM PILLBOX HILL</li>
+            <br />
+            <p>RAPPORTAGE:</p>
+            <li>Ik, van team ambulance <?php echo $firstname . " " . substr($lastname, 0, 1); ?> met de functie <?php echo $_SESSION["rank"] ?> maak het volgende rapport.</li>
+            <li>Op <?php echo date("d/m/Y") ?> omstreeks <?php echo date("H:i") ?> uur, bevond ik mij in dienst van de ambulance. En heb het volgende geconstateerd:</li>
+            <br>
+            <p>BEVINDINGEN</p>
+            <li>Locatie van gebeurtenis: </li>
+            <li>Staat van persoon bij aantreffen: </li>
+            <li>Welke handelingen zijn gedaan door <?php echo $firstname . " " . substr($lastname, 0, 1); ?>: </li>
+            <li>Zijn er nog handelingen gedaan door een andere ambulancier: </li>
+            <br>
+            <p>RIT:</p>
+            <li>Prioriteit (A1, A2, A3): </li>
+            <li>DIA: </li>
+            <li>ARR Zorg: </li>
+            <li>Rit naar ziekenhuis (A1, A2, A3): </li>
 
- RAPPORTAGE:
+            </textarea>
 
-
-
- Ik, van team Ambulance <?php echo $_SESSION["rank"] . " " . $firstname . " " . substr($lastname, 0, 1); ?>, maak het volgende rapport.
- Op <?php echo date("d/m/Y") ?> omstreeks <?php echo date("H:i") ?> uur, bevond ik mij in dienst van de ambulance. En heb het volgende geconstateerd
- 
- 
- BEVINDINGEN
- Locatie van gebeurtenis:
- Staat van persoon bij aantreffen:
- Welke handelingen zijn gedaan door <?php echo $firstname . " " . substr($lastname, 0, 1); ?> met de functie <?php echo $_SESSION["rank"] ?>:
- Zijn er nog handelingen gebeurd door een andere ambulancier:
-
- Rit:
- Prioriteit (A1, A2, A3):
- DIA:
- Arr zorg:
- Rit naar ziekenhuis :
-                        </textarea>				
                         <div class="form-group">
                             <button type="submit" name="create" class="btn btn-primary btn-police">Maak reportage</button>
                         </div>
@@ -406,6 +415,32 @@
                 <?php } ?>
                 </div>
                
+                <script src="./assets/js/ckeditor.js"></script>
+                <script src="./assets/js/translations/nl.js"></script>
+
+<script>
+	ClassicEditor
+		.create( document.querySelector( '#editor' ), {
+            cloudServices: {
+            tokenUrl: 'https://87227.cke-cs.com/token/dev/147cf738f871ee8a9d8260f25da08548eb07885ce5bff42c5c14a4dafee8?limit=10',
+            uploadUrl: 'https://87227.cke-cs.com/easyimage/upload/'
+        }
+			
+        
+		} )
+		.then( editor => {
+			window.editor = editor;
+		} )
+		.catch( err => {
+			console.error( err.stack );
+		} );
+</script>
+
+
+
+
+
+
             <?php if ($_SERVER['REQUEST_METHOD'] != "POST" || $_SERVER['REQUEST_METHOD'] == "POST" && $_POST['type'] != "edit") { ?>
                 <div class="laws">
                     <div class="lawlist-search">
@@ -436,265 +471,7 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
         <script src="assets/js/main.js"></script>
 
-		<!-- Froala Text-Editor (THIS CODE IS NOT IN SEPERATE FILE BECAUSE OF TESTING) -->
-        <script>
-            let name = <?php echo json_encode($firstname." ".$lastname); ?>;
-            let rank = <?php echo json_encode($_SESSION["rank"]); ?>;
-            let date = curday('-');
-            let templates = [
-                `<p dir="ltr" style="line-height: 1.38; text-align: center; margin-top: 0pt; margin-bottom: 0pt;"><img src="./assets/images/pv_logo.png" style="width: 205px; padding-top: 50px;" class="fr-fic fr-dii"></p>
-                <p dir="ltr" style="line-height: 1.38; text-align: left; margin-top: 0pt; margin-bottom: 0pt;"><span style="font-size: 14px;"><strong>AMBULANCE</strong></span></p>
-                <p dir="ltr" style="line-height: 1.38; text-align: left; margin-top: 0pt; margin-bottom: 0pt;"><strong><span style="font-size: 14px; ">DISTRICT FORTIS</span></strong></p>
-                <p dir="ltr" style="line-height: 1.38; text-align: left; margin-top: 0pt; margin-bottom: 0pt;"><strong><span style="font-size: 14px; ">BASISTEAM PILLBOX HILL</span></strong></p>
-                <p dir="ltr" style="line-height: 1.38; text-align: left; margin-top: 0pt; margin-bottom: 0pt;"><strong><br></strong></p>
-                <p dir="ltr" style="line-height: 1.38; text-align: left; margin-top: 0pt; margin-bottom: 0pt;">
-                    <br>
-                </p>
-                <p dir="ltr" style="line-height: 1.38; text-align: center; margin-top: 0pt; margin-bottom: 0pt;"><span style="vertical-align: baseline;"><strong>RAPPORTAGE</strong></span></p>
-                <p dir="ltr" style="line-height: 1.38; text-align: center; margin-top: 0pt; margin-bottom: 0pt;"><span style="background-color: transparent; font-weight: 400; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;"><strong></strong></span></p>
-                <p >
-                    <br>Ik, van team Ambulance <strong>${name}</strong> met de functie <strong>${rank}</strong>, maak het volgende rapport.</p>
-                <p >Op <strong>${date}</strong>, omstreeks <span style="color: rgb(235, 107, 86);">TIJD</span> uur, bevond ik mij in dienst van de ambulance. En heb het volgende geconstateerd&nbsp;</p>
-                <p style="line-height: 1.2;">BEVINDINGEN</p>
-                <p >Locatie van gebeurtenis:
-                    <br>Staat van persoon bij aantreffen:</br>
-                    <br>Welke handelingen zijn gedaan door <strong>${name}</strong> met de functie <strong>${rank}</strong>:</br></br></br>
-                    <br>Zijn er nog handelingen gebeurd door een andere ambulancier:</p>
-                <p>
-                    <br>
-                    <br>
-                </p>
-                <p><em><span>Rit:</span></em>
-                    <br>Prioriteit (A1, A2, A3):
-                    <br>DIA:
-                    <br>Arr zorg:
-                    <br>Rit naar ziekenhuis&nbsp:</p>
-
-                `
-                ,
-                `<br style="box-sizing: border-box; color: rgb(65, 65, 65); font-family: ;">Reanimatie:
-                <br style="box-sizing: border-box; color: rgb(65, 65, 65); font-family: ;">Mogelijkheid tot reanimeren:&nbsp<i>Ja / nee</i>;
-                <br style="box-sizing: border-box; color: rgb(65, 65, 65); font-family: ;">Bewust zijn:&nbsp<i>Was het slachtoffer bij bewust zijn?</i>
-                <br style="box-sizing: border-box; color: rgb(65, 65, 65); font-family: ;">Ademhaling:&nbsp<i>Was er een ademhaling, ja zo: Was deze effectief</i>
-                <br style="box-sizing: border-box; color: rgb(65, 65, 65); font-family: ;">Borstcompressies:&nbsp<i>Hoeveel sets van borstcompressies waren er gegeven?</i>
-                <br style="box-sizing: border-box; color: rgb(65, 65, 65); font-family: ;">AED:&nbsp<i>Was er een AED gebruikt, zo ja; Hoeveel schoks in totaal toegediend?</i>
-                <br style="box-sizing: border-box; color: rgb(65, 65, 65); font-family: ;">Medicatie:&nbsp<i>Was er medicatie toegediend, zo ja; welke en wat was het hartritme?</i>
-                <br style="box-sizing: border-box; color: rgb(65, 65, 65); font-family: ;">Hulp:&nbsp<i>Was er MMT, of meer ambulance? Heeft de politie ook assistentie gegeven?</i>
-                <p >
-                <br>
-                </p>`
-                /* `<p dir="ltr" style="line-height: 1.38; text-align: center; margin-top: 0pt; margin-bottom: 0pt;"><img src="./assets/images/pv_logo.png" style="width: 205px;" class="fr-fic fr-dii"></p>
-                 <p dir="ltr" style="line-height: 1.38; text-align: left; margin-top: 0pt; margin-bottom: 0pt;"><span><strong>EENHEID LOS SANTOS</strong></span></p>
-                 <p dir="ltr" style="line-height: 1.38; text-align: left; margin-top: 0pt; margin-bottom: 0pt;"><strong><span>DISTRICT LS-ZUID</span></strong></p>
-                 <p dir="ltr" style="line-height: 1.38; text-align: left; margin-top: 0pt; margin-bottom: 0pt;"><strong><span>BASISTEAM MISSION ROW</span></strong></p>
-                 <p dir="ltr" style="line-height: 1.38; text-align: left; margin-top: 0pt; margin-bottom: 0pt;">
-                     <br>
-                 </p>
-                 <p dir="ltr" style="line-height: 1.38; text-align: left; margin-top: 0pt; margin-bottom: 0pt;"><span>Proces-verbaalnummer: (pv nummer)</span></p>
-                 <p dir="ltr" style="line-height: 1.38; text-align: left; margin-top: 0pt; margin-bottom: 0pt;">
-                     <br>
-                 </p>
-                 <p dir="ltr" style="line-height: 1.38; text-align: center; margin-top: 0pt; margin-bottom: 0pt;"><span style="vertical-align: baseline;"><strong>P R O C E S - V E R B A A L</strong></span></p>
-                 <p dir="ltr" style="line-height: 1.38; text-align: center; margin-top: 0pt; margin-bottom: 0pt;"><span style="background-color: transparent; font-weight: 400; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;"><strong>bewijsmateriaal</strong></span></p>
-                 <p>
-                     <br>
-                 </p>
-                 <p>
-                     <br>
-                 </p>
-                 <p>Ik, verbalisant, ${name}, ${rank} van Politie Eenheid Los Santos, verklaar het volgende.</p>
-                 <p>
-                     <br>
-                 </p>
-                 <p style="line-height: 1.2;">BEVINDINGEN</p>
-                 <p >
-                     <br style="box-sizing: border-box; color: rgb(65, 65, 65);">Adres Bedrijf/Winkel:&nbsp;
-                     <br style="box-sizing: border-box; color: rgb(65, 65, 65);">Datum/tijd:&nbsp;
-                     <br style="box-sizing: border-box; color: rgb(65, 65, 65);">Bewijs:&nbsp;</p>
-
-                 <p>
-                     <br>
-                 </p> */
-                ,
-                `<p dir="ltr" style="line-height: 1.38; text-align: center; margin-top: 0pt; margin-bottom: 0pt;"><img src="./assets/images/pv_logo.png" style="width: 205px; padding-top: 50px;" class="fr-fic fr-dii"></p>
-                <p dir="ltr" style="line-height: 1.38; text-align: left; margin-top: 0pt; margin-bottom: 0pt;"><span style="font-size: 14px;"><strong>AMBULANCE</strong></span></p>
-                <p dir="ltr" style="line-height: 1.38; text-align: left; margin-top: 0pt; margin-bottom: 0pt;"><strong><span style="font-size: 14px; ">DISTRICT FORTIS</span></strong></p>
-                <p dir="ltr" style="line-height: 1.38; text-align: left; margin-top: 0pt; margin-bottom: 0pt;"><strong><span style="font-size: 14px; ">BASISTEAM PILLBOX HILL</span></strong></p>
-                <p dir="ltr" style="line-height: 1.38; text-align: left; margin-top: 0pt; margin-bottom: 0pt;"><strong><br></strong></p>
-                <p dir="ltr" style="line-height: 1.38; text-align: left; margin-top: 0pt; margin-bottom: 0pt;">
-                    <br>
-                </p><p>Deze persoon heeft na het vragen van ${name} met dienstnummer <?php echo $_SESSION["dienstnummer"]; ?> een pleister ontvangen. Er waren verder geen gecompliceerde acties verreist. 
-</p> <br /> <p>Gegevens van slachtoffer:</p> <br /> <p>Volledige naam: <?php echo $selectedprofile["fullname"]; ?></p>
-<p>Bloedgroep: <?php echo $selectedprofile["dnacode"]; ?></p><p>Geboortedatum: <?php echo $selectedprofile["fingerprint"]; ?> </p>`
-                ,
-                `<p dir="ltr" style="line-height: 1.38; text-align: center; margin-top: 0pt; margin-bottom: 0pt;"><img src="./assets/images/pv_logo.png" style="width: 205px; padding-top: 50px;" class="fr-fic fr-dii"></p>
-                <p dir="ltr" style="line-height: 1.38; text-align: left; margin-top: 0pt; margin-bottom: 0pt;"><span style="font-size: 14px; "><strong>EENHEID QUACKCITY</strong></span></p>
-                <p dir="ltr" style="line-height: 1.38; text-align: left; margin-top: 0pt; margin-bottom: 0pt;"><strong><span style="font-size: 14px; ">DISTRICT LS-ZUID</span></strong></p>
-                <p dir="ltr" style="line-height: 1.38; text-align: left; margin-top: 0pt; margin-bottom: 0pt;"><strong><span style="font-size: 14px; ">BASISTEAM MISSION ROW</span></strong></p>
-                <p dir="ltr" style="line-height: 1.38; text-align: left; margin-top: 0pt; margin-bottom: 0pt;"><strong><br></strong></p>
-                <p dir="ltr" style="line-height: 1.38; text-align: left; margin-top: 0pt; margin-bottom: 0pt;"><span style="font-size: 14px; ">Proces-verbaalnummer: (pv nummer)</span></p>
-                <p dir="ltr" style="line-height: 1.38; text-align: left; margin-top: 0pt; margin-bottom: 0pt;">
-                    <br>
-                </p>
-                <p dir="ltr" style="line-height: 1.38; text-align: center; margin-top: 0pt; margin-bottom: 0pt;"><span style=" vertical-align: baseline;"><strong>P R O C E S - V E R B A A L</strong></span></p>
-                <p dir="ltr" style="line-height: 1.38; text-align: center; margin-top: 0pt; margin-bottom: 0pt;"><span style=" background-color: transparent; font-weight: 400; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;"><strong>aanhouding</strong></span></p>
-                <p >
-                    <br>Ik, verbalisant, ${name}, ${rank} van Politie Eenheid QuackCity, verklaar het volgende.</p>
-                <p >Op ${date}, omstreeks <span style="color: rgb(235, 107, 86);">TIJD</span> uur, bevond ik mij in uniform gekleed en met algemene politietaak belast op de openbare weg,</p>
-                <p >Daar heb ik aangehouden:
-                    <br>Een verdachte die op basis van nader identiteitsonderzoek, bleek te zijn:&nbsp;</p>
-                <p >Achternaam:&nbsp;
-                    <br style="box-sizing: border-box; color: rgb(65, 65, 65); font-family: ;">Voornamen:&nbsp;
-                    <br style="box-sizing: border-box; color: rgb(65, 65, 65); font-family: ;">Geboren:&nbsp;
-                    <br style="box-sizing: border-box; color: rgb(65, 65, 65); font-family: ;">Geslacht:&nbsp;
-                    <br style="box-sizing: border-box; color: rgb(65, 65, 65); font-family: ;">Nationaliteit:&nbsp;
-                    <br style="box-sizing: border-box; color: rgb(65, 65, 65); font-family: ;">Volledige Naam:&nbsp;
-                </p>
-                <p ><b>Identiteitsfouillering:</b>
-                    <br>Ja/Nee</p>
-                <p ><b>Veiligheidsfouillering:</b>
-                    <br>Ja/Nee</p>
-                <p ><b>Inbeslagneming:</b>
-                    <br>Ja/Nee, zo ja wat?</p>
-                <p ><b>Gebruik transportboeien:</b>
-                    <br>Ja/Nee</p>
-                <p ><b>Gebruik geweld:</b>
-                    <br>Ja/Nee</p>
-                <p ><b>Rechtsbijstand:</b>
-                    <br>Ja/Nee</p>
-                <p >
-                    <br>
-                </p>
-
-                <p ><b>Reden van aanhouding:</b>
-                    <br>De verdachte werd aangehouden als verdachte van overtreding van artikel(en).</p>
-                <p >
-                    <br>
-                </p>
-                <p style=" line-height: 1.2;"><b>Bevindingen:</b></p>
-                <p style=" line-height: 1.2;">
-                    <br>
-                </p>
-                <br>
-                <p ><b>Ik heb de verdachte tijdens de aanhouding verteld dat hij/zij zich mag beroepen op zijn zwijgrecht.</b>
-                <br>Ja/Nee</p>
-                <p >
-                    <br>
-                </p>
-                <p ><b>Voorgeleiding:</b>
-                    <br>Op genoemd bureau werd de verdachte ten spoedigste voorgeleid voor de hulpofficier van justitie. Deze gaf op te <span style="color: rgb(235, 107, 86);">TIJD</span> uur het bevel de verdachte op te houden voor onderzoek.</p>
-                <p >
-                    <br>
-                </p>
-                <p >Waarvan door mij, ${name}, op ambtseed is opgemaakt, dit proces-verbaal te QuackCity op ${date}/<span style="color: rgb(235, 107, 86);">TIJD</span>.</p>
-                <p >
-                    <br>
-                </p>
-                <p ><b>Strafeis:</b>
-                    <br><b>Gekregen straf:</b></p>`
-                ,
-                `<p dir="ltr" style="line-height: 1.38; text-align: center; margin-top: 0pt; margin-bottom: 0pt;"><img src="./assets/images/pv_logo.png" style="width: 205px;" class="fr-fic fr-dii"></p>
-                <p dir="ltr" style="line-height: 1.38; text-align: left; margin-top: 0pt; margin-bottom: 0pt;"><span style="font-size: 14px; "><strong>EENHEID QUACKCITY</strong></span></p>
-                <p dir="ltr" style="line-height: 1.38; text-align: left; margin-top: 0pt; margin-bottom: 0pt;"><strong><span style="font-size: 14px; ">DISTRICT LS-ZUID</span></strong></p>
-                <p dir="ltr" style="line-height: 1.38; text-align: left; margin-top: 0pt; margin-bottom: 0pt;"><strong><span style="font-size: 14px; ">BASISTEAM MISSION ROW</span></strong></p>
-                <p dir="ltr" style="line-height: 1.38; text-align: left; margin-top: 0pt; margin-bottom: 0pt;">
-                    <br>
-                </p>
-                <p dir="ltr" style="line-height: 1.38; text-align: left; margin-top: 0pt; margin-bottom: 0pt;"><span style="font-size: 14px; ">Proces-verbaalnummer: (pv nummer)</span></p>
-                <p dir="ltr" style="line-height: 1.38; text-align: left; margin-top: 0pt; margin-bottom: 0pt;">
-                    <br>
-                </p>
-                <p dir="ltr" style="line-height: 1.38; text-align: center; margin-top: 0pt; margin-bottom: 0pt;"><span style=" vertical-align: baseline;"><strong>P R O C E S - V E R B A A L</strong></span></p>
-                <p dir="ltr" style="line-height: 1.38; text-align: center; margin-top: 0pt; margin-bottom: 0pt;"><span style=" background-color: transparent; font-weight: 400; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;"><strong>bewijsmateriaal</strong></span></p>
-                    <br>
-                </p>
-                <p >Ik, verbalisant, ${name}, ${rank} van Politie Eenheid QuackCity, verklaar het volgende.</p>
-                <p >
-                    <br>
-                </p>
-                <p style=" line-height: 1.2;">BEVINDINGEN</p>
-                <p style=" line-height: 1.2;">
-                    <br>
-                </p>
-                <p ><span style='color: rgb(65, 65, 65); font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: left; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;'>Adres Bedrijf/Winkel:&nbsp;</span>
-                    <br style="box-sizing: border-box; color: rgb(65, 65, 65); font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: left; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial;"><span style='color: rgb(65, 65, 65); font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: left; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;'>Datum/tijd:&nbsp;</span>
-                    <br style="box-sizing: border-box; color: rgb(65, 65, 65); font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: left; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial;"><span style='color: rgb(65, 65, 65); font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: left; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;'>Bewijs</span>:&nbsp;</p>
-                <p >
-                    <br>
-                </p>`
-            ];
 
 
-            FroalaEditor.DefineIcon('sjablonen', {NAME: 'cog', SVG_KEY: 'add'});
-            FroalaEditor.RegisterCommand('sjablonen', {
-                title: 'Sjablonen',
-                type: 'dropdown',
-                focus: false,
-                undo: true,
-                refreshAfterCallback: true,
-                options: {
-                    '0': 'Standaard Rapportage',
-                    '1': 'Reanimatie (Sta eerst onderaan het document)',
-                    '2': 'Pleister (Geen bijzondere verichting)',
-                },
-                callback: function (cmd, val) {
-                    this.html.insert(templates[val]);
-                },
-                // Callback on refresh.
-                refresh: function ($btn) {
-                },
-                // Callback on dropdown show.
-                refreshOnShow: function ($btn, $dropdown) {
-                },
-            });
-
-            new FroalaEditor('textarea', {
-                width: '100%',
-                attribution: false,
-                imageUpload: false,
-                useClasses: false,
-                language: 'nl',
-                placeholderText: "Rapportage opstellen...",
-                toolbarButtons: 	{
-                    'moreText': {
-                        'buttons': ['bold', 'italic', 'underline', 'strikeThrough', 'subscript', 'superscript', 'fontSize', 'textColor', 'backgroundColor', 'clearFormatting']
-                    },
-                    'moreParagraph': {
-                        'buttons': ['alignLeft', 'alignCenter', 'formatOLSimple', 'alignRight', 'alignJustify', 'formatOL', 'formatUL', 'paragraphFormat', 'lineHeight', 'outdent', 'indent'],
-                        'buttonsVisible': 3
-                    },
-                    'moreRich': {
-                        'buttons': [ 'sjablonen', 'insertLink', 'insertImage', 'insertTable', 'fontAwesome', 'specialCharacters', 'insertHR'],
-                        'buttonsVisible': 3
-                    },
-                    'moreMisc': {
-                        'buttons': ['undo', 'redo', 'fullscreen', 'spellChecker', 'selectAll', 'help'],
-                        'align': 'right',
-                        'buttonsVisible': 2
-                    }
-                },
-                imageDefaultDisplay: 'block',
-                imageInsertButtons: ['imageByURL'],
-                imageEditButtons: ['imageReplace', 'imageAlign', 'imageSize', 'linkOpen', 'linkEdit', 'linkRemove', 'imageDisplay', 'imageAlt', 'imageRemove']
-            });
-
-            function curday(sp){
-                today = new Date();
-                var dd = today.getDate();
-                var mm = today.getMonth()+1; //As January is 0.
-                var yyyy = today.getFullYear();
-
-                if(dd<10) dd='0'+dd;
-                if(mm<10) mm='0'+mm;
-                return (dd+sp+mm+sp+yyyy);
-            };
-
-            setTimeout(() => {
-                $("#logo").html("");
-            }, 100);
-        </script>
-        <script>
-
-        </script>
     </body>
 </html>
